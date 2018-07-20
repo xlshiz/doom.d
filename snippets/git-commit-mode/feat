@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: feature
+# key: feat
+# --
+feat(${1:files}): ${2:summarise}
+
+
+需求: ${3:message}
+
+修改: ${4:message}
+
+Close #${5:100}

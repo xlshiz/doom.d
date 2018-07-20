@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: fixes
+# key: fix
+# --
+fixes(${1:files}): ${2:summarise}
+
+现象: ${3:message}
+
+原因: ${4:message}
+
+修改: ${5:message}
+
+Close #${6:100}
