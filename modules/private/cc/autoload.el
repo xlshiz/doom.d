@@ -13,6 +13,7 @@
 ;;;###autoload
 (defun +cc-private-setup ()
   (setq tab-width 8)
+  (doom|disable-line-numbers)
   (+ccls//enable))
 
 (defun ccls/base () (interactive) (lsp-ui-peek-find-custom 'base "$ccls/base"))

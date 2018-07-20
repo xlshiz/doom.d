@@ -34,7 +34,7 @@
   (setq lsp-ui-sideline-enable nil
         lsp-enable-completion-at-point t
         lsp-ui-doc-position 'at-point
-        lsp-ui-doc-header nil
+        lsp-ui-doc-header t
         lsp-ui-doc-enable nil
 	lsp-ui-flycheck-enable nil
         lsp-ui-doc-include-signature t

@@ -9,7 +9,7 @@
         ccls-cache-dir (concat doom-cache-dir ".ccls_cached_index")
         ccls-sem-highlight-method 'font-lock)
   ;; (ccls-use-default-rainbow-sem-highlight)
-  (set! :lookup '(c-mode c++-mode)
+  (set-lookup-handlers! '(c-mode c++-mode)
     :definition #'lsp-ui-peek-find-definitions
     :references #'lsp-ui-peek-find-references)
 
@@ -20,6 +20,11 @@
 
 (def-package! clang-format
   :commands (clang-format-region))
+
+(def-package! ggtags
+  :commands (ggtags-mode ggtags-find-tag-dwim))
+(def-package! counsel-gtags
+  :commands (counsel-gtags-dwim))
 
 (after!  cc-mode
   (setq-default c-basic-offset 8)

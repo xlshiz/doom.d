@@ -3,3 +3,5 @@
 
 (package! ccls)
 (package! clang-format)
+(package! ggtags)
+(package! counsel-gtags)

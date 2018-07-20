@@ -1,9 +1,21 @@
 ;;; private/my/config.el -*- lexical-binding: t; -*-
 
+
+;;; set
 (setq
   doom-theme 'doom-nord-light
   doom-font (font-spec :family "Source Code Pro" :size 16))
 
+
+;;; def-package
+(def-package! avy
+  :commands (avy-goto-char-timer)
+  :init
+  (setq avy-timeout-seconds 0.5)
+  )
+
+
+;;; after
 (after! org
   (setq org-directory "~/workdir/note/org/")
   (setq +org-dir org-directory)
@@ -17,14 +29,8 @@
                              (org-default-refile-file . (:level . 1))))
   (setq org-todo-keywords (quote ((sequence "TODO(t)" "INPROCESS(p)" "|" "DONE(d)")))))
 
-(def-package! avy
-  :commands (avy-goto-char-timer)
-  :init
-  (setq avy-timeout-seconds 0.5)
-  )
-
-(set! :lookup 'emacs-lisp-mode :documentation #'helpful-at-point)
-;;(set! :lookup 'c-mode :definition #'rtags-find-symbol-at-point)
+(set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
+;;(set-lookup-handlers! 'c-mode :definition #'rtags-find-symbol-at-point)
 
 (after! eshell
   (defun eshell/l (&rest args) (eshell/ls "-l" args))
@@ -42,13 +48,17 @@
              ))
       (eshell/pushd p)))
   )
+
 (after! imenu-list
   (setq imenu-list-focus-after-activation t
 	imenu-list-auto-resize t))
 
+;;; hook
 (add-hook! 'git-commit-setup-hook #'yas-git-commit-mode)
 (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c-mode-hook #'(lambda () (setq indent-tabs-mode nil)))
 
 (load! "+bindings")
+
+(toggle-frame-maximized)
