@@ -642,6 +642,10 @@
         :n "l" #'evil-avy-goto-line
         :n "w" #'evil-avy-goto-word-1)
 
+      (:desc "Mark" :prefix "m"
+        :n "m" #'symbol-overlay-put
+        :n "c" #'symbol-overlay-remove-all)
+
       (:desc "notes" :prefix "n"
         :desc "Find file in notes"    :n  "n" #'+default/find-in-notes
         :desc "Browse notes"          :n  "N" #'+default/browse-notes

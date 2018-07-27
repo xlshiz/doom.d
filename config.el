@@ -14,6 +14,17 @@
   (setq avy-timeout-seconds 0.5)
   )
 
+(def-package! symbol-overlay
+  :commands (symbol-overlay-put symbol-overlay-remove-all))
+(def-package! color-moccur
+  :commands (moccur dmoccur dired-do-moccur occur-by-moccur isearch-moccur moccur-gerp moccur-grep-find))
+(def-package! moccur-edit
+  :after color-moccur)
+(def-package! evil-moccur
+  :after color-moccur
+  :config
+  (evil-moccur-mode 1))
+
 
 ;;; after
 (after! org
