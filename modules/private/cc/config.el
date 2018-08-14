@@ -60,5 +60,5 @@
              (label . 0)))
           c-style-alist))
   (setq-default c-default-style "dooc")
-  (add-hook 'c-mode-common-hook #'+cc-private-setup)
+  (add-hook 'c-mode-hook #'+cc-private-setup)
   (set-company-backend!  '(c-mode c++-mode objc-mode) '(company-lsp)))
