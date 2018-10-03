@@ -4,7 +4,7 @@
 ;;; set
 (setq
   doom-theme 'doom-nord-light
-  doom-font (font-spec :family "Source Code Pro" :size 16))
+  doom-font (font-spec :family "Source Code Pro Medium" :size 16))
 
 
 ;;; def-package
@@ -16,15 +16,6 @@
 
 (def-package! symbol-overlay
   :commands (symbol-overlay-put symbol-overlay-remove-all))
-(def-package! color-moccur
-  :commands (moccur dmoccur dired-do-moccur occur-by-moccur isearch-moccur moccur-gerp moccur-grep-find))
-(def-package! moccur-edit
-  :after color-moccur)
-(def-package! evil-moccur
-  :after color-moccur
-  :config
-  (evil-moccur-mode 1))
-
 
 ;;; after
 (after! org
@@ -43,32 +34,18 @@
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 ;;(set-lookup-handlers! 'c-mode :definition #'rtags-find-symbol-at-point)
 
-(after! eshell
-  (defun eshell/l (&rest args) (eshell/ls "-l" args))
-  (defun eshell/e (file) (find-file file))
-  (defun eshell/md (dir) (eshell/mkdir dir) (eshell/cd dir))
-  (defun eshell/ft (&optional arg) (treemacs arg))
-
-  (defun eshell/up (&optional pattern)
-    (let ((p (locate-dominating-file
-              (f-parent default-directory)
-              (lambda (p)
-                (if pattern
-                    (string-match-p pattern (f-base p))
-                  t)))
-             ))
-      (eshell/pushd p)))
-  )
-
 (after! imenu-list
   (setq imenu-list-focus-after-activation t
 	imenu-list-auto-resize t))
+
+(after! company
+  (setq company-idle-delay 2))
 
 ;;; hook
 (add-hook! 'git-commit-setup-hook #'yas-git-commit-mode)
 (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-(add-hook 'c-mode-hook #'(lambda () (setq indent-tabs-mode nil)))
+(add-hook 'c-mode-hook #'(lambda () (setq indent-tabs-mode t c-basic-offset 8)))
 
 (load! "+bindings")
 

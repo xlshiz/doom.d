@@ -42,33 +42,7 @@ current frame."
     (end-of-line)))
 
 ;;;###autoload
-(defun +my/ffap ()
-  (interactive)
-  (-if-let ((filename (ffap-guess-file-name-at-point)))
-      (ffap filename)
-    (user-error "No file at point")))
-
-;;;###autoload
-(defun +my/avy-goto-paren ()
-  (interactive)
-  (avy--generic-jump "(" nil 'pre))
-
-;;;###autoload
-(defun +my/avy-goto-conditional ()
-  (interactive)
-  (avy--generic-jump "\\s(\\(if\\|cond\\|when\\|unless\\)\\b" nil 'pre))
-
-;;;###autoload
-(defun my/define-key (keymap key def &rest bindings)
-  "Define multi keybind with KEYMAP KEY DEF BINDINGS."
-  (interactive)
-  (while key
-    (define-key keymap (kbd key) def)
-    (setq key (pop bindings)
-          def (pop bindings))))
-
-;;;###autoload
-(defun my/realgud-eval-nth-name-forward (n)
+(defun +my/realgud-eval-nth-name-forward (n)
   (interactive "p")
   (save-excursion
     (let (name)
@@ -85,7 +59,7 @@ current frame."
         nil))))
 
 ;;;###autoload
-(defun my/realgud-eval-nth-name-backward (n)
+(defun +my/realgud-eval-nth-name-backward (n)
   (interactive "p")
   (save-excursion
     (let (name)
@@ -103,7 +77,7 @@ current frame."
         nil))))
 
 ;;;###autoload
-(defun my/realgud-eval-region-or-word-at-point ()
+(defun +my/realgud-eval-region-or-word-at-point ()
   (interactive)
   (when-let*
       ((cmdbuf (realgud-get-cmdbuf))

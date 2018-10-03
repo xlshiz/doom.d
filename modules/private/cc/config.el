@@ -7,16 +7,25 @@
   :config
   (setq ccls-executable "/usr/local/bin/ccls"
         ccls-cache-dir (concat doom-cache-dir ".ccls_cached_index")
-        ccls-sem-highlight-method 'font-lock)
-  ;; (ccls-use-default-rainbow-sem-highlight)
+        ccls-sem-highlight-method nil)
+        ;ccls-sem-highlight-method 'font-lock)
+  ; (ccls-use-default-rainbow-sem-highlight)
   (set-lookup-handlers! '(c-mode c++-mode)
     :definition #'lsp-ui-peek-find-definitions
     :references #'lsp-ui-peek-find-references)
 
   (setq ccls-extra-init-params
-        '(:completion (:detailedLabel t) :xref (:container t)
-                      :diagnostics (:frequencyMs 5000))))
-  ;; (evil-set-initial-state 'ccls-tree-mode 'emacs)
+        '(:completion
+          (
+           :detailedLabel t
+           :includeBlacklist
+           ("^/usr/(local/)?include/c\\+\\+/[0-9\\.]+/(bits|tr1|tr2|profile|ext|debug)/"
+            "^/usr/(local/)?include/c\\+\\+/v1/"
+            ))
+          :xref (:container t)
+          :diagnostics (:frequencyMs 5000)
+          :index (:reparseForDependency 1)))
+  (evil-set-initial-state 'ccls-tree-mode 'emacs))
 
 (def-package! clang-format
   :commands (clang-format-region))
@@ -59,6 +68,15 @@
              (inclass +cc-c++-lineup-inclass +)
              (label . 0)))
           c-style-alist))
+  (set-pretty-symbols! '(c-mode c++-mode)
+    ;; Functional
+    ;; :def "void "
+    ;; Types
+    :null "NULL"
+    ;; Flow
+    :not "!"
+    :and "&&" :or "||"
+    :return "return")
   (setq-default c-default-style "dooc")
-  (add-hook 'c-mode-hook #'+cc-private-setup)
+  (add-hook! (c-mode c++-mode) #'+cc-private-setup)
   (set-company-backend!  '(c-mode c++-mode objc-mode) '(company-lsp)))

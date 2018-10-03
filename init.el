@@ -7,7 +7,6 @@
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        (lookup           ; helps you navigate your code and documentation
-        +devdocs         ; ...on devdocs.io online
         +docsets)        ; ...or in Dash docsets locally
        snippets          ; my elves. They type so I don't have to
        spellcheck        ; tasing you for misspelling mispelling
@@ -25,6 +24,7 @@
         +fuzzy)          ; enable fuzzy search backend for ivy
 
        :ui
+      ;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        ;; doom-dashboard    ; a nifty splash screen for Emacs
        doom-modeline     ; a snazzy Atom-inspired mode-line
@@ -32,13 +32,14 @@
        evil-goggles      ; display visual hints when editing in evil
       ;fci               ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE tags
+      ;modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
       ;neotree           ; a project drawer, like NERDTree for vim
        treemacs          ; a project drawer, like neotree but cooler
        (popup            ; tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
-      ;pretty-code       ; replace bits of code with pretty symbols
+       pretty-code       ; replace bits of code with pretty symbols
       ;tabbar            ; FIXME an (incomplete) tab bar for Emacs
       ;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
@@ -46,6 +47,9 @@
        window-select     ; visually switch windows
 
        :editor
+      ;(format +onsave)  ; automated prettiness
+       format            ; automated prettiness
+       multiple-cursors  ; editing in many places at once
       ;parinfer          ; turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates
 
@@ -54,13 +58,16 @@
        ediff             ; comparing files in Emacs
        electric          ; smarter, keyword-based electric-indent
        eshell            ; a consistent, cross-platform shell (WIP)
+       hideshow          ; basic code-folding support
        imenu             ; an imenu sidebar and searchable code index
        term              ; terminals in Emacs
        vc                ; version-control and Emacs, sitting in a tree
 
        :tools
+      ;ansible
+      ;docker
        editorconfig      ; let someone else argue about tabs vs spaces
-       ein               ; tame Jupyter notebooks with emacs
+      ;ein               ; tame Jupyter notebooks with emacs
        gist              ; interacting with github gists
       ;macos             ; MacOS-specific commands
        make              ; run make tasks from Emacs
@@ -78,6 +85,7 @@
        (cc); C/C++/Obj-C madness
       ;clojure           ; java with a lisp
       ;common-lisp       ; if you've seen one lisp, you've seen them all
+      ;coq               ; proofs-as-programs
       ;crystal           ; ruby at the speed of c
       ;csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
@@ -89,6 +97,7 @@
        go                ; the hipster dialect
       ;(haskell +intero) ; a language that's lazier than I am
       ;hy                ; readability of scheme w/ speed of python
+      ;idris             ;
        (java +meghanada) ; the poster child for carpal tunnel syndrome
        javascript        ; all(hope(abandon(ye(who(enter(here))))))
       ;julia             ; a better, faster MATLAB
@@ -111,11 +120,12 @@
       ;purescript        ; javascript, but functional
        python            ; beautiful is better than ugly
       ;qt                ; the 'cutest' gui framework ever
+      ;racket            ; a DSL for DSLs
        rest              ; Emacs as a REST client
       ;ruby              ; 1.step do {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
       ;scala             ; java, but good
-       sh                ; she sells (ba|z)sh shells on the C xor
+       (sh +fish)        ; she sells (ba|z)sh shells on the C xor
       ;solidity          ; do you need a blockchain? No.
       ;swift             ; who asked for emoji variables?
        web               ; the tubes
@@ -141,14 +151,15 @@
        ;; literate config in your `doom-private-dir' whenever it changes.
       ;literate
 
-       ;; The default module set reasonable defaults for Emacs. It also provides
-       ;; a Spacemacs-inspired keybinding scheme, a custom yasnippet library,
-       ;; and additional ex commands for evil-mode. Use it as a reference for
-       ;; your own modules.
+       ;; The default module sets reasonable defaults for Emacs. It also
+       ;; provides a Spacemacs-inspired keybinding scheme, a custom yasnippet
+       ;; library, and additional ex commands for evil-mode. Use it as a
+       ;; reference for your own modules.
        (default +snippets +evil-commands)
 
        :private
        intl
        lsp
        cc
+       shell
 )

@@ -1,7 +1,9 @@
 ;;; lang/lsp/config.el -*- lexical-binding: t; -*-
 ;; * General
 (def-package! lsp-mode
-  :commands (lsp-mode))
+  :commands (lsp-mode)
+  :config
+  (setq lsp-highlight-symbol-at-point nil))
 
 (def-package! lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
@@ -36,10 +38,15 @@
         lsp-ui-doc-position 'at-point
         lsp-ui-doc-header t
         lsp-ui-doc-enable nil
-	lsp-ui-flycheck-enable nil
         lsp-ui-doc-include-signature t
 	lsp-ui-doc-background (doom-color 'base4)
-        lsp-ui-doc-border (doom-color 'fg)))
+        lsp-ui-doc-border (doom-color 'fg)
+	lsp-ui-flycheck-enable nil
+	lsp-ui-peek-force-fontify nil
+	lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs))))
+
 
 (def-package! company-lsp
-  :after lsp-mode)
+  :after lsp-mode
+  :init
+  (setq company-transformers nil company-lsp-cache-candidates nil))
