@@ -39,7 +39,7 @@
 	imenu-list-auto-resize t))
 
 (after! company
-  (setq company-idle-delay 2))
+  (setq company-idle-delay 1))
 
 ;;; hook
 (add-hook! 'git-commit-setup-hook #'yas-git-commit-mode)
