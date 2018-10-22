@@ -17,6 +17,16 @@
 (def-package! symbol-overlay
   :commands (symbol-overlay-put symbol-overlay-remove-all))
 
+(def-package! color-rg
+  :commands (color-rg-search-input color-rg-search-symbol color-rg-search-project))
+
+(def-package! company-english-helper
+  :commands (toggle-company-english-helper))
+
+(def-package! insert-translated-name
+  :commands (insert-translated-name-insert insert-translated-name-insert-with-underline
+	       insert-translated-name-insert-with-line insert-translated-name-insert-with-camel))
+
 ;;; after
 (after! org
   (setq org-directory "~/workdir/note/org/")

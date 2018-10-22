@@ -27,9 +27,6 @@
           :index (:reparseForDependency 1)))
   (evil-set-initial-state 'ccls-tree-mode 'emacs))
 
-(def-package! clang-format
-  :commands (clang-format-region))
-
 (def-package! ggtags
   :commands (ggtags-mode ggtags-find-tag-dwim))
 (def-package! counsel-gtags

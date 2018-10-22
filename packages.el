@@ -2,6 +2,6 @@
 ;;; packages.el
 
 (package! symbol-overlay)
-; (package! color-moccur :recipe (:fetcher github :repo "emacsmirror/color-moccur"))
-; (package! moccur-edit :recipe (:fetcher url :url "https://www.emacswiki.org/emacs/download/moccur-edit.el"))
-; (package! evil-moccur :recipe (:fetcher github :repo "casouri/evil-moccur" :files ("*")))
+(package! color-rg :recipe (:fetcher github :repo "manateelazycat/color-rg"))
+(package! company-english-helper :recipe (:fetcher github :repo "manateelazycat/company-english-helper"))
+(package! insert-translated-name :recipe (:fetcher github :repo "manateelazycat/insert-translated-name"))
