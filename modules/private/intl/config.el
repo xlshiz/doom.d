@@ -23,3 +23,10 @@
 (def-package! pangu-spacing
   :config (progn (global-pangu-spacing-mode 1))
 )
+
+(after! ivy
+  (setq ivy-re-builders-alist
+        '(
+          (t . +intel/re-builder-pinyin)
+          ))
+  )
