@@ -6,6 +6,9 @@
   doom-theme 'doom-nord-light
   doom-font (font-spec :family "Source Code Pro Medium" :size 16))
 
+(set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
+;;(set-lookup-handlers! 'c-mode :definition #'rtags-find-symbol-at-point)
+
 
 ;;; def-package
 (def-package! avy
@@ -27,6 +30,15 @@
   :commands (insert-translated-name-insert insert-translated-name-insert-with-underline
 	       insert-translated-name-insert-with-line insert-translated-name-insert-with-camel))
 
+(def-package! awesome-tab
+  :defer 0.5
+  :config
+  (custom-set-faces
+   '(awesome-tab-default ((t (:inherit default :height 1.0)))))
+  (awesome-tab-mode)
+  )
+
+
 ;;; after
 (after! org
   (setq org-directory "~/workdir/note/org/")
@@ -41,9 +53,6 @@
                              (org-default-refile-file . (:level . 1))))
   (setq org-todo-keywords (quote ((sequence "TODO(t)" "INPROCESS(p)" "|" "DONE(d)")))))
 
-(set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
-;;(set-lookup-handlers! 'c-mode :definition #'rtags-find-symbol-at-point)
-
 (after! imenu-list
   (setq imenu-list-focus-after-activation t
 	imenu-list-auto-resize t))
@@ -51,12 +60,15 @@
 (after! company
   (setq company-idle-delay 0.5))
 
+
 ;;; hook
 (add-hook! 'git-commit-setup-hook #'yas-git-commit-mode)
 (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c-mode-hook #'(lambda () (setq indent-tabs-mode t c-basic-offset 8)))
 
+
+;;; load
 (load! "+bindings")
 
 (toggle-frame-maximized)

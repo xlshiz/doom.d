@@ -15,7 +15,10 @@
       :i [C-tab]        #'company-complete
       ;; shell-pop
       (:when (featurep! :private shell)
-      :ni  [f5]         #'shell-pop)
+        :ni  [f5]         #'shell-pop)
+      (:after awesome-tab
+        :ni "M-h"       #'awesome-tab-backward
+	:ni "M-l"       #'awesome-tab-forward)
       (:after org
 	:map evil-org-mode-map
 	:localleader
