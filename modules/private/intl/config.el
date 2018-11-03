@@ -1,14 +1,5 @@
 ;;; private/intl/config.el -*- lexical-binding: t; -*-
 
-(def-package! pyim
-    :init
-    (progn
-      (setq pyim-page-tooltip t
-            pyim-directory (expand-file-name "pyim/" doom-cache-dir)
-            pyim-dcache-directory (expand-file-name "dcache/" pyim-directory)
-            default-input-method "pyim"))
-  )
-
 (def-package! fcitx
   :config (fcitx-evil-turn-on)
   )
