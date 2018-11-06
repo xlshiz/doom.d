@@ -21,6 +21,8 @@
 	:ni "M-l"       #'awesome-tab-forward)
       (:after org
 	:map evil-org-mode-map
+	:ni "M-h"       #'awesome-tab-backward
+	:ni "M-l"       #'awesome-tab-forward
 	:localleader
 	:n "t"          #'org-todo
 	:n "T"          #'org-show-todo-tree
