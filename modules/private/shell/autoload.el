@@ -7,7 +7,7 @@
 ;;;###autoload
 (defun shell/make-shell-pop-type (func)
   (let* ((name (symbol-name func))
-         (*name (concat "*" name "*")))
+         (*name (concat " *" name "*")))
     (if (string-equal name "multi-term")
         (shell-pop--set-shell-type
          'shell-pop-shell-type
