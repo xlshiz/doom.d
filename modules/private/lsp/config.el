@@ -3,7 +3,7 @@
 (def-package! lsp-mode
   :commands (lsp-mode)
   :config
-  (setq lsp-highlight-symbol-at-point nil))
+  (setq lsp-eldoc-hook '(lsp-hover)))
 
 (def-package! lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
@@ -33,11 +33,11 @@
                   (cursor-type)
                   (no-special-glyphs . t)))
   :config
-  (setq lsp-ui-sideline-enable nil
-        lsp-enable-completion-at-point t
+  (setq lsp-enable-completion-at-point t
+	lsp-ui-sideline-enable nil
+        lsp-ui-doc-enable nil
         lsp-ui-doc-position 'at-point
         lsp-ui-doc-header t
-        lsp-ui-doc-enable nil
         lsp-ui-doc-include-signature t
 	lsp-ui-doc-background (doom-color 'base4)
         lsp-ui-doc-border (doom-color 'fg)
