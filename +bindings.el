@@ -41,6 +41,9 @@
         :desc "Switch buffer"           :n "b"   #'switch-to-buffer
         :desc "Kill buffer"             :n "d"   #'kill-this-buffer)
 
+      (:desc "code" :prefix "c"
+        :desc "commentaryr"             :n "c"   #'evil-commentary-line)
+
       (:desc "Error" :prefix "e"
         :desc "Next error"              :n "n"   #'flycheck-next-error
         :desc "Previous error"          :n "p"   #'flycheck-previous-error)
