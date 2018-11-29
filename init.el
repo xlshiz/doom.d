@@ -17,11 +17,9 @@
        :completion
        (company          ; the ultimate code completion backend
         +auto)           ; as-you-type code completion
-       ;;(helm             ; the *other* search engine for love and life
-       ;; +fuzzy)          ; enable fuzzy search backend for helm
+       ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       (ivy              ; a search engine for love and life
-        +fuzzy)          ; enable fuzzy search backend for ivy
+       ivy              ; a search engine for love and life
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -48,6 +46,7 @@
 
        :editor
        format            ; automated prettiness
+       ;;lispy             ; vim for lisp, for people who dont like vim
        multiple-cursors  ; editing in many places at once
        ;;parinfer          ; turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates
@@ -157,7 +156,7 @@
        ;; provides a Spacemacs-inspired keybinding scheme, a custom yasnippet
        ;; library, and additional ex commands for evil-mode. Use it as a
        ;; reference for your own modules.
-       (default +bindings +snippets +evil-commands)
+       (default +bindings +evil-commands)
 
        :private
        intl
