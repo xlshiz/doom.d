@@ -5,6 +5,12 @@
 ;;
 
 ;;;###autoload
+(defvar +ccls-path-mappings [])
+
+;;;###autoload
+(defvar +ccls-initial-blacklist [])
+
+;;;###autoload
 (defun +ccls//enable ()
   (condition-case nil
       (lsp-ccls-enable)
