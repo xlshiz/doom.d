@@ -115,3 +115,13 @@ current frame."
 (defun yas-git-commit-mode ()
   (yas-activate-extra-mode 'git-commit-mode))
 
+;;;###autoload
+(defun +my/find-definitions ()
+  (interactive)
+  (if lsp-mode (lsp-ui-peek-find-definitions) (call-interactively #'+lookup/definition)))
+
+;;;###autoload
+(defun +my/find-references (&optional extra)
+  (interactive)
+  (if lsp-mode (lsp-ui-peek-find-references nil extra) (call-interactively #'+lookup/references)))
+
