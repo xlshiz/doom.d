@@ -58,7 +58,16 @@
 	imenu-list-auto-resize t))
 
 (after! company
-  (setq company-idle-delay 0.3))
+  (setq company-show-numbers t
+	company-minimum-prefix-length 2
+        company-quickhelp-delay nil
+	company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)
+        ))
+
+(after! flycheck
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+  )
 
 
 ;;; hook
