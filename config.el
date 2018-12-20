@@ -58,10 +58,10 @@
 	imenu-list-auto-resize t))
 
 (after! company
-  (setq company-show-numbers t
-	company-minimum-prefix-length 2
+  (setq company-minimum-prefix-length 2
         company-quickhelp-delay nil
-	company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)
+        company-show-numbers t
+        company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)
         ))
 
 (after! flycheck

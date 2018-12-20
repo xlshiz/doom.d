@@ -1,7 +1,7 @@
 ;;; private/cc/config.el -*- lexical-binding: t; -*-
 
 (def-package! ccls
-  :commands (lsp-ccls-enable)
+  :defer t
   :init
   (add-hook! (c-mode c++-mode) #'+cc-private-setup)
   :config
@@ -11,7 +11,6 @@
         ccls-sem-highlight-method nil)
         ;ccls-sem-highlight-method 'font-lock)
   ; (ccls-use-default-rainbow-sem-highlight)
-
   (setq ccls-extra-init-params
    `(:clang
      (:excludeArgs
@@ -28,6 +27,9 @@
         "^/usr/(local/)?include/c\\+\\+/v1/"
         ]))
      :index (:initialBlacklist ,+ccls-initial-blacklist :trackDependency 1)))
+  ; (set-lookup-handlers! '(c-mode c++-mode)
+    ; :definition #'lsp-ui-peek-find-definitions
+    ; :references #'lsp-ui-peek-find-references)
   (evil-set-initial-state 'ccls-tree-mode 'emacs))
 
 (def-package! ggtags

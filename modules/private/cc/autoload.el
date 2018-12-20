@@ -11,16 +11,11 @@
 (defvar +ccls-initial-blacklist [])
 
 ;;;###autoload
-(defun +ccls//enable ()
-  (condition-case nil
-      (lsp-ccls-enable)
-    (user-error nil)))
-
-;;;###autoload
 (defun +cc-private-setup ()
   (setq tab-width 8)
-  (doom|disable-line-numbers)
-  (+ccls//enable))
+  (when buffer-file-name
+    (lsp-ccls-enable))
+  (doom|disable-line-numbers))
 
 (defun ccls/base () (interactive) (lsp-ui-peek-find-custom 'base "$ccls/base"))
 (defun ccls/callers () (interactive) (lsp-ui-peek-find-custom 'callers "$ccls/callers"))
