@@ -7,6 +7,7 @@
      (call-interactively #'execute-extended-command))))
 
 (setq doom-localleader-key ",")
+(setq doom-leader-alt-key "S-SPC")
 
 (map! :nmvo ","         nil
       :ni "M-s"         #'save-buffer
@@ -14,7 +15,8 @@
       :n  "gd"          #'+my/find-definitions
       :n  "gD"          #'+my/find-references
       :n  "go"          (λ! (message "%S" (text-properties-at (point))))
-      :i [C-tab]        #'company-complete
+      :i [C-tab]        #'+company/complete
+      :ni "C-j"         #'ace-window
       ;; shell-pop
       (:when (featurep! :private shell)
         :ni  [f5]         #'shell-pop)
@@ -33,8 +35,8 @@
 (map! :leader
       :desc "M-x"                      :nv "SPC" #'execute-extended-command
       :desc "Org Capture"              :nv "x"   #'org-capture
-      :desc "Run terminal"             :n "'"    #'+term/open
-      :desc "test" :n [tab] nil
+      :desc "Run terminal"             :n  "'"   #'+term/open
+      :desc "test" 		       :n  [tab] nil
       :desc "Alternate buffer"         :nv [tab] #'+my/alternate-buffer-in-persp
 
       :desc "Switch workspace buffer"  :nv "a"   #'persp-switch-to-buffer

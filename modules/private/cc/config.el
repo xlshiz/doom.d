@@ -74,7 +74,7 @@
     ;; Functional
     ;; :def "void "
     ;; Types
-    :null "NULL"
+    ;; :null "NULL"
     ;; Flow
     :not "!"
     :and "&&" :or "||"

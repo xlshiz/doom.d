@@ -4,7 +4,7 @@
 (defun +intel/re-builder-pinyin (str)
   (or (+intel/pinyin-to-utf8 str)
       (ivy--regex-plus str)
-      (ivy--regex-ignore-order)
+      (ivy--regex-ignore-order str)
       ))
 
 ;;;###autoload
@@ -34,4 +34,4 @@
                     (remove nil (mapcar '+intel/pinyin-regexp-helper (split-string
                                                                   (substring str 1) "")))
                     ""))
-        nil))
+        (t nil)))

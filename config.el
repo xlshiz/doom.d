@@ -4,7 +4,10 @@
 ;;; set
 (setq
   doom-theme 'doom-nord-light
-  doom-font (font-spec :family "Source Code Pro Medium" :size 16))
+  doom-font (font-spec :family "Source Code Pro" :size 18)
+  doom-variable-pitch-font (font-spec :family "Source Code Pro")
+  doom-big-font (font-spec :family "Source Code Pro" :size 20))
+; (setq face-font-rescale-alist '(("Source Code Pro" . 1.2)))
 
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 ;;(set-lookup-handlers! 'c-mode :definition #'rtags-find-symbol-at-point)
@@ -46,6 +49,9 @@
   (setq org-default-notes-file (concat org-directory "/work.org"))
   (setq org-default-refile-file (concat org-directory "/refile.org"))
   (setq org-agenda-files (list org-default-notes-file))
+  (custom-set-faces
+    ; '(org-table ((t (:family "Sarasa Mono SC")))))
+    '(org-table ((t (:family "Inconsolata")))))
   (setq org-capture-templates
       '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
              "* TODO %?\n")))

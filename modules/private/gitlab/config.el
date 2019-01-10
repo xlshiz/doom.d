@@ -1,8 +1,11 @@
 ;;; private/gitlab/config.el -*- lexical-binding: t; -*-
 
-;; (setq gitlab-host "http://gitlab.com")
-;; (setq gitlab-token-id "xxxxxxxxxxxxxxxxxxx")
-(def-package! gitlab
-  :defer 2
+(def-package! forge
+  :init
+  (push (expand-file-name "authinfo" doom-etc-dir) auth-sources)
   :config
-  (load! "~/.gitlab.el"))
+  (setq forge-database-file (expand-file-name "forge-database.sqlite" doom-cache-dir))
+  (setq forge-alist
+    '(("gitlab.com" "gitlab.com/api/v4"
+     "gitlab.com" forge-gitlab-repository)))
+  :after magit)
