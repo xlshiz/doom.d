@@ -41,6 +41,8 @@
   (awesome-tab-mode)
   )
 
+(def-package! paradox
+  :commands (paradox-list-packages))
 
 ;;; after
 (after! org
