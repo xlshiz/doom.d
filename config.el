@@ -69,7 +69,7 @@
   (setq company-minimum-prefix-length 2
         company-quickhelp-delay nil
         company-show-numbers t
-        company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)
+        company-global-modes '(not eshell-mode comint-mode erc-mode message-mode help-mode gud-mode)
         ))
 
 (after! flycheck
