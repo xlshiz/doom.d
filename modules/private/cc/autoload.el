@@ -14,7 +14,8 @@
 (defun +cc-private-setup ()
   (setq tab-width 8)
   (when buffer-file-name
-    (lsp-ccls-enable))
+    (require 'ccls)
+    (lsp))
   (doom|disable-line-numbers))
 
 (defun ccls/base () (interactive) (lsp-ui-peek-find-custom 'base "$ccls/base"))

@@ -9,9 +9,9 @@
   (setq ccls-executable "/usr/local/bin/ccls"
         ccls-cache-dir (concat doom-cache-dir ".ccls_cached_index")
         ccls-sem-highlight-method nil)
-        ;ccls-sem-highlight-method 'font-lock)
+        ; ccls-sem-highlight-method 'font-lock)
   ; (ccls-use-default-rainbow-sem-highlight)
-  (setq ccls-extra-init-params
+  (setq ccls-initialization-options
    `(:clang
      (:excludeArgs
       ;; Linux's gcc options. See ccls/wiki
