@@ -5,7 +5,8 @@
   :config
   (setq lsp-eldoc-hook '(lsp-hover)
 	lsp-auto-guess-root t
-	lsp-prefer-flymake nil))
+	lsp-prefer-flymake nil
+	lsp-session-file (expand-file-name ".lsp-session-v1" doom-cache-dir)))
 
 (def-package! lsp-ui
   :commands lsp-ui-mode
