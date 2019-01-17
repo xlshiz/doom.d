@@ -50,7 +50,6 @@
                                     (arglist-cont-nonempty))
             (c-cleanup-list brace-else-brace)
             (c-offsets-alist
-             (statement-block-intro . +)
              (knr-argdecl-intro . 0)
              (substatement-open . 0)
              (substatement-label . 0)
@@ -59,6 +58,8 @@
              ;; align args with open brace OR don't indent at all (if open
              ;; brace is at eolp and close brace is after arg with no trailing
              ;; comma)
+             (brace-list-intro . 0)
+             (brace-list-close . -)
              (arglist-intro . +)
              (arglist-close +cc-lineup-arglist-close 0)
              ;; don't over-indent lambda blocks
