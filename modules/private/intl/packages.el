@@ -3,6 +3,7 @@
 
 (package! fcitx)
 (package! ace-pinyin)
+(package! evil-find-char-pinyin)
 (package! pangu-spacing)
 
 
