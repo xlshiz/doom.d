@@ -59,6 +59,8 @@
              "* TODO %?\n")))
   (setq org-refile-targets '((org-default-notes-file . (:level . 1))
                              (org-default-refile-file . (:level . 1))))
+  (setq org-bookmark-names-plist '(:last-capture "org-capture-last-stored"
+                                   :last-capture-marker "org-capture-last-stored-marker"))
   (setq org-todo-keywords (quote ((sequence "TODO(t)" "INPROCESS(p)" "|" "DONE(d)")))))
 
 (after! imenu-list
