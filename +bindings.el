@@ -38,8 +38,8 @@
       :desc "M-x"                      :nv "SPC" #'execute-extended-command
       :desc "Org Capture"              :nv "x"   #'org-capture
       :desc "Run terminal"             :n  "'"   #'+term/open
-      :desc "test" 		       :n  [tab] nil
-      :desc "Alternate buffer"         :nv [tab] #'+my/alternate-buffer-in-persp
+      :desc "NULL"                     :n  [tab] nil
+      :desc "Alternate buffer"         :nv "TAB" #'+my/alternate-buffer-in-persp
 
       :desc "Switch workspace buffer"  :nv "a"   #'persp-switch-to-buffer
       (:desc "buffer" :prefix "b"
@@ -83,7 +83,7 @@
           :desc "Switch project buffer"  :n  "b" #'helm-projectile-switch-to-buffer))
 
       (:desc "workspace" :prefix "s"
-        :desc "Display tab bar"          :n [tab] #'+workspace/display
+        :desc "Display tab bar"          :n "TAB" #'+workspace/display
         :desc "New workspace"            :n "n"   #'+workspace/new
         :desc "Load workspace from file" :n "l"   #'+workspace/load
         :desc "Load a past session"      :n "L"   #'+workspace/load-session
