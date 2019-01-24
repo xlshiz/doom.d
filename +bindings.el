@@ -17,6 +17,8 @@
       :n  "go"          (λ! (message "%S" (text-properties-at (point))))
       :i [C-tab]        #'+company/complete
       :ni "C-j"         #'ace-window
+      (:when (featurep! :private intl)
+        :ni "C-;"         #'pyim-convert-code-at-point)
       ;; shell-pop
       (:when (featurep! :private shell)
         :ni  [f5]         #'shell-pop)

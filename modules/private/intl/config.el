@@ -50,9 +50,11 @@
   (setq pyim-dicts
 	`((:name "big" :file ,(concat doom-etc-dir "pyim-bigdict.pyim"))))
   (setq pyim-dcache-directory (concat doom-cache-dir "pyim/dcache/"))
+  (map! :map pyim-mode-map
+   	[escape] #'pyim-quit-clear)
 )
 
-(def-package! pyim
+(def-package! pyim-basedict
   :ensure nil
   :config
   (pyim-basedict-enable)
