@@ -3,8 +3,8 @@
 
 ;;; set
 (setq doom-theme 'doom-nord-light)
-; (setq doom-font (font-spec :family "Inconsolata-g" :size 18))
-(setq doom-font (font-spec :family "Fira Code" :size 18))
+(setq doom-font (font-spec :family "Inconsolatag" :size 18))
+; (setq doom-font (font-spec :family "Fira Code" :size 18))
 (setq doom-unicode-font (font-spec :family "Sarasa Mono SC"))
 
 (add-hook 'after-make-frame-functions #'+my|init-font)
