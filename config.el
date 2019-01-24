@@ -2,10 +2,13 @@
 
 
 ;;; set
-(setq
-  doom-theme 'doom-nord-light
-  doom-font (font-spec :family "Source Code Pro" :size 18)
-  doom-variable-pitch-font (font-spec :family "Source Code Pro"))
+(setq doom-theme 'doom-nord-light)
+; (setq doom-font (font-spec :family "Inconsolata-g" :size 18))
+(setq doom-font (font-spec :family "Fira Code" :size 18))
+(setq doom-unicode-font (font-spec :family "Sarasa Mono SC"))
+
+(add-hook 'after-make-frame-functions #'+my|init-font)
+(add-hook 'window-setup-hook #'+my|init-font)
 
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 ;;(set-lookup-handlers! 'c-mode :definition #'rtags-find-symbol-at-point)
