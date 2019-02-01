@@ -4,15 +4,11 @@
 ;;; set
 (setq doom-theme 'doom-nord-light)
 (setq doom-font (font-spec :family "Inconsolatag" :size 18))
-; (setq doom-font (font-spec :family "Fira Code" :size 18))
 (setq doom-unicode-font (font-spec :family "Sarasa Mono SC"))
-
-(add-hook 'after-make-frame-functions #'+my|init-font)
-(add-hook 'window-setup-hook #'+my|init-font)
+; (setq doom-font (font-spec :family "Source Code Pro" :size 18))
+; (setq doom-unicode-font (font-spec :family "思源黑体"))
 
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
-;;(set-lookup-handlers! 'c-mode :definition #'rtags-find-symbol-at-point)
-
 
 ;;; def-package
 (def-package! avy
@@ -85,6 +81,9 @@
 (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c-mode-hook #'(lambda () (setq indent-tabs-mode t c-basic-offset 8)))
+(add-hook 'org-mode-hook #'(lambda () (pangu-spacing-mode -1)))
+(add-hook 'after-make-frame-functions #'+my|init-font)
+(add-hook 'window-setup-hook #'+my|init-font)
 
 
 ;;; load
