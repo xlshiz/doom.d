@@ -17,10 +17,12 @@
       :n  "go"          (λ! (message "%S" (text-properties-at (point))))
       :i [C-tab]        #'+company/complete
       :ni "C-j"         #'ace-window
-      :gi "C-f"		#'forward-char
-      :gi "C-b"		#'backward-char
+      :i  "C-f"		#'forward-char
+      :i  "C-b"		#'backward-char
+      :g  "M-f"		#'pyim-forward-word
+      :g  "M-b"		#'pyim-backward-word
       (:when (featurep! :private intl)
-        :ni "C-;"         #'pyim-convert-code-at-point)
+        :ni "C-;"         #'pyim-convert-string-at-point)
       ;; shell-pop
       (:when (featurep! :private shell)
         :ni  [f5]         #'shell-pop)
