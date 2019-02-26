@@ -7,3 +7,6 @@
 (package! insert-translated-name :recipe (:fetcher github :repo "manateelazycat/insert-translated-name"))
 (package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab" :files ("*.el")))
 (package! paradox)
+
+
+(disable-packages! irony rtags emacs-snippets)

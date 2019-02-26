@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: #include sdt
+# key: #std
+# --
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <string.h>
+#include <unistd.h>
+#include <limits.h>
+#include <errno.h>

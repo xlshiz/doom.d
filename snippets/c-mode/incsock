@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: #include socket
+# key: #sock
+# --
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>

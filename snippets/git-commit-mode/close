@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Close
+# key: close
+# --
+Close #${1:1}

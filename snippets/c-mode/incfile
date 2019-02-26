@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: #include file
+# key: #file
+# --
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
