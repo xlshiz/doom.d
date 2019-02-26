@@ -9,14 +9,11 @@
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
        snippets          ; my elves. They type so I don't have to
-       spellcheck        ; tasing you for misspelling mispelling
-       (syntax-checker   ; tasing you for every semicolon you forget
-        +childframe)     ; use childframes for error popups (Emacs 26+ only)
        workspaces        ; tab emulation, persistence & separate workspaces
 
        :completion
        company           ; the ultimate code completion backend
-       ;;helm              ; the *other* search engine for love and life
+       ;;helm             ; the *other* search engine for love and life
        ;;ido              ; the other *other* search engine...
        ivy              ; a search engine for love and life
 
@@ -68,7 +65,11 @@
        ;;docker
        editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
+       (flycheck          ; tasing you for every semicolon you forget
+        +childframe)     ; use childframes for error popups (Emacs 26+ only)
+       ;;flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
+       ;;lsp
        ;;macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
@@ -80,6 +81,7 @@
        tmux              ; an API for interacting with tmux
        upload            ; map local to remote projects via ssh/ftp
        ;;wakatime
+       ;;vterm             ; another terminals in Emacs
 
        :lang
        assembly          ; assembly for fun or debugging
@@ -166,3 +168,9 @@
        shell
        gitlab
 )
+
+
+;; * Repo
+(setq package-archives '(("gnu" . "http://elpa.emacs-china.org/gnu/")
+                         ("org" . "http://elpa.emacs-china.org/org/")
+                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
