@@ -33,9 +33,25 @@
 
 (def-package! awesome-tab
   :defer 0.5
-  :config
+  :init
+  (custom-set-variables '(awesome-tab-background-color (doom-color 'bg)))
   (custom-set-faces
-   '(awesome-tab-default ((t (:inherit default :height 1.0)))))
+    '(awesome-tab-default ((t (:background "#e5e9f0" :forgeground "white")))))
+  :config
+  (setq awesome-tab-cycle-scope 'tabs)
+  (defun awesome-tab-hide-tab-function (x)
+    (let ((name (format "%s" x)))
+      (and
+	(not (string-prefix-p "*epc" name))
+	(not (string-prefix-p "*helm" name))
+	(not (string-prefix-p "*Compile-Log*" name))
+	(not (string-prefix-p "*lsp" name))
+	(not (string-prefix-p "*ccls" name))
+	(not (string-prefix-p "*Flycheck" name))
+	(not (string-prefix-p "*Org Agenda*" name))
+	(not (and (string-prefix-p "magit" name)
+		  (not (file-name-extension name))))
+	)))
   (awesome-tab-mode)
   )
 

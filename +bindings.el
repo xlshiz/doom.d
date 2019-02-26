@@ -45,9 +45,7 @@
       :desc "NULL"                     :n  [tab] nil
       :desc "Alternate buffer"         :nv "TAB" #'+my/alternate-buffer-in-persp
 
-      :desc "Switch workspace buffer"  :nv "a"   #'persp-switch-to-buffer
       (:desc "buffer" :prefix "b"
-        :desc "Switch workspace buffer" :n "."   #'persp-switch-to-buffer
         :desc "Switch buffer"           :n "b"   #'switch-to-buffer
         :desc "Kill buffer"             :n "d"   #'kill-this-buffer)
 
