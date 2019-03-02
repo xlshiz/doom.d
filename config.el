@@ -48,6 +48,8 @@
 	(not (string-prefix-p "*lsp" name))
 	(not (string-prefix-p "*ccls" name))
 	(not (string-prefix-p "*Flycheck" name))
+	(not (string-prefix-p "*flycheck" name))
+	(not (string-prefix-p "*anaconda-mode*" name))
 	(not (string-prefix-p "*Org Agenda*" name))
 	(not (and (string-prefix-p "magit" name)
 		  (not (file-name-extension name))))
@@ -83,8 +85,9 @@
 (after! company
   (setq company-minimum-prefix-length 2
         company-quickhelp-delay nil
+	company-idle-delay 0.2
         company-show-numbers t
-        company-global-modes '(not eshell-mode comint-mode erc-mode message-mode help-mode gud-mode)
+        company-global-modes '(not org-mode eshell-mode comint-mode erc-mode message-mode help-mode gud-mode)
         ))
 
 (after! flycheck
