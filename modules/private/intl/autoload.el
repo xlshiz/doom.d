@@ -35,3 +35,15 @@
                                                                   (substring str 1) "")))
                     ""))
         (t nil)))
+
+;;;###autoload
+(defun +my|pyim-converter (str)
+   (cond ((<= (length str) 1) str)
+	 ((equal str "【】") str)
+	 ((equal str "】【") str)
+         ((equal (substring str -1) "【")
+	  (substring str 0 1))
+	 ((equal (substring str -1) "】")
+	  (substring str -2 -1))
+	 (t str))
+   )
