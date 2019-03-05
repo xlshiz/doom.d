@@ -8,6 +8,7 @@
 (setq doom-unicode-font (font-spec :family "Sarasa Mono SC"))
 ; (setq doom-font (font-spec :family "Source Code Pro" :size 18))
 ; (setq doom-unicode-font (font-spec :family "思源黑体"))
+(setq display-line-numbers-type nil)
 
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
