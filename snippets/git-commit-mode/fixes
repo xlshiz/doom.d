@@ -10,4 +10,4 @@ fixes(${1:files}): ${2:summarise}
 
 修改: ${5:message}
 
-Close #${6:1}
+Closes #${6:1}

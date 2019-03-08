@@ -9,4 +9,4 @@ feat(${1:files}): ${2:summarise}
 
 修改: ${4:message}
 
-Close #${5:1}
+Closes #${5:1}
