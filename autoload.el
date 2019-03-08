@@ -151,22 +151,22 @@ current frame."
 ;;;###autoload
 (defun +my|awesome-tab-hide-tab (x)
   (let ((name (format "%s" x)))
-    (and
+    (or
       ;; Current window is not dedicated window.
-      (not (window-dedicated-p (selected-window)))
+      (window-dedicated-p (selected-window))
 
       ;; Buffer name not match below blacklist.
-      (not (string-prefix-p "*epc" name))
-      (not (string-prefix-p "*helm" name))
-      (not (string-prefix-p "*Compile-Log*" name))
-      (not (string-prefix-p "*lsp" name))
+      (string-prefix-p "*epc" name)
+      (string-prefix-p "*helm" name)
+      (string-prefix-p "*Compile-Log*" name)
+      (string-prefix-p "*lsp" name)
 
-      (not (string-prefix-p "*ccls" name))
-      (not (string-prefix-p "*Flycheck" name))
-      (not (string-prefix-p "*flycheck" name))
-      (not (string-prefix-p "*anaconda-mode*" name))
-      (not (string-prefix-p "*Org Agenda*" name))
+      (string-prefix-p "*ccls" name)
+      (string-prefix-p "*Flycheck" name)
+      (string-prefix-p "*flycheck" name)
+      (string-prefix-p "*anaconda-mode*" name)
+      (string-prefix-p "*Org Agenda*" name)
 
-      (not (and (string-prefix-p "magit" name)
-		(not (file-name-extension name))))
+      (and (string-prefix-p "magit" name)
+		(not (file-name-extension name)))
       )))
