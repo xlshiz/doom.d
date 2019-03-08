@@ -46,18 +46,18 @@
       :desc "Alternate buffer"         :nv "TAB" #'+my/alternate-buffer-in-persp
 
       :desc "Switch workspace buffer"  :nv "a"   #'projectile-find-file
-      (:desc "buffer" :prefix "b"
+      (:prefix ("b" . "buffer")
         :desc "Switch buffer"           :n "b"   #'switch-to-buffer
         :desc "Kill buffer"             :n "d"   #'kill-this-buffer)
 
-      (:desc "code" :prefix "c"
+      (:prefix ("c" . "code")
         :desc "commentaryr"             :n "c"   #'evil-commentary-line)
 
-      (:desc "Error" :prefix "e"
+      (:prefix ("e" . "error")
         :desc "Next error"              :n "n"   #'flycheck-next-error
         :desc "Previous error"          :n "p"   #'flycheck-previous-error)
 
-      (:desc "File" :prefix "f"
+      (:prefix ("f" . "file")
 	:desc "Find file"               :n "."   #'find-file
         :desc "Save files"              :n "s"   #'save-buffer
 	(:when (featurep! :completion ivy)
@@ -65,18 +65,18 @@
 	(:when (featurep! :completion helm)
           :desc "Find file from here"     :n "f"   #'helm-find))
 
-      (:desc "Jump" :prefix "j"
+      (:prefix ("j" . "jump")
         :n "j" #'evil-avy-goto-char-timer
         :n "c" #'evil-avy-goto-char-2
         :n "C" #'evil-avy-goto-char
         :n "l" #'evil-avy-goto-line
         :n "w" #'evil-avy-goto-word-1)
 
-      (:desc "Mark" :prefix "m"
+      (:prefix ("m" . "mark")
         :n "m" #'symbol-overlay-put
         :n "c" #'symbol-overlay-remove-all)
 
-      (:desc "project" :prefix "p"
+      (:prefix ("p" . "project")
         :desc "Browse project"           :n  "." #'+default/browse-project
         :desc "Find file in project"     :n  "f" #'projectile-find-file
         :desc "Run shell in project"     :nv "'" #'+my/projectile-shell-pop
@@ -85,7 +85,7 @@
 	(:when (featurep! :completion helm)
           :desc "Switch project buffer"  :n  "b" #'helm-projectile-switch-to-buffer))
 
-      (:desc "workspace" :prefix "s"
+      (:prefix ("s" . "workspace")
         :desc "Display tab bar"          :n "TAB" #'+workspace/display
         :desc "New workspace"            :n "n"   #'+workspace/new
         :desc "Load workspace from file" :n "l"   #'+workspace/load
@@ -111,7 +111,7 @@
         :desc "Switch to 9th workspace"  :n "9"   (λ! (+workspace/switch-to 8))
         :desc "Switch to last workspace" :n "0"   #'+workspace/switch-to-last)
 
-      (:desc "window" :prefix "w"
+      (:prefix ("w" . "window")
         :desc "Alternate window"       :n "TAB" #'+my/alternate-window
         :desc "Other window"           :n "w"   #'other-window
         :desc "Split window right"     :n "v"   #'split-window-right
@@ -125,7 +125,7 @@
         :desc "Switch to down"         :n "j"   #'evil-window-down
         :desc "Kill other window"      :n "O"   #'ace-delete-other-windows
         :desc "Kill other window"      :n "o"   #'delete-other-windows
-        :desc "Kill window"            :n "D"   #'ace-delete-windows
+        :desc "Kill window"            :n "D"   #'ace-delete-window
         :desc "Kill current window"    :n "d"   #'delete-window)
 
  )
