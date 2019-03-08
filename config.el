@@ -3,9 +3,13 @@
 
 ;;; set
 (setq doom-theme 'doom-nord-light)
-; (setq doom-font (font-spec :family "Fira Code" :size 18))
-(setq doom-font (font-spec :family "Inconsolatag" :size 18))
-(setq doom-unicode-font (font-spec :family "Sarasa Mono SC"))
+
+(setq doom-font (font-spec :family "Fira Code" :size 18))
+(setq doom-unicode-font (font-spec :family "文泉驿等宽正黑"))
+
+; (setq doom-font (font-spec :family "Inconsolatag" :size 18))
+; (setq doom-unicode-font (font-spec :family "Sarasa Mono SC"))
+
 ; (setq doom-font (font-spec :family "Source Code Pro" :size 18))
 ; (setq doom-unicode-font (font-spec :family "思源黑体"))
 (setq display-line-numbers-type nil)
@@ -40,21 +44,7 @@
     '(awesome-tab-default ((t (:background "#e5e9f0" :forgeground "white")))))
   :config
   (setq awesome-tab-cycle-scope 'tabs)
-  (defun awesome-tab-hide-tab-function (x)
-    (let ((name (format "%s" x)))
-      (and
-	(not (string-prefix-p "*epc" name))
-	(not (string-prefix-p "*helm" name))
-	(not (string-prefix-p "*Compile-Log*" name))
-	(not (string-prefix-p "*lsp" name))
-	(not (string-prefix-p "*ccls" name))
-	(not (string-prefix-p "*Flycheck" name))
-	(not (string-prefix-p "*flycheck" name))
-	(not (string-prefix-p "*anaconda-mode*" name))
-	(not (string-prefix-p "*Org Agenda*" name))
-	(not (and (string-prefix-p "magit" name)
-		  (not (file-name-extension name))))
-	)))
+  (setq awesome-tab-hide-tab-function #'+my|awesome-tab-hide-tab)
   (awesome-tab-mode)
   )
 

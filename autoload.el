@@ -147,3 +147,26 @@ current frame."
 			 (+my/better-font)))
     (when (display-graphic-p)
       (+my/better-font))))
+
+;;;###autoload
+(defun +my|awesome-tab-hide-tab (x)
+  (let ((name (format "%s" x)))
+    (and
+      ;; Current window is not dedicated window.
+      (not (window-dedicated-p (selected-window)))
+
+      ;; Buffer name not match below blacklist.
+      (not (string-prefix-p "*epc" name))
+      (not (string-prefix-p "*helm" name))
+      (not (string-prefix-p "*Compile-Log*" name))
+      (not (string-prefix-p "*lsp" name))
+
+      (not (string-prefix-p "*ccls" name))
+      (not (string-prefix-p "*Flycheck" name))
+      (not (string-prefix-p "*flycheck" name))
+      (not (string-prefix-p "*anaconda-mode*" name))
+      (not (string-prefix-p "*Org Agenda*" name))
+
+      (not (and (string-prefix-p "magit" name)
+		(not (file-name-extension name))))
+      )))
