@@ -12,8 +12,6 @@
 (map! :nmvo ","         nil
       :ni "M-s"         #'save-buffer
       :n  "ga"          #'ff-find-other-file
-      :n  "gd"          #'+my/find-definitions
-      :n  "gD"          #'+my/find-references
       :n  "go"          (λ! (message "%S" (text-properties-at (point))))
       :i [C-tab]        #'+company/complete
       :ni "C-j"         #'ace-window
@@ -53,9 +51,9 @@
       (:prefix ("c" . "code")
         :desc "commentaryr"             :n "c"   #'evil-commentary-line)
 
-      (:prefix ("e" . "error")
-        :desc "Next error"              :n "n"   #'flycheck-next-error
-        :desc "Previous error"          :n "p"   #'flycheck-previous-error)
+      (:prefix ("c" . "error")
+	:desc "Next error"              :n "n"   #'flycheck-next-error
+	:desc "Previous error"          :n "p"   #'flycheck-previous-error)
 
       (:prefix ("f" . "file")
 	:desc "Find file"               :n "."   #'find-file
@@ -86,30 +84,27 @@
           :desc "Switch project buffer"  :n  "b" #'helm-projectile-switch-to-buffer))
 
       (:prefix ("s" . "workspace")
-        :desc "Display tab bar"          :n "TAB" #'+workspace/display
-        :desc "New workspace"            :n "n"   #'+workspace/new
-        :desc "Load workspace from file" :n "l"   #'+workspace/load
-        :desc "Load a past session"      :n "L"   #'+workspace/load-session
-        :desc "Save workspace to file"   :n "s"   #'+workspace/save
-        :desc "Autosave current session" :n "S"   #'+workspace/save-session
-        :desc "Switch workspace"         :n "."   #'+workspace/switch-to
-        :desc "Kill all buffers"         :n "x"   #'doom/kill-all-buffers
-        :desc "Delete session"           :n "X"   #'+workspace/kill-session
-        :desc "Delete this workspace"    :n "d"   #'+workspace/delete
-        :desc "Rename workspace"         :n "r"   #'+workspace/rename
-        :desc "Restore last session"     :n "R"   #'+workspace/load-last-session
-        :desc "Next workspace"           :n "]"   #'+workspace/switch-right
-        :desc "Previous workspace"       :n "["   #'+workspace/switch-left
-        :desc "Switch to 1st workspace"  :n "1"   (λ! (+workspace/switch-to 0))
-        :desc "Switch to 2nd workspace"  :n "2"   (λ! (+workspace/switch-to 1))
-        :desc "Switch to 3rd workspace"  :n "3"   (λ! (+workspace/switch-to 2))
-        :desc "Switch to 4th workspace"  :n "4"   (λ! (+workspace/switch-to 3))
-        :desc "Switch to 5th workspace"  :n "5"   (λ! (+workspace/switch-to 4))
-        :desc "Switch to 6th workspace"  :n "6"   (λ! (+workspace/switch-to 5))
-        :desc "Switch to 7th workspace"  :n "7"   (λ! (+workspace/switch-to 6))
-        :desc "Switch to 8th workspace"  :n "8"   (λ! (+workspace/switch-to 7))
-        :desc "Switch to 9th workspace"  :n "9"   (λ! (+workspace/switch-to 8))
-        :desc "Switch to last workspace" :n "0"   #'+workspace/switch-to-last)
+        :desc "Display tab bar"           "TAB" #'+workspace/display
+	:desc "New workspace"             "n"   #'+workspace/new
+	:desc "Load workspace from file"  "l"   #'+workspace/load
+	:desc "Save workspace to file"    "s"   #'+workspace/save
+	:desc "Switch workspace"          "."   #'+workspace/switch-to
+	:desc "Delete session"            "x"   #'+workspace/kill-session
+	:desc "Delete this workspace"     "d"   #'+workspace/delete
+	:desc "Rename workspace"          "r"   #'+workspace/rename
+	:desc "Restore last session"      "R"   #'+workspace/restore-last-session
+	:desc "Next workspace"            "]"   #'+workspace/switch-right
+	:desc "Previous workspace"        "["   #'+workspace/switch-left
+	:desc "Switch to 1st workspace"   "1"   (λ! (+workspace/switch-to 0))
+	:desc "Switch to 2nd workspace"   "2"   (λ! (+workspace/switch-to 1))
+	:desc "Switch to 3rd workspace"   "3"   (λ! (+workspace/switch-to 2))
+	:desc "Switch to 4th workspace"   "4"   (λ! (+workspace/switch-to 3))
+	:desc "Switch to 5th workspace"   "5"   (λ! (+workspace/switch-to 4))
+	:desc "Switch to 6th workspace"   "6"   (λ! (+workspace/switch-to 5))
+	:desc "Switch to 7th workspace"   "7"   (λ! (+workspace/switch-to 6))
+	:desc "Switch to 8th workspace"   "8"   (λ! (+workspace/switch-to 7))
+	:desc "Switch to 9th workspace"   "9"   (λ! (+workspace/switch-to 8))
+	:desc "Switch to last workspace"  "0"   #'+workspace/switch-to-last)
 
       (:prefix ("w" . "window")
         :desc "Alternate window"       :n "TAB" #'+my/alternate-window

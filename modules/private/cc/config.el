@@ -27,9 +27,9 @@
         "^/usr/(local/)?include/c\\+\\+/v1/"
         ]))
      :index (:initialBlacklist ,+ccls-initial-blacklist :trackDependency 1)))
-  ; (set-lookup-handlers! '(c-mode c++-mode)
-    ; :definition #'lsp-ui-peek-find-definitions
-    ; :references #'lsp-ui-peek-find-references)
+  (set-lookup-handlers! '(c-mode c++-mode)
+    :definition #'lsp-ui-peek-find-definitions
+    :references #'lsp-ui-peek-find-references)
   (evil-set-initial-state 'ccls-tree-mode 'emacs))
 
 (def-package! ggtags
@@ -39,38 +39,6 @@
 
 (after!  cc-mode
   (setq-default c-basic-offset 8)
-  ;; Custom style, based off of linux
-  (unless (assoc "linuxx" c-style-alist)
-    (push '("linuxx"
-            (c-comment-only-line-offset . 0)
-            (c-hanging-braces-alist (brace-list-open)
-                                    (brace-entry-open)
-                                    (substatement-open after)
-                                    (block-close . c-snug-do-while)
-                                    (arglist-cont-nonempty))
-            (c-cleanup-list brace-else-brace)
-            (c-offsets-alist
-             (knr-argdecl-intro . 0)
-             (substatement-open . 0)
-             (substatement-label . 0)
-             (statement-cont . +)
-             (case-label . +)
-             ;; align args with open brace OR don't indent at all (if open
-             ;; brace is at eolp and close brace is after arg with no trailing
-             ;; comma)
-             (brace-list-intro . 0)
-             (brace-list-close . -)
-             (arglist-intro . +)
-             (arglist-close +cc-lineup-arglist-close 0)
-             ;; don't over-indent lambda blocks
-             (inline-open . 0)
-             (inlambda . 0)
-             ;; indent access keywords +1 level, and properties beneath them
-             ;; another level
-             (access-label . -)
-             (inclass +cc-c++-lineup-inclass +)
-             (label . 0)))
-          c-style-alist))
   (set-pretty-symbols! '(c-mode c++-mode)
     ;; Functional
     ;; :def "void "
@@ -80,5 +48,8 @@
     :not "!"
     :and "&&" :or "||"
     :return "return")
-  (setq-default c-default-style "linuxx")
+  (defvar +font-lock-call-function '+font-lock-call-function)
+  (font-lock-add-keywords 'c-mode
+			  '(("\\(\\w+\\)\\s-*\(" . +font-lock-call-function))
+			  t)
   (set-company-backend!  '(c-mode c++-mode objc-mode) '(company-lsp)))

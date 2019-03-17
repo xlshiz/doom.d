@@ -6,4 +6,3 @@
 (package! evil-find-char-pinyin)
 (package! pangu-spacing)
 (package! pyim)
-(package! pyim-basedict)

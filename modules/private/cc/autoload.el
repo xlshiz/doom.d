@@ -18,6 +18,13 @@
     (lsp))
   (doom|disable-line-numbers))
 
+;;;###autoload
+(defface +font-lock-call-function
+	 '((((background dark)) :foreground "#2188b6")
+	   (((background light)) :foreground "#2188b6"))
+	 "Call function face"
+	 :group 'font-lock-faces)
+
 (defun ccls/base () (interactive) (lsp-ui-peek-find-custom 'base "$ccls/base"))
 (defun ccls/callers () (interactive) (lsp-ui-peek-find-custom 'callers "$ccls/callers"))
 (defun ccls/derived () (interactive) (lsp-ui-peek-find-custom 'derived "$ccls/derived"))

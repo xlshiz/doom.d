@@ -22,7 +22,6 @@
 )
 
 (def-package! pyim
-  :ensure nil
   :demand t
   :config
   (setq default-input-method "pyim")
@@ -48,17 +47,11 @@
   ;; 选词框显示5个候选词
   (setq pyim-page-length 5)
   (setq pyim-dicts
-	`((:name "big" :file ,(concat doom-etc-dir "pyim-bigdict.pyim"))))
+	`((:name "be" :file ,(concat doom-etc-dir "pyim/be.pyim"))))
   (setq pyim-dcache-directory (concat doom-cache-dir "pyim/dcache/"))
   (setq pyim-magic-converter #'+my|pyim-converter)
   (map! :map pyim-mode-map
    	[escape] #'pyim-quit-clear)
-)
-
-(def-package! pyim-basedict
-  :ensure nil
-  :config
-  (pyim-basedict-enable)
 )
 
 (after! ivy
