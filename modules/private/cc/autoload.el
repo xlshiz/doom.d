@@ -16,6 +16,7 @@
   (when buffer-file-name
     (require 'ccls)
     (lsp))
+  (setq-local company-idle-delay nil)
   (doom|disable-line-numbers))
 
 ;;;###autoload

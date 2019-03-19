@@ -1,4 +1,5 @@
-;;; private/my/config.el -*- lexical-binding: t; -*-
+;; -*- lexical-binding: t; no-byte-compile: t; -*-
+;;; private/my/config.el
 
 
 ;;; set
@@ -45,8 +46,14 @@
   :config
   (setq awesome-tab-cycle-scope 'tabs)
   (setq awesome-tab-hide-tab-function #'+my|awesome-tab-hide-tab)
+  (setq awesome-tab-display-sticky-function-name nil)
   (awesome-tab-mode)
   )
+
+(def-package! edit-indiect
+  :defer t
+  :init
+  (set-popup-rules! '(("^\\*edit-indirect " :size 0.3 :quit nil :select t :ttl nil))))
 
 (def-package! paradox
   :commands (paradox-list-packages))

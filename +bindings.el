@@ -1,4 +1,5 @@
-;;; private/my/+bindings.el -*- lexical-binding: t; -*-
+;; -*- lexical-binding: t; no-byte-compile: t; -*-
+;;; private/my/+bindings.el
 
 (define-inline +my/prefix-M-x (prefix)
   (inline-quote
