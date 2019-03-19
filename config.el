@@ -4,11 +4,11 @@
 ;;; set
 (setq doom-theme 'doom-nord-light)
 
-(setq doom-font (font-spec :family "Fira Code" :size 18))
-(setq doom-unicode-font (font-spec :family "文泉驿等宽正黑"))
+; (setq doom-font (font-spec :family "Fira Code" :size 18))
+; (setq doom-unicode-font (font-spec :family "文泉驿等宽正黑"))
 
-; (setq doom-font (font-spec :family "Inconsolatag" :size 18))
-; (setq doom-unicode-font (font-spec :family "Sarasa Mono SC"))
+(setq doom-font (font-spec :family "Inconsolatag" :size 18))
+(setq doom-unicode-font (font-spec :family "Sarasa Mono SC"))
 
 ; (setq doom-font (font-spec :family "Source Code Pro" :size 18))
 ; (setq doom-unicode-font (font-spec :family "思源黑体"))
