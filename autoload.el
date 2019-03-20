@@ -167,6 +167,7 @@ current frame."
       (string-prefix-p "*anaconda-mode*" name)
       (string-prefix-p "*Org Agenda*" name)
       (string-prefix-p "*edit-indirect" name)
+      (string-prefix-p "*shell-pop" name)
 
       (and (string-prefix-p "magit" name)
 		(not (file-name-extension name)))
