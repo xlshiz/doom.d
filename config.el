@@ -28,7 +28,9 @@
   :commands (symbol-overlay-put symbol-overlay-remove-all))
 
 (def-package! color-rg
-  :commands (color-rg-search-input color-rg-search-symbol color-rg-search-project))
+  :commands (color-rg-search-input color-rg-search-symbol color-rg-search-project)
+  :config
+  (evil-set-initial-state 'color-rg-mode 'emacs))
 
 (def-package! company-english-helper
   :commands (toggle-company-english-helper))

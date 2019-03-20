@@ -3,7 +3,7 @@
 (def-package! shell-pop
   :commands (shell-pop)
   :init
-  (set-popup-rules! '(("^\\*shell-pop-" :size 0.3 :quit nil :select t :ttl nil)))
+  (set-popup-rules! '(("^\\*shell-pop-" :size 0.4 :quit nil :select t :ttl nil)))
   :config
   (shell/make-shell-pop-type 'multi-term)
   (setq shell-pop-autocd-to-working-dir nil))
