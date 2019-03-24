@@ -3,7 +3,7 @@
 (def-package! lsp-mode
   :commands (lsp)
   :config
-  (setq lsp-eldoc-hook '(lsp-hover)
+  (setq lsp-enable-symbol-highlighting nil
 	lsp-auto-guess-root t
 	lsp-prefer-flymake nil
 	lsp-session-file (expand-file-name ".lsp-session-v1" doom-cache-dir)))
