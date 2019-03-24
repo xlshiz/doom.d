@@ -21,10 +21,11 @@
       :g  "M-f"		#'pyim-forward-word
       :g  "M-b"		#'pyim-backward-word
       (:when (featurep! :private intl)
-        :ni "C-;"         #'pyim-convert-string-at-point)
+        :ni "C-;"       #'pyim-convert-string-at-point)
       ;; shell-pop
       (:when (featurep! :private shell)
-        :ni  [f5]         #'shell-pop)
+        :ni  "M-n"      #'shell-pop
+        :ni  [f5]       #'shell-pop)
       (:after awesome-tab
         :ni "M-h"       #'awesome-tab-backward
 	:ni "M-l"       #'awesome-tab-forward)
@@ -52,7 +53,7 @@
       (:prefix ("c" . "code")
         :desc "commentaryr"             :n "c"   #'evil-commentary-line)
 
-      (:prefix ("c" . "error")
+      (:prefix ("e" . "error")
 	:desc "Next error"              :n "n"   #'flycheck-next-error
 	:desc "Previous error"          :n "p"   #'flycheck-previous-error)
 
