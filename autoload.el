@@ -168,6 +168,8 @@ current frame."
       (string-prefix-p "*Org Agenda*" name)
       (string-prefix-p "*edit-indirect" name)
       (string-prefix-p "*shell-pop" name)
+      (string-prefix-p "*Ilist*" name)
+      (string-prefix-p " *transient*" name)
 
       (and (string-prefix-p "magit" name)
 		(not (file-name-extension name)))
