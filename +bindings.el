@@ -50,13 +50,6 @@
         :desc "Switch buffer"           :n "b"   #'switch-to-buffer
         :desc "Kill buffer"             :n "d"   #'kill-this-buffer)
 
-      (:prefix ("c" . "code")
-        :desc "commentaryr"             :n "c"   #'evil-commentary-line)
-
-      (:prefix ("e" . "error")
-	:desc "Next error"              :n "n"   #'flycheck-next-error
-	:desc "Previous error"          :n "p"   #'flycheck-previous-error)
-
       (:prefix ("f" . "file")
 	:desc "Find file"               :n "."   #'find-file
         :desc "Save files"              :n "s"   #'save-buffer
