@@ -80,6 +80,7 @@
 
       (:prefix ("s" . "workspace")
         :desc "Display tab bar"           "TAB" #'+workspace/display
+        :desc "Switch workspace"          "."   #'+workspace/switch-to
 	:desc "New workspace"             "n"   #'+workspace/new
 	:desc "Load workspace from file"  "l"   #'+workspace/load
 	:desc "Save workspace to file"    "s"   #'+workspace/save
