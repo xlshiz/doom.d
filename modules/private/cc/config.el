@@ -1,15 +1,31 @@
 ;;; private/cc/config.el -*- lexical-binding: t; -*-
 
-(def-package! ccls
-  :defer t
-  :init
+(def-package! ggtags
+  :commands (ggtags-mode ggtags-find-tag-dwim))
+(def-package! counsel-gtags
+  :commands (counsel-gtags-dwim))
+
+(after!  cc-mode
+  (setq-default c-basic-offset 8)
+  (set-pretty-symbols! '(c-mode c++-mode)
+    ;; Functional
+    ;; :def "void "
+    ;; Types
+    ;; :null "NULL"
+    ;; Flow
+    :not "!"
+    :and "&&" :or "||"
+    :return "return")
   (add-hook! (c-mode c++-mode) #'+cc-private-setup)
-  :config
-  (add-to-list 'projectile-globally-ignored-directories ".ccls-cache")
+  (defvar +font-lock-call-function '+font-lock-call-function)
+  (font-lock-add-keywords 'c-mode
+			  '(("\\(\\w+\\)\\s-*\(" . +font-lock-call-function))
+			  t))
+
+
+(after! ccls
   (setq ccls-executable "/usr/local/bin/ccls"
-        ccls-cache-dir (concat doom-cache-dir ".ccls_cached_index")
         ccls-sem-highlight-method nil)
-        ; ccls-sem-highlight-method 'font-lock)
   ; (ccls-use-default-rainbow-sem-highlight)
   (setq ccls-initialization-options
    `(:clang
@@ -27,29 +43,5 @@
         "^/usr/(local/)?include/c\\+\\+/v1/"
         ]))
      :index (:initialBlacklist ,+ccls-initial-blacklist :trackDependency 1)))
-  (set-lookup-handlers! '(c-mode c++-mode)
-    :definition #'lsp-ui-peek-find-definitions
-    :references #'lsp-ui-peek-find-references)
   (evil-set-initial-state 'ccls-tree-mode 'emacs))
 
-(def-package! ggtags
-  :commands (ggtags-mode ggtags-find-tag-dwim))
-(def-package! counsel-gtags
-  :commands (counsel-gtags-dwim))
-
-(after!  cc-mode
-  (setq-default c-basic-offset 8)
-  (set-pretty-symbols! '(c-mode c++-mode)
-    ;; Functional
-    ;; :def "void "
-    ;; Types
-    ;; :null "NULL"
-    ;; Flow
-    :not "!"
-    :and "&&" :or "||"
-    :return "return")
-  (defvar +font-lock-call-function '+font-lock-call-function)
-  (font-lock-add-keywords 'c-mode
-			  '(("\\(\\w+\\)\\s-*\(" . +font-lock-call-function))
-			  t)
-  (set-company-backend!  '(c-mode c++-mode objc-mode) '(company-lsp)))

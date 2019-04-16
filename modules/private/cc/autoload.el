@@ -13,9 +13,7 @@
 ;;;###autoload
 (defun +cc-private-setup ()
   (setq tab-width 8)
-  (when buffer-file-name
-    (require 'ccls)
-    (lsp))
+  (require 'company)
   (setq-local company-idle-delay nil)
   (doom|disable-line-numbers))
 

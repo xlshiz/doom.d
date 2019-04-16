@@ -95,6 +95,30 @@
   (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
   )
 
+(after! lsp-mode
+  (setq lsp-enable-symbol-highlighting nil))
+
+(after! lsp-ui
+  (setq lsp-enable-completion-at-point t
+	lsp-ui-sideline-enable nil
+	lsp-ui-sideline-ignore-duplicate t
+        lsp-ui-doc-enable nil
+        lsp-ui-doc-header nil
+        lsp-ui-doc-include-signature nil
+	lsp-ui-doc-background (doom-color 'base4)
+        lsp-ui-doc-border (doom-color 'fg)
+	lsp-ui-flycheck-enable t
+	lsp-ui-peek-force-fontify nil
+	lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
+   (map! :after lsp-ui-peek
+         :map lsp-ui-peek-mode-map
+         "h" #'lsp-ui-peek--select-prev-file
+         "j" #'lsp-ui-peek--select-next
+         "k" #'lsp-ui-peek--select-prev
+         "l" #'lsp-ui-peek--select-next-file
+         )
+  )
+
 
 ;;; hook
 (add-hook! 'git-commit-setup-hook #'yas-git-commit-mode)

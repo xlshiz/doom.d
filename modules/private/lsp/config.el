@@ -1,7 +1,6 @@
 ;;; lang/lsp/config.el -*- lexical-binding: t; -*-
 ;; * General
 (def-package! lsp-mode
-  :commands (lsp)
   :config
   (setq lsp-enable-symbol-highlighting nil
 	lsp-auto-guess-root t
@@ -9,7 +8,7 @@
 	lsp-session-file (expand-file-name ".lsp-session-v1" doom-cache-dir)))
 
 (def-package! lsp-ui
-  :commands lsp-ui-mode
+  :hook (lsp-mode . lsp-ui-mode)
   :config
   (setq lsp-enable-completion-at-point t
 	lsp-ui-sideline-enable nil
@@ -31,9 +30,7 @@
          )
   )
 
-
 (def-package! company-lsp
   :after lsp-mode
-  :commands company-lsp
-  :init
-  (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil))
+  :config
+  (set-company-backend! 'lsp-mode 'company-lsp))

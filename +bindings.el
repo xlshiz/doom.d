@@ -13,6 +13,8 @@
 (map! :nmvo ","         nil
       :ni "M-s"         #'save-buffer
       :n  "ga"          #'ff-find-other-file
+      :n  "gd"          #'+my/find-definitions
+      :n  "gD"          #'+my/find-references
       :n  "go"          (λ! (message "%S" (text-properties-at (point))))
       :i [C-tab]        #'+company/complete
       :ni "C-j"         #'ace-window
