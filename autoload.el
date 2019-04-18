@@ -96,7 +96,7 @@ current frame."
     ))
 
 ;;;###autoload
-(defun +my//realtime-elisp-doc-function ()
+(defun +my|realtime-elisp-doc-function ()
   (-when-let* ((w (selected-window))
                (s (intern-soft (current-word))))
     (describe-symbol s)
@@ -106,9 +106,9 @@ current frame."
 (defun +my/realtime-elisp-doc ()
   (interactive)
   (when (eq major-mode 'emacs-lisp-mode)
-    (if (advice-function-member-p #'+my//realtime-elisp-doc-function eldoc-documentation-function)
-        (remove-function (local 'eldoc-documentation-function) #'+my//realtime-elisp-doc-function)
-      (add-function :after-while (local 'eldoc-documentation-function) #'+my//realtime-elisp-doc-function))))
+    (if (advice-function-member-p #'+my|realtime-elisp-doc-function eldoc-documentation-function)
+        (remove-function (local 'eldoc-documentation-function) #'+my|realtime-elisp-doc-function)
+      (add-function :after-while (local 'eldoc-documentation-function) #'+my|realtime-elisp-doc-function))))
 
 
 ;;;###autoload
