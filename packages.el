@@ -10,4 +10,4 @@
 (package! paradox)
 
 
-(disable-packages! irony rtags emacs-snippets)
+(disable-packages! emacs-snippets)
