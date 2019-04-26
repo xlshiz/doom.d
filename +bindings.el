@@ -53,12 +53,7 @@
         :desc "Kill buffer"             :n "d"   #'kill-this-buffer)
 
       (:prefix ("f" . "file")
-	:desc "Find file"               :n "."   #'find-file
-        :desc "Save files"              :n "s"   #'save-buffer
-	(:when (featurep! :completion ivy)
-          :desc "Find file from here"     :n "f"   #'counsel-file-jump)
-	(:when (featurep! :completion helm)
-          :desc "Find file from here"     :n "f"   #'helm-find))
+        :desc "Save files"              :n "s"   #'save-buffer)
 
       (:prefix ("j" . "jump")
         :n "j" #'evil-avy-goto-char-timer
