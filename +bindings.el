@@ -20,9 +20,9 @@
       :ni "C-j"         #'ace-window
       :i  "C-f"		#'forward-char
       :i  "C-b"		#'backward-char
-      :g  "M-f"		#'pyim-forward-word
-      :g  "M-b"		#'pyim-backward-word
       (:when (featurep! :private intl)
+        :g  "M-f"	#'pyim-forward-word
+        :g  "M-b"	#'pyim-backward-word
         :ni "C-;"       #'pyim-convert-string-at-point)
       ;; shell-pop
       (:when (featurep! :private shell)
@@ -67,13 +67,14 @@
         :n "c" #'symbol-overlay-remove-all)
 
       (:prefix ("p" . "project")
-        :desc "Browse project"           :n  "." #'+default/browse-project
-        :desc "Find file in project"     :n  "f" #'projectile-find-file
+        :desc "Browse project"           :n "." #'+default/browse-project
+        :desc "Find file in project"     :n "f" #'projectile-find-file
+        :desc "Search project"           :n "n"   #'+my/default-search-project
         :desc "Run shell in project"     :nv "'" #'+my/projectile-shell-pop
 	(:when (featurep! :completion ivy)
-	  :desc "Switch project buffer"  :n  "b" #'counsel-projectile-switch-to-buffer)
+	  :desc "Switch project buffer"  :n "b" #'counsel-projectile-switch-to-buffer)
 	(:when (featurep! :completion helm)
-          :desc "Switch project buffer"  :n  "b" #'helm-projectile-switch-to-buffer))
+          :desc "Switch project buffer"  :n "b" #'helm-projectile-switch-to-buffer))
 
       (:prefix ("s" . "workspace")
         :desc "Display tab bar"           "TAB" #'+workspace/display

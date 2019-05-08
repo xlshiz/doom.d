@@ -25,10 +25,10 @@
   :demand t
   :config
   (setq default-input-method "pyim")
-  ;; 我使用全拼
+  ;; 使用小鹤双拼
   (setq pyim-default-scheme 'xiaohe-shuangpin)
   ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
-  ;; 我自己使用的中英文动态切换规则是：
+  ;; 中英文动态切换规则是：
   ;; 1. 光标只有在注释里面时，才可以输入中文。
   ;; 2. 光标前是汉字字符时，才能输入中文。
   ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
@@ -49,9 +49,13 @@
   (setq pyim-dicts
 	`((:name "be" :file ,(concat doom-etc-dir "pyim/be.pyim"))))
   (setq pyim-dcache-directory (concat doom-cache-dir "pyim/dcache/"))
+  ;; 设置以词定字的函数，使用 [  ]
   (setq pyim-magic-converter #'+my|pyim-converter)
+  ;; 绑定 pyim 输入时的快捷键，esc删除输入，.下一页，,上一页
   (map! :map pyim-mode-map
-   	[escape] #'pyim-quit-clear)
+   	[escape] #'pyim-quit-clear
+	"."      #'pyim-page-next-page
+	","      #'pyim-page-previous-page)
 )
 
 (after! ivy

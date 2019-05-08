@@ -175,3 +175,29 @@ current frame."
       (and (string-prefix-p "magit" name)
 		(not (file-name-extension name)))
       )))
+
+;;;###autoload
+(defun +my/default-search-project (&optional arg symbol)
+  "Conduct a text search in the current project for symbol at point.
+If prefix ARG is set, prompt for a known project to search from."
+  (interactive
+   (list current-prefix-arg
+	 (replace-regexp-in-string
+                 "\n" ""
+                 (replace-regexp-in-string
+                  "\\\\_<" ""
+                  (replace-regexp-in-string
+		    "\\\\_>" ""
+		    (car evil-ex-search-history))))))
+  (let ((default-directory
+          (if arg
+              (if-let* ((projects (projectile-relevant-known-projects)))
+                  (completing-read "Switch to project: " projects
+                                   nil t nil nil (doom-project-root))
+                (user-error "There are no known projects"))
+            default-directory)))
+    (cond ((featurep! :completion ivy)
+           (+ivy/project-search nil (rxt-quote-pcre symbol)))
+          ((featurep! :completion helm)
+           (+helm/project-search nil (rxt-quote-pcre symbol)))
+          ((rgrep (regexp-quote symbol))))))
