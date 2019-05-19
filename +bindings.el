@@ -48,35 +48,36 @@
       :desc "Alternate buffer"         :nv "TAB" #'+my/alternate-buffer-in-persp
 
       :desc "Switch workspace buffer"  :nv "a"   #'projectile-find-file
-      (:prefix ("b" . "buffer")
+
+      (:prefix-map ("b" . "buffer")
         :desc "Switch buffer"           :n "b"   #'switch-to-buffer
         :desc "Kill buffer"             :n "d"   #'kill-this-buffer)
 
-      (:prefix ("f" . "file")
+      (:prefix-map ("f" . "file")
         :desc "Save files"              :n "s"   #'save-buffer)
 
-      (:prefix ("j" . "jump")
+      (:prefix-map ("j" . "jump")
         :n "j" #'evil-avy-goto-char-timer
         :n "c" #'evil-avy-goto-char-2
         :n "C" #'evil-avy-goto-char
         :n "l" #'evil-avy-goto-line
         :n "w" #'evil-avy-goto-word-1)
 
-      (:prefix ("m" . "mark")
+      (:prefix-map ("m" . "mark")
         :n "m" #'symbol-overlay-put
         :n "c" #'symbol-overlay-remove-all)
 
-      (:prefix ("p" . "project")
+      (:prefix-map ("p" . "project")
         :desc "Browse project"           :n "." #'+default/browse-project
         :desc "Find file in project"     :n "f" #'projectile-find-file
-        :desc "Search project"           :n "n"   #'+my/default-search-project
+        :desc "Search project"           :n "n" #'+my/default-search-project
         :desc "Run shell in project"     :nv "'" #'+my/projectile-shell-pop
 	(:when (featurep! :completion ivy)
 	  :desc "Switch project buffer"  :n "b" #'counsel-projectile-switch-to-buffer)
 	(:when (featurep! :completion helm)
           :desc "Switch project buffer"  :n "b" #'helm-projectile-switch-to-buffer))
 
-      (:prefix ("s" . "workspace")
+      (:prefix-map ("s" . "workspace")
         :desc "Display tab bar"           "TAB" #'+workspace/display
         :desc "Switch workspace"          "."   #'+workspace/switch-to
 	:desc "New workspace"             "n"   #'+workspace/new
@@ -100,7 +101,7 @@
 	:desc "Switch to 9th workspace"   "9"   (λ! (+workspace/switch-to 8))
 	:desc "Switch to last workspace"  "0"   #'+workspace/switch-to-last)
 
-      (:prefix ("w" . "window")
+      (:prefix-map ("w" . "window")
         :desc "Alternate window"       :n "TAB" #'+my/alternate-window
         :desc "Other window"           :n "w"   #'other-window
         :desc "Split window right"     :n "v"   #'split-window-right
