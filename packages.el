@@ -8,6 +8,7 @@
 (package! awesome-tab :recipe (:fetcher github :repo "manateelazycat/awesome-tab" :files ("*.el")))
 (package! edit-indirect)
 (package! paradox)
+(package! imenu-list)
 
 
 (disable-packages! emacs-snippets)

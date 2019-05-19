@@ -60,6 +60,15 @@
 (def-package! paradox
   :commands (paradox-list-packages))
 
+(def-package! imenu-list
+  :config
+  (setq imenu-list-focus-after-activation t
+	imenu-list-idle-update-delay 0.5
+	imenu-list-auto-resize t)
+  (set-popup-rule! "^\\*Ilist"
+    :side 'right :size 35 :quit nil :select nil :ttl 0))
+
+
 ;;; after
 (after! org
   (setq org-directory "~/workdir/note/org/")
@@ -77,10 +86,6 @@
   (setq org-bookmark-names-plist '(:last-capture "org-capture-last-stored"
                                    :last-capture-marker "org-capture-last-stored-marker"))
   (setq org-todo-keywords (quote ((sequence "TODO(t)" "INPROCESS(p)" "|" "DONE(d)")))))
-
-(after! imenu-list
-  (setq imenu-list-focus-after-activation t
-	imenu-list-auto-resize t))
 
 (after! company
   (setq company-minimum-prefix-length 2

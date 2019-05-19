@@ -67,6 +67,9 @@
         :n "m" #'symbol-overlay-put
         :n "c" #'symbol-overlay-remove-all)
 
+      (:prefix-map ("o" . "open")
+        :desc "Imenu sidebar" 		  "i" #'imenu-list-smart-toggle)
+
       (:prefix-map ("p" . "project")
         :desc "Browse project"           :n "." #'+default/browse-project
         :desc "Find file in project"     :n "f" #'projectile-find-file
