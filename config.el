@@ -30,11 +30,12 @@
 (def-package! color-rg
   :commands (color-rg-search-input color-rg-search-symbol
 	     color-rg-search-symbol-in-current-file color-rg-search-project)
+  :init
+  (define-key! swiper-map "<M-return>" #'+my/swiper-to-color-rg)
+  (define-key! counsel-ag-map "<M-return>" #'+my/counsel-to-color-rg)
   :config
   (set-popup-rule! "^\\*color-rg\*"
     :height 0.4 :quit nil :select nil :ttl 0)
-  (define-key! swiper-map "<M-return>" #'+my/swiper-to-color-rg)
-  (define-key! counsel-ag-map "<M-return>" #'+my/counsel-to-color-rg)
   (evil-set-initial-state 'color-rg-mode 'emacs))
 
 (def-package! company-english-helper
