@@ -4,6 +4,7 @@
   :init
   (push (expand-file-name "authinfo" doom-etc-dir) auth-sources)
   :config
+  (custom-set-variables '(forge-post-mode-hook '(visual-line-mode)))
   (setq forge-alist
     '(("gitlab.com" "gitlab.com/api/v4"
      "gitlab.com" forge-gitlab-repository)))
