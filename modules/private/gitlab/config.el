@@ -2,7 +2,7 @@
 
 (def-package! forge
   :init
-  (push (expand-file-name "authinfo" doom-etc-dir) auth-sources)
+  (push (expand-file-name "forge/authinfo" doom-etc-dir) auth-sources)
   :config
   (custom-set-variables '(forge-post-mode-hook '(visual-line-mode)))
   (setq forge-alist
