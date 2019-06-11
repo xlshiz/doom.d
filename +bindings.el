@@ -46,8 +46,8 @@
       :desc "Run terminal"             :n  "'"   #'+term/open
       :desc "NULL"                     :n  [tab] nil
       :desc "Alternate buffer"         :nv "TAB" #'+my/alternate-buffer-in-persp
-
-      :desc "Switch workspace buffer"  :nv "a"   #'projectile-find-file
+      :desc "Switch workspace buffer"  :nv "e"   #'persp-switch-to-buffer
+      :desc "Find project file"        :nv "a"   #'projectile-find-file
 
       (:prefix-map ("b" . "buffer")
         :desc "Switch buffer"           :n "b"   #'switch-to-buffer
