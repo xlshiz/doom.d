@@ -99,6 +99,7 @@ current frame."
       (string-prefix-p "*Org Agenda*" name)
       (string-prefix-p "*edit-indirect" name)
       (string-prefix-p "*shell-pop" name)
+      (string-prefix-p "*MULTI-TERM-DEDICATED*" name)
       (string-prefix-p "*Ilist*" name)
       (string-prefix-p " *transient*" name)
       (string-prefix-p "*helpful " name)

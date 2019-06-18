@@ -26,8 +26,8 @@
         :ni "C-;"       #'pyim-convert-string-at-point)
       ;; shell-pop
       (:when (featurep! :private shell)
-        :ni  "M-n"      #'shell-pop
-        :ni  [f5]       #'shell-pop)
+        :ni  "M-n"      #'+term/toggle
+        :ni  [f5]       #'+term/toggle)
       (:after awesome-tab
         :ni "M-h"       #'awesome-tab-backward
 	:ni "M-l"       #'awesome-tab-forward)
@@ -43,7 +43,7 @@
 (map! :leader
       :desc "M-x"                      :nv "SPC" #'execute-extended-command
       :desc "Org Capture"              :nv "x"   #'org-capture
-      :desc "Run terminal"             :n  "'"   #'+term/open
+      :desc "Run terminal"             :n  "'"   #'+term/here
       :desc "NULL"                     :n  [tab] nil
       :desc "Alternate buffer"         :nv "TAB" #'+my/alternate-buffer-in-persp
       :desc "Switch workspace buffer"  :nv "e"   #'persp-switch-to-buffer
