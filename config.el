@@ -44,10 +44,6 @@
 
 (def-package! awesome-tab
   :defer 0.5
-  :init
-  (custom-set-variables '(awesome-tab-background-color (doom-color 'bg)))
-  (custom-set-faces
-    '(awesome-tab-default ((t (:background "#e5e9f0" :forgeground "white")))))
   :config
   (setq awesome-tab-cycle-scope 'tabs)
   (setq awesome-tab-hide-tab-function #'+my|awesome-tab-hide-tab)
