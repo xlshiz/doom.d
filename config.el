@@ -44,6 +44,8 @@
 
 (def-package! awesome-tab
   :defer 0.5
+  :init
+  (setq awesome-tab-display-icon nil)
   :config
   (setq awesome-tab-cycle-scope 'tabs)
   (setq awesome-tab-hide-tab-function #'+my|awesome-tab-hide-tab)
