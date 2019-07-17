@@ -42,17 +42,6 @@
   :commands (insert-translated-name-insert insert-translated-name-insert-with-underline
 	       insert-translated-name-insert-with-line insert-translated-name-insert-with-camel))
 
-(def-package! awesome-tab
-  :defer 0.5
-  :init
-  (setq awesome-tab-display-icon nil)
-  :config
-  (setq awesome-tab-cycle-scope 'tabs)
-  (setq awesome-tab-hide-tab-function #'+my|awesome-tab-hide-tab)
-  (setq awesome-tab-display-sticky-function-name nil)
-  (awesome-tab-mode)
-  )
-
 (def-package! edit-indiect
   :defer t
   :init
@@ -74,7 +63,7 @@
 (after! org
   (setq org-directory "~/workdir/note/org/")
   (setq +org-dir org-directory)
-  (setq org-default-notes-file (concat org-directory "/work.org"))
+  (setq org-default-notes-file (concat org-directory "/todo.org"))
   (setq org-default-refile-file (concat org-directory "/refile.org"))
   (setq org-agenda-files (list org-default-notes-file))
   (custom-set-faces

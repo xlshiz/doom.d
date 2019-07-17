@@ -80,35 +80,6 @@ current frame."
       (+my/better-font))))
 
 ;;;###autoload
-(defun +my|awesome-tab-hide-tab (x)
-  (let ((name (format "%s" x)))
-    (or
-      ;; Current window is not dedicated window.
-      (window-dedicated-p (selected-window))
-
-      ;; Buffer name not match below blacklist.
-      (string-prefix-p "*epc" name)
-      (string-prefix-p "*helm" name)
-      (string-prefix-p "*Compile-Log*" name)
-      (string-prefix-p "*lsp" name)
-
-      (string-prefix-p "*ccls" name)
-      (string-prefix-p "*Flycheck" name)
-      (string-prefix-p "*flycheck" name)
-      (string-prefix-p "*anaconda-mode*" name)
-      (string-prefix-p "*Org Agenda*" name)
-      (string-prefix-p "*edit-indirect" name)
-      (string-prefix-p "*shell-pop" name)
-      (string-prefix-p "*MULTI-TERM-DEDICATED*" name)
-      (string-prefix-p "*Ilist*" name)
-      (string-prefix-p " *transient*" name)
-      (string-prefix-p "*helpful " name)
-
-      (and (string-prefix-p "magit" name)
-		(not (file-name-extension name)))
-      )))
-
-;;;###autoload
 (defun +my/default-search-project (&optional arg symbol)
   "Conduct a text search in the current project for symbol at point.
 If prefix ARG is set, prompt for a known project to search from."
