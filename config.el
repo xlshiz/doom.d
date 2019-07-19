@@ -61,6 +61,7 @@
 
 ;;; after
 (after! org
+  (remove-hook! 'org-tab-first-hook #'+org|cycle-only-current-subtree)
   (setq org-directory "~/workdir/note/org/")
   (setq +org-dir org-directory)
   (setq org-default-notes-file (concat org-directory "/todo.org"))
@@ -113,6 +114,14 @@
          "l" #'lsp-ui-peek--select-next-file
          )
   )
+
+(after! ace-window
+  (custom-set-faces!
+   '(aw-leading-char-face :inherit font-lock-keyword-face :bold t :height 3.0)
+   '(aw-mode-line-face :inherit mode-line-emphasis :bold t)))
+
+(after! evil-escape
+  (setq evil-escape-key-sequence "fd"))
 
 
 ;;; hook
