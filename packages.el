@@ -8,6 +8,7 @@
 (package! edit-indirect)
 (package! paradox)
 (package! imenu-list)
+(package! company-tabnine)
 
 
 (disable-packages! emacs-snippets)
