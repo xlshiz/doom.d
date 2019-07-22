@@ -7,15 +7,7 @@
 
 (after!  cc-mode
   (setq-default c-basic-offset 8)
-  (set-pretty-symbols! '(c-mode c++-mode)
-    ;; Functional
-    ;; :def "void "
-    ;; Types
-    ;; :null "NULL"
-    ;; Flow
-    :not "!"
-    :and "&&" :or "||"
-    :return "return")
+  (set-pretty-symbols! '(c-mode c++-mode) nil)
   (add-hook! (c-mode c++-mode) #'+cc-private-setup)
   (defvar +font-lock-call-function '+font-lock-call-function)
   (font-lock-add-keywords 'c-mode

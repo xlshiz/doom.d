@@ -72,13 +72,22 @@
 ;;; after
 (after! org
   (remove-hook! 'org-tab-first-hook #'+org|cycle-only-current-subtree)
+  (custom-set-faces
+    '(org-table ((t (:family "Sarasa Mono SC")))))
+  (set-pretty-symbols! 'org-mode
+		       :alist
+		       '(("[ ]" . ?☐)
+			 ("[X]" . ?☑)
+		         ("#+BEGIN_SRC" . ?✎)
+			 ("#+END_SRC" . ?✐)
+			 ("#+BEGIN_QUOTE" . ?»)
+			 ("#+END_QUOTE" . ?«)
+			 ))
   (setq org-directory "~/workdir/note/org/")
   (setq +org-dir org-directory)
   (setq org-default-notes-file (concat org-directory "/todo.org"))
   (setq org-default-refile-file (concat org-directory "/refile.org"))
   (setq org-agenda-files (list org-default-notes-file))
-  (custom-set-faces
-    '(org-table ((t (:family "Sarasa Mono SC")))))
   (setq org-capture-templates
       '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
              "* TODO %?\n")))
@@ -86,7 +95,11 @@
                              (org-default-refile-file . (:level . 1))))
   (setq org-bookmark-names-plist '(:last-capture "org-capture-last-stored"
                                    :last-capture-marker "org-capture-last-stored-marker"))
-  (setq org-todo-keywords (quote ((sequence "TODO(t)" "INPROCESS(p)" "|" "DONE(d)")))))
+
+  (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
+                            (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
+        org-todo-keyword-faces '(("HANGUP" . warning)
+                                 ("❓" . warning))))
 
 (after! company
   (setq company-minimum-prefix-length 2
