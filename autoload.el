@@ -157,6 +157,6 @@ If prefix ARG is set, prompt for a known project to search from."
   (add-to-list 'company-transformers '+my|company-sort-by-tabnine t)
   (setq company-idle-delay 0.2)
   (if (listp (car company-backends))
-      (setq-local company-backends `((,(car (car company-backends)) company-tabnine :separate) ,@(cdr company-backends)))
-    (setq-local company-backends `((,(car company-backends) company-tabnine :separate) ,@(cdr company-backends)))
+      (setq-local company-backends `((,(car (car company-backends)) :with company-tabnine :separate) company-tabnine ,@(cdr company-backends)))
+    (setq-local company-backends `((,(car company-backends) :with company-tabnine :separate) company-tabnine ,@(cdr company-backends)))
     ))
