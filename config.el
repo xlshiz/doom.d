@@ -144,7 +144,7 @@
    '(aw-mode-line-face :inherit mode-line-emphasis :bold t)))
 
 (after! evil-escape
-  (setq evil-escape-key-sequence "fd"))
+  (setq evil-escape-key-sequence "fj"))
 
 
 ;;; hook

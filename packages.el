@@ -11,4 +11,4 @@
 (package! company-tabnine)
 
 
-(disable-packages! emacs-snippets)
+(disable-packages! doom-snippets)
