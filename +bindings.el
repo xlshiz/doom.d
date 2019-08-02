@@ -20,6 +20,18 @@
       :ni "C-j"         #'ace-window
       :i  "C-f"		#'forward-char
       :i  "C-b"		#'backward-char
+      (:when (featurep! :completion company)
+        (:prefix "C-x"
+          :i "C-@"    #'company-ispell
+          :i "C-l"    #'+company/whole-lines
+          :i "C-k"    #'+company/dict-or-keywords
+          :i "C-f"    #'company-files
+          :i "C-]"    #'company-etags
+          :i "s"      #'company-english-helper-search
+          :i "C-s"    #'company-yasnippet
+          :i "C-o"    #'company-capf
+          :i "C-n"    #'+company/dabbrev
+          :i "C-p"    #'+company/dabbrev-code-previous))
       (:when (featurep! :private intl)
         :g  "M-f"	#'pyim-forward-word
         :g  "M-b"	#'pyim-backward-word

@@ -149,17 +149,20 @@ If prefix ARG is set, prompt for a known project to search from."
              (seq-drop candidates-2 2)))))
 
 ;;;###autoload
+(defun +my|add-tabnine-backend ()
+  (require 'company-tabnine)
+  (add-to-list 'company-transformers '+my|company-sort-by-tabnine t)
+  (setq company-idle-delay 0.2)
+  (if (listp (car company-backends))
+      (setq-local company-backends `((,(car (car company-backends)) :with company-tabnine :separate) ,@(cdr company-backends)))
+    (setq-local company-backends `((,(car company-backends) :with company-tabnine :separate) ,@(cdr company-backends)))))
+
+;;;###autoload
 (defun +my/enable-tabnine ()
   "Enable tabnine."
   (interactive)
-  (require 'company-tabnine)
-  (add-to-list 'company-transformers '+my|company-sort-by-tabnine t)
-  (defun +my|reset-company ()
-    (setq company-idle-delay 0.2)
-    (if (listp (car company-backends))
-        (setq-local company-backends `((,(car (car company-backends)) :with company-tabnine :separate) company-tabnine ,@(cdr company-backends)))
-      (setq-local company-backends `((,(car company-backends) :with company-tabnine :separate) company-tabnine ,@(cdr company-backends)))
-      )
-    )
-  (add-hook! :append company-mode #'+my|reset-company)
-  (+my|reset-company))
+  (if (bound-and-true-p lsp-mode)
+      (defadvice +lsp|init-company (after ls-init-company activate)
+        (+my|add-tabnine-backend))
+    (add-hook :append company-mode #'+my|add-tabnine-backend))
+  (+my|add-tabnine-backend))

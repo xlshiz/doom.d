@@ -36,7 +36,7 @@
   (evil-set-initial-state 'color-rg-mode 'emacs))
 
 (def-package! company-english-helper
-  :commands (toggle-company-english-helper))
+  :commands (toggle-company-english-helper company-english-helper-search))
 
 (def-package! insert-translated-name
   :commands (insert-translated-name-insert insert-translated-name-insert-with-underline
@@ -60,6 +60,9 @@
 
 (def-package! company-tabnine
   :defer t
+  :init
+  (setq company-tabnine-binaries-folder (concat doom-etc-dir "TabNine"))
+  ; (setq company-tabnine-log-file-path "/tmp/tabnine.log")
   :config
   (defadvice company-echo-show (around disable-tabnine-upgrade-message activate)
     (let ((company-message-func (ad-get-arg 0)))
