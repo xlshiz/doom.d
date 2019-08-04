@@ -129,3 +129,21 @@
   (when awesome-tab-mode
     (unless (window-parameter nil 'tabbar-buffers)
       (+tabbar|add-buffer))))
+
+;;;###autoload
+(defun +tabbar|select-window-by-number (win-id)
+  "Use `ace-window' to select the window by using window index.
+WIN-ID : Window index."
+  (let ((wnd (nth (- win-id 1) (aw-window-list))))
+    (if wnd
+        (aw-switch-to-window wnd)
+      (message "No such window."))))
+
+;;;###autoload
+(defun +tabbar|select-window ()
+  (interactive)
+  (let* ((event last-input-event)
+         (key (make-vector 1 event))
+         (key-desc (key-description key)))
+    (+tabbar|select-window-by-number
+     (string-to-number (car (nreverse (split-string key-desc "-")))))))
