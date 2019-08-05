@@ -26,7 +26,7 @@
 
 (def-package! color-rg
   :commands (color-rg-search-input color-rg-search-symbol
-	     color-rg-search-symbol-in-current-file color-rg-search-project)
+             color-rg-search-symbol-in-current-file color-rg-search-project)
   :init
   (define-key! swiper-map "<M-return>" #'+my/swiper-to-color-rg)
   (define-key! counsel-ag-map "<M-return>" #'+my/counsel-to-color-rg)
@@ -40,7 +40,7 @@
 
 (def-package! insert-translated-name
   :commands (insert-translated-name-insert insert-translated-name-insert-with-underline
-	       insert-translated-name-insert-with-line insert-translated-name-insert-with-camel))
+                                           insert-translated-name-insert-with-line insert-translated-name-insert-with-camel))
 
 (def-package! edit-indiect
   :defer t
@@ -53,8 +53,8 @@
 (def-package! imenu-list
   :config
   (setq imenu-list-focus-after-activation t
-	imenu-list-idle-update-delay 0.5
-	imenu-list-auto-resize t)
+        imenu-list-idle-update-delay 0.5
+        imenu-list-auto-resize t)
   (set-popup-rule! "^\\*Ilist"
     :side 'right :size 35 :quit nil :select nil :ttl 0))
 
@@ -62,7 +62,7 @@
   :defer t
   :init
   (setq company-tabnine-binaries-folder (concat doom-etc-dir "TabNine"))
-  ; (setq company-tabnine-log-file-path "/tmp/tabnine.log")
+; (setq company-tabnine-log-file-path "/tmp/tabnine.log")
   :config
   (defadvice company-echo-show (around disable-tabnine-upgrade-message activate)
     (let ((company-message-func (ad-get-arg 0)))
@@ -76,28 +76,28 @@
 (after! org
   (remove-hook! 'org-tab-first-hook #'+org|cycle-only-current-subtree)
   (custom-set-faces
-    '(org-table ((t (:family "Sarasa Mono SC")))))
+   '(org-table ((t (:family "Sarasa Mono SC")))))
   (set-pretty-symbols! 'org-mode
-		       :alist
-		       '(("[ ]" . ?☐)
-			 ("[X]" . ?☑)
-		         ("#+BEGIN_SRC" . ?✎)
-			 ("#+END_SRC" . ?✐)
-			 ("#+BEGIN_QUOTE" . ?»)
-			 ("#+END_QUOTE" . ?«)
-			 ))
+    :alist
+    '(("[ ]" . ?☐)
+      ("[X]" . ?☑)
+      ("#+BEGIN_SRC" . ?✎)
+      ("#+END_SRC" . ?✐)
+      ("#+BEGIN_QUOTE" . ?»)
+      ("#+END_QUOTE" . ?«)
+      ))
   (setq org-directory "~/workdir/note/org/")
   (setq +org-dir org-directory)
   (setq org-default-notes-file (concat org-directory "/todo.org"))
   (setq org-default-refile-file (concat org-directory "/refile.org"))
   (setq org-agenda-files (list org-default-notes-file))
   (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
-             "* TODO %?\n")))
+        '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
+           "* TODO %?\n")))
   (setq org-refile-targets '((org-default-notes-file . (:level . 1))
                              (org-default-refile-file . (:level . 1))))
   (setq org-bookmark-names-plist '(:last-capture "org-capture-last-stored"
-                                   :last-capture-marker "org-capture-last-stored-marker"))
+                                                 :last-capture-marker "org-capture-last-stored-marker"))
 
   (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
                             (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
@@ -107,7 +107,7 @@
 (after! company
   (setq company-minimum-prefix-length 2
         company-quickhelp-delay nil
-	company-idle-delay 0.2
+        company-idle-delay 0.2
         company-show-numbers t
         company-global-modes '(not org-mode eshell-mode comint-mode erc-mode message-mode help-mode gud-mode)
         ))
@@ -122,23 +122,23 @@
 
 (after! lsp-ui
   (setq lsp-enable-completion-at-point t
-	lsp-ui-sideline-enable nil
-	lsp-ui-sideline-ignore-duplicate t
+        lsp-ui-sideline-enable nil
+        lsp-ui-sideline-ignore-duplicate t
         lsp-ui-doc-enable nil
         lsp-ui-doc-header nil
         lsp-ui-doc-include-signature nil
-	lsp-ui-doc-background (doom-color 'base4)
+        lsp-ui-doc-background (doom-color 'base4)
         lsp-ui-doc-border (doom-color 'fg)
-	lsp-ui-flycheck-enable t
-	lsp-ui-peek-force-fontify nil
-	lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
-   (map! :after lsp-ui-peek
-         :map lsp-ui-peek-mode-map
-         "h" #'lsp-ui-peek--select-prev-file
-         "j" #'lsp-ui-peek--select-next
-         "k" #'lsp-ui-peek--select-prev
-         "l" #'lsp-ui-peek--select-next-file
-         )
+        lsp-ui-flycheck-enable t
+        lsp-ui-peek-force-fontify nil
+        lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
+  (map! :after lsp-ui-peek
+        :map lsp-ui-peek-mode-map
+        "h" #'lsp-ui-peek--select-prev-file
+        "j" #'lsp-ui-peek--select-next
+        "k" #'lsp-ui-peek--select-prev
+        "l" #'lsp-ui-peek--select-next-file
+        )
   )
 
 (after! ace-window
@@ -148,6 +148,11 @@
 
 (after! evil-escape
   (setq evil-escape-key-sequence "fj"))
+
+(after! pdf-tools
+  (map! :map pdf-annot-list-mode-map
+        :n  "q"         #'tablist-quit
+        :n  [return]    #'pdf-annot-list-display-annotation-from-id))
 
 
 ;;; hook
