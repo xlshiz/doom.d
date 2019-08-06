@@ -4,28 +4,29 @@
   :defer 0.5
   :init
   (setq awesome-tab-display-icon nil)
-  :config
   (setq awesome-tab-height 28)
   (setq awesome-tab-cycle-scope 'tabs)
   (setq awesome-tab-display-sticky-function-name nil)
+  :config
+  (add-hook! 'awesome-tab-mode-hook
+    (defun +tabbar-init-frames-h ()
+      (dolist (frame (frame-list))
+        (if (not awesome-tabs-mode)
+            (set-frame-parameter frame 'buffer-predicate (frame-parameter frame 'old-buffer-predicate))
+          (set-frame-parameter frame 'old-buffer-predicate (frame-parameter frame 'buffer-predicate))
+          (set-frame-parameter frame 'buffer-predicate #'+tabbar-buffer-predicate)))))
 
-  (defun +tabbar|init-frames ()
-    (dolist (frame (frame-list))
-      (if (not awesome-tab-mode)
-	(set-frame-parameter frame 'buffer-predicate (frame-parameter frame 'old-buffer-predicate))
-	(set-frame-parameter frame 'old-buffer-predicate (frame-parameter frame 'buffer-predicate))
-	(set-frame-parameter frame 'buffer-predicate #'+tabbar-buffer-predicate))))
-  (add-hook 'awesome-tab-mode-hook #'+tabbar|init-frames)
+  (add-to-list 'window-persistent-parameters '(tabbar-buffers . writable))
 
   (setq awesome-tab-hide-tab-function #'+tabbar-hide-tab
 	; awesome-tab-buffer-list-function #'+tabbar-window-buffer-list
 	awesome-tab-buffer-groups-function #'+tabbar-buffer-groups)
 
-  (advice-add #'awesome-tab-buffer-close-tab :override #'+tabbar*kill-tab-maybe)
-  (advice-add #'bury-buffer :around #'+tabbar*bury-buffer)
-  (advice-add #'kill-current-buffer :before #'+tabbar*kill-current-buffer)
-  (add-hook 'doom-switch-buffer-hook #'+tabbar|add-buffer)
-  (add-hook 'doom-switch-window-hook #'+tabbar|new-window)
+  (advice-add #'awesome-tab-buffer-close-tab :override #'+tabbar-kill-tab-maybe-a)
+  (advice-add #'bury-buffer :around #'+tabbar-bury-buffer-a)
+  (advice-add #'kill-current-buffer :before #'+tabbar-kill-current-buffer-a)
+  (add-hook 'doom-switch-buffer-hook #'+tabbar-add-buffer-h)
+  (add-hook 'doom-switch-window-hook #'+tabbar-new-window-h)
 
   (add-hook '+doom-dashboard-mode-hook #'awesome-tab-local-mode)
 
@@ -50,16 +51,16 @@
   ("j" awesome-tab-forward-group)
   ("k" awesome-tab-backward-group)
   ("l" awesome-tab-forward-tab)
-  ("0" my-select-window)
-  ("1" my-select-window)
-  ("2" my-select-window)
-  ("3" my-select-window)
-  ("4" my-select-window)
-  ("5" my-select-window)
-  ("6" my-select-window)
-  ("7" my-select-window)
-  ("8" my-select-window)
-  ("9" my-select-window)
+  ("0" +tabbar/select-window)
+  ("1" +tabbar/select-window)
+  ("2" +tabbar/select-window)
+  ("3" +tabbar/select-window)
+  ("4" +tabbar/select-window)
+  ("5" +tabbar/select-window)
+  ("6" +tabbar/select-window)
+  ("7" +tabbar/select-window)
+  ("8" +tabbar/select-window)
+  ("9" +tabbar/select-window)
   ("C-a" awesome-tab-select-beg-tab)
   ("C-e" awesome-tab-select-end-tab)
   ("C-j" awesome-tab-ace-jump)

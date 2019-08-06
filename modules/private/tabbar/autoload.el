@@ -81,11 +81,11 @@
 ;;; Advice
 
 ;;;###autoload
-(defun +tabbar*kill-current-buffer (&rest _)
+(defun +tabbar-kill-current-buffer-a (&rest _)
   (+tabbar|remove-buffer))
 
 ;;;###autoload
-(defun +tabbar*bury-buffer (orig-fn &rest args)
+(defun +tabbar-bury-buffer-a (orig-fn &rest args)
   (if awesome-tab-mode
       (let ((b (current-buffer)))
         (apply orig-fn args)
@@ -95,7 +95,7 @@
     (apply orig-fn args)))
 
 ;;;###autoload
-(defun +tabbar*kill-tab-maybe (tab)
+(defun +tabbar-kill-tab-maybe-a (tab)
   (let ((buffer (awesome-tab-tab-value tab)))
     (with-current-buffer buffer
       ;; `kill-current-buffer' is advised not to kill buffers visible in another
@@ -108,7 +108,7 @@
 ;;; Hooks
 
 ;;;###autoload
-(defun +tabbar|add-buffer ()
+(defun +tabbar-add-buffer-h ()
   (when (and awesome-tab-mode
              (doom-real-buffer-p (current-buffer)))
     (let* ((this-buf (current-buffer))
@@ -125,25 +125,16 @@
      'tabbar-buffers (delete (current-buffer) (window-parameter nil 'tabbar-buffers)))))
 
 ;;;###autoload
-(defun +tabbar|new-window ()
+(defun +tabbar-new-window-h ()
   (when awesome-tab-mode
     (unless (window-parameter nil 'tabbar-buffers)
-      (+tabbar|add-buffer))))
+      (+tabbar-add-buffer-h))))
 
 ;;;###autoload
-(defun +tabbar|select-window-by-number (win-id)
-  "Use `ace-window' to select the window by using window index.
-WIN-ID : Window index."
-  (let ((wnd (nth (- win-id 1) (aw-window-list))))
-    (if wnd
-        (aw-switch-to-window wnd)
-      (message "No such window."))))
-
-;;;###autoload
-(defun +tabbar|select-window ()
+(defun +tabbar/select-window ()
   (interactive)
   (let* ((event last-input-event)
          (key (make-vector 1 event))
          (key-desc (key-description key)))
-    (+tabbar|select-window-by-number
+    (awesome-tab-select-visible-nth-tab
      (string-to-number (car (nreverse (split-string key-desc "-")))))))
