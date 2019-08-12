@@ -183,7 +183,7 @@
        (default +bindings +smartparens)
 
        :private
-       intl
+       (intl +rime)
        cc
        shell
        gitlab

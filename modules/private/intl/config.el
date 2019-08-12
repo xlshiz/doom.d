@@ -22,7 +22,7 @@
 )
 
 (def-package! pyim
-  :demand t
+  :defer t
   :config
   (setq default-input-method "pyim")
   ;; 使用小鹤双拼
@@ -58,9 +58,19 @@
 	","      #'pyim-page-previous-page)
 )
 
+(def-package! liberime-config
+  :when (featurep! +rime)
+  :after pyim
+  :init
+  (setq liberime-user-data-dir (expand-file-name (concat doom-etc-dir "pyim/rime")))
+  :config
+  (liberime-select-schema "double_pinyin_flypy")
+  (setq pyim-default-scheme 'rime))
+
 (after! ivy
   (setq ivy-re-builders-alist
         '(
           (t . +intel/re-builder-pinyin)
           ))
 )
+
