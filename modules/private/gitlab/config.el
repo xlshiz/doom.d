@@ -1,6 +1,6 @@
 ;;; private/gitlab/config.el -*- lexical-binding: t; -*-
 
-(def-package! forge
+(use-package! forge
   :init
   (push (expand-file-name "forge/authinfo" doom-etc-dir) auth-sources)
   :config

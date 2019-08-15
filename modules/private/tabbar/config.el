@@ -1,6 +1,6 @@
 ;;; ui/tabbar/config.el -*- lexical-binding: t; -*-
 
-(def-package! awesome-tab
+(use-package! awesome-tab
   :defer 0.5
   :init
   (setq awesome-tab-display-icon nil)

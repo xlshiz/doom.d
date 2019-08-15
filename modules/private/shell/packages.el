@@ -2,4 +2,4 @@
 ;;; private/shell/packages.el
 
 (package! shell-pop)
-(package! aweshell :recipe (:fetcher github :repo "manateelazycat/aweshell"))
+(package! aweshell :recipe (:host github :repo "manateelazycat/aweshell"))

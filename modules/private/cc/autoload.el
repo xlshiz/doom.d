@@ -15,7 +15,7 @@
   (setq tab-width 8)
   (require 'company)
   (setq-local company-idle-delay nil)
-  (doom|disable-line-numbers))
+  (doom-disable-line-numbers-h))
 
 ;;;###autoload
 (defface +font-lock-call-function

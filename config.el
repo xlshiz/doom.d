@@ -15,16 +15,16 @@
 (set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
 
 ;;; def-package
-(def-package! avy
+(use-package! avy
   :commands (avy-goto-char-timer)
   :init
   (setq avy-timeout-seconds 0.5)
   )
 
-(def-package! symbol-overlay
+(use-package! symbol-overlay
   :commands (symbol-overlay-put symbol-overlay-remove-all))
 
-(def-package! color-rg
+(use-package! color-rg
   :commands (color-rg-search-input color-rg-search-symbol
              color-rg-search-symbol-in-current-file color-rg-search-project)
   :init
@@ -35,22 +35,22 @@
     :height 0.4 :quit nil :select nil :ttl 0)
   (evil-set-initial-state 'color-rg-mode 'emacs))
 
-(def-package! company-english-helper
+(use-package! company-english-helper
   :commands (toggle-company-english-helper company-english-helper-search))
 
-(def-package! insert-translated-name
+(use-package! insert-translated-name
   :commands (insert-translated-name-insert insert-translated-name-insert-with-underline
                                            insert-translated-name-insert-with-line insert-translated-name-insert-with-camel))
 
-(def-package! edit-indiect
+(use-package! edit-indiect
   :defer t
   :init
   (set-popup-rules! '(("^\\*edit-indirect " :size 0.3 :quit nil :select t :ttl nil))))
 
-(def-package! paradox
+(use-package! paradox
   :commands (paradox-list-packages))
 
-(def-package! imenu-list
+(use-package! imenu-list
   :config
   (setq imenu-list-focus-after-activation t
         imenu-list-idle-update-delay 0.5
@@ -58,7 +58,7 @@
   (set-popup-rule! "^\\*Ilist"
     :side 'right :size 35 :quit nil :select nil :ttl 0))
 
-(def-package! company-tabnine
+(use-package! company-tabnine
   :defer t
   :init
   (setq company-tabnine-binaries-folder (concat doom-etc-dir "TabNine"))
@@ -71,7 +71,7 @@
         (unless (string-match "The free version of TabNine only indexes up to" (funcall company-message-func))
           ad-do-it)))))
 
-(def-package! org
+(use-package! org
   :init
   (setq org-directory "~/workdir/note/org/"
 	org-default-refile-file (concat org-directory "/refile.org")

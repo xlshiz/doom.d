@@ -1,8 +1,8 @@
 ;;; private/cc/config.el -*- lexical-binding: t; -*-
 
-(def-package! ggtags
+(use-package! ggtags
   :commands (ggtags-mode ggtags-find-tag-dwim))
-(def-package! counsel-gtags
+(use-package! counsel-gtags
   :commands (counsel-gtags-dwim))
 
 (after!  cc-mode

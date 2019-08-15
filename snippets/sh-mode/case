@@ -3,5 +3,5 @@
 # key: case
 # --
 case ${1:var} in
-    ${2:match}) $0 ;;
+	${2:match}) $0 ;;
 esac

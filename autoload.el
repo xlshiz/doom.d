@@ -165,5 +165,5 @@ If prefix ARG is set, prompt for a known project to search from."
   (if (bound-and-true-p lsp-mode)
       (defadvice +lsp|init-company (after ls-init-company activate)
         (+my|add-tabnine-backend))
-    (add-hook! :append company-mode #'+my|add-tabnine-backend))
+    (add-hook! company-mode :append #'+my|add-tabnine-backend))
   (+my|add-tabnine-backend))

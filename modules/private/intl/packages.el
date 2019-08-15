@@ -7,4 +7,4 @@
 (package! pangu-spacing)
 (package! pyim)
 (when (featurep! +rime)
-  (package! liberime :recipe (:fetcher git :url "https://gitlab.com/liberime/liberime" :files ("CMakeLists.txt" "Makefile" "src" "liberime-config.el"))))
+  (package! liberime :recipe (:host gitlab :repo "liberime/liberime" :files ("CMakeLists.txt" "Makefile" "src" "liberime-config.el"))))
