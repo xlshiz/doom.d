@@ -71,6 +71,14 @@
         (unless (string-match "The free version of TabNine only indexes up to" (funcall company-message-func))
           ad-do-it)))))
 
+(def-package! org
+  :init
+  (setq org-directory "~/workdir/note/org/"
+	org-default-refile-file (concat org-directory "/refile.org")
+	+org-capture-notes-file "todo.org"
+	org-agenda-files (list (concat org-directory +org-capture-notes-file))
+	))
+
 
 ;;; after
 (after! org
@@ -86,11 +94,6 @@
       ("#+BEGIN_QUOTE" . ?»)
       ("#+END_QUOTE" . ?«)
       ))
-  (setq org-directory "~/workdir/note/org/")
-  (setq +org-dir org-directory)
-  (setq org-default-notes-file (concat org-directory "/todo.org"))
-  (setq org-default-refile-file (concat org-directory "/refile.org"))
-  (setq org-agenda-files (list org-default-notes-file))
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
            "* TODO %?\n")))
