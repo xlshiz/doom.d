@@ -23,6 +23,7 @@
 
 (def-package! pyim
   :defer t
+  :commands (pyim-forward-word pyim-backward-word)
   :config
   (setq default-input-method "pyim")
   ;; 使用小鹤双拼

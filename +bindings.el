@@ -44,6 +44,7 @@
 	:map evil-org-mode-map
 	:ni "M-h"       #'awesome-tab-backward
 	:ni "M-l"       #'awesome-tab-forward
+	:ni "C-j"         #'ace-window
 	:localleader
 	"t"          #'org-todo
 	"T"          #'org-show-todo-tree
