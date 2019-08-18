@@ -11,7 +11,7 @@
   (add-hook! 'awesome-tab-mode-hook
     (defun +tabbar-init-frames-h ()
       (dolist (frame (frame-list))
-        (if (not awesome-tabs-mode)
+        (if (not awesome-tab-mode)
             (set-frame-parameter frame 'buffer-predicate (frame-parameter frame 'old-buffer-predicate))
           (set-frame-parameter frame 'old-buffer-predicate (frame-parameter frame 'buffer-predicate))
           (set-frame-parameter frame 'buffer-predicate #'+tabbar-buffer-predicate)))))

@@ -125,7 +125,8 @@
 
 (after! lsp-ui
   (setq lsp-enable-completion-at-point t
-        lsp-ui-sideline-enable nil
+	lsp-eldoc-enable-hover t
+	lsp-ui-sideline-enable nil
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-doc-enable nil
         lsp-ui-doc-header nil
