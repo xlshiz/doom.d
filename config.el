@@ -108,6 +108,10 @@
                                  ("❓" . warning))))
 
 (after! company
+  (map! :map company-active-map
+	"RET"		nil
+	[return]	nil
+	[C-return]	#'company-complete-selection)
   (setq company-minimum-prefix-length 2
         company-quickhelp-delay nil
         company-idle-delay 0.2
