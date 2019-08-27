@@ -1,4 +1,4 @@
-;;; ui/tabbar/config.el -*- lexical-binding: t; -*-
+;;; private/tabs/config.el -*- lexical-binding: t; -*-
 
 (use-package! awesome-tab
   :defer 0.5
@@ -9,34 +9,35 @@
   (setq awesome-tab-display-sticky-function-name nil)
   :config
   (add-hook! 'awesome-tab-mode-hook
-    (defun +tabbar-init-frames-h ()
+    (defun +tabs-init-frames-h ()
       (dolist (frame (frame-list))
         (if (not awesome-tab-mode)
             (set-frame-parameter frame 'buffer-predicate (frame-parameter frame 'old-buffer-predicate))
           (set-frame-parameter frame 'old-buffer-predicate (frame-parameter frame 'buffer-predicate))
-          (set-frame-parameter frame 'buffer-predicate #'+tabbar-buffer-predicate)))))
+          (set-frame-parameter frame 'buffer-predicate #'+tabs-buffer-predicate)))))
 
-  (add-to-list 'window-persistent-parameters '(tabbar-buffers . writable))
+  (add-to-list 'window-persistent-parameters '(tabs-buffers . writable))
 
-  (setq awesome-tab-hide-tab-function #'+tabbar-hide-tab
-	; awesome-tab-buffer-list-function #'+tabbar-window-buffer-list
-	awesome-tab-buffer-groups-function #'+tabbar-buffer-groups)
+  (setq ; awesome-tab-buffer-list-function #'+tabs-window-buffer-list
+        awesome-tab-buffer-groups-function #'+tabs-buffer-groups
+	awesome-tab-hide-tab-function #'+tabs-hide-tab)
 
-  (advice-add #'awesome-tab-buffer-close-tab :override #'+tabbar-kill-tab-maybe-a)
-  (advice-add #'bury-buffer :around #'+tabbar-bury-buffer-a)
-  (advice-add #'kill-current-buffer :before #'+tabbar-kill-current-buffer-a)
-  (add-hook 'doom-switch-buffer-hook #'+tabbar-add-buffer-h)
-  (add-hook 'doom-switch-window-hook #'+tabbar-new-window-h)
+  (advice-add #'awesome-tab-buffer-close-tab :override #'+tabs-kill-tab-maybe-a)
+  (advice-add #'bury-buffer :around #'+tabs-bury-buffer-a)
+  (advice-add #'kill-current-buffer :before #'+tabs-kill-current-buffer-a)
+  (add-hook 'doom-switch-buffer-hook #'+tabs-add-buffer-h)
+  (add-hook 'doom-switch-window-hook #'+tabs-new-window-h)
 
   (add-hook '+doom-dashboard-mode-hook #'awesome-tab-local-mode)
 
+
   (map! (:map awesome-tab-mode-map
-	      [remap delete-window] #'+tabbar/close-tab-or-window
-	      [remap +workspace/close-window-or-workspace] #'+tabbar/close-tab-or-window)
+	      [remap delete-window] #'+tabs/close-tab-or-window
+	      [remap +workspace/close-window-or-workspace] #'+tabs/close-tab-or-window)
 	(:after persp-mode
 		:map persp-mode-map
-		[remap delete-window] #'+tabbar/close-tab-or-window
-		[remap +workspace/close-window-or-workspace] #'+tabbar/close-tab-or-window))
+		[remap delete-window] #'+tabs/close-tab-or-window
+		[remap +workspace/close-window-or-workspace] #'+tabs/close-tab-or-window))
   (defhydra awesome-fast-switch (:hint nil)
   "
     ^^^^Fast Move             ^^^^Tab                    ^^Search            ^^Misc
@@ -51,16 +52,16 @@
   ("j" awesome-tab-forward-group)
   ("k" awesome-tab-backward-group)
   ("l" awesome-tab-forward-tab)
-  ("0" +tabbar/select-window)
-  ("1" +tabbar/select-window)
-  ("2" +tabbar/select-window)
-  ("3" +tabbar/select-window)
-  ("4" +tabbar/select-window)
-  ("5" +tabbar/select-window)
-  ("6" +tabbar/select-window)
-  ("7" +tabbar/select-window)
-  ("8" +tabbar/select-window)
-  ("9" +tabbar/select-window)
+  ("0" +tabs/select-window)
+  ("1" +tabs/select-window)
+  ("2" +tabs/select-window)
+  ("3" +tabs/select-window)
+  ("4" +tabs/select-window)
+  ("5" +tabs/select-window)
+  ("6" +tabs/select-window)
+  ("7" +tabs/select-window)
+  ("8" +tabs/select-window)
+  ("9" +tabs/select-window)
   ("C-a" awesome-tab-select-beg-tab)
   ("C-e" awesome-tab-select-end-tab)
   ("C-j" awesome-tab-ace-jump)

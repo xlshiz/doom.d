@@ -21,27 +21,6 @@
   (setq avy-timeout-seconds 0.5)
   )
 
-(use-package! symbol-overlay
-  :commands (symbol-overlay-put symbol-overlay-remove-all))
-
-(use-package! color-rg
-  :commands (color-rg-search-input color-rg-search-symbol
-             color-rg-search-symbol-in-current-file color-rg-search-project)
-  :init
-  (define-key! swiper-map "<M-return>" #'+my/swiper-to-color-rg)
-  (define-key! counsel-ag-map "<M-return>" #'+my/counsel-to-color-rg)
-  :config
-  (set-popup-rule! "^\\*color-rg\*"
-    :height 0.4 :quit nil :select nil :ttl 0)
-  (evil-set-initial-state 'color-rg-mode 'emacs))
-
-(use-package! company-english-helper
-  :commands (toggle-company-english-helper company-english-helper-search))
-
-(use-package! insert-translated-name
-  :commands (insert-translated-name-insert insert-translated-name-insert-with-underline
-                                           insert-translated-name-insert-with-line insert-translated-name-insert-with-camel))
-
 (use-package! edit-indiect
   :defer t
   :init
@@ -58,19 +37,6 @@
   (set-popup-rule! "^\\*Ilist"
     :side 'right :size 35 :quit nil :select nil :ttl 0))
 
-(use-package! company-tabnine
-  :defer t
-  :init
-  (setq company-tabnine-binaries-folder (concat doom-etc-dir "TabNine"))
-; (setq company-tabnine-log-file-path "/tmp/tabnine.log")
-  :config
-  (defadvice company-echo-show (around disable-tabnine-upgrade-message activate)
-    (let ((company-message-func (ad-get-arg 0)))
-      (when (and company-message-func
-                 (stringp (funcall company-message-func)))
-        (unless (string-match "The free version of TabNine only indexes up to" (funcall company-message-func))
-          ad-do-it)))))
-
 (use-package! org
   :init
   (setq org-directory "~/workdir/note/org/"
@@ -83,6 +49,7 @@
 ;;; after
 (after! org
   (remove-hook! 'org-tab-first-hook #'+org|cycle-only-current-subtree)
+  (add-hook 'org-mode-hook #'(lambda () (pangu-spacing-mode -1)))
   (custom-set-faces
    '(org-table ((t (:family "Sarasa Mono SC")))))
   (set-pretty-symbols! 'org-mode
@@ -162,13 +129,15 @@
         :n  "q"         #'tablist-quit
         :n  [return]    #'pdf-annot-list-display-annotation-from-id))
 
+(after! dumb-jump
+  (setq dumb-jump-prefer-searcher "rg"))
+
 
 ;;; hook
 (add-hook! 'git-commit-setup-hook #'yas-git-commit-mode)
 (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c-mode-hook #'(lambda () (setq indent-tabs-mode t c-basic-offset 8)))
-(add-hook 'org-mode-hook #'(lambda () (pangu-spacing-mode -1)))
 (add-hook 'after-make-frame-functions #'+my|init-font)
 (add-hook 'window-setup-hook #'+my|init-font)
 

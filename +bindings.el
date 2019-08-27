@@ -57,7 +57,7 @@
       :desc "NULL"                         [tab] nil
       :desc "Alternate buffer"             "TAB" #'+my/alternate-buffer-in-persp
       :desc "Switch workspace buffer"      "e"   #'awesome-fast-switch/body
-      :desc "Find project file"            "a"   #'projectile-find-file
+      :desc "Find project file"            "a"   #'ivy-snails
 
       (:prefix-map ("b" . "buffer")
         :desc "Switch buffer"              "b"   #'switch-to-buffer

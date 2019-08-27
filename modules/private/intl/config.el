@@ -17,6 +17,13 @@
   (evil-find-char-pinyin-toggle-snipe-integration t)
 )
 
+(use-package! company-english-helper
+  :commands (toggle-company-english-helper company-english-helper-search))
+
+(use-package! insert-translated-name
+  :commands (insert-translated-name-insert insert-translated-name-insert-with-underline
+                                           insert-translated-name-insert-with-line insert-translated-name-insert-with-camel))
+
 (use-package! pangu-spacing
   :config (progn (global-pangu-spacing-mode 1))
 )

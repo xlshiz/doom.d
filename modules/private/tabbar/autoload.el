@@ -1,17 +1,17 @@
-;;; ui/tabbar/autoload.el -*- lexical-binding: t; -*-
+;;; private/tabs/autoload.el -*- lexical-binding: t; -*-
 
 ;;;###autoload
-(defun +tabbar-buffer-predicate (buffer)
+(defun +tabs-buffer-predicate (buffer)
   "TODO"
-  (or (memq buffer (window-parameter nil 'tabbar-buffers))
+  (or (memq buffer (window-parameter nil 'tabs-buffers))
       (eq buffer (doom-fallback-buffer))))
 
 ;;;###autoload
-(defun +tabbar-window-buffer-list ()
-  (cl-delete-if-not #'buffer-live-p (window-parameter nil 'tabbar-buffers)))
+(defun +tabs-window-buffer-list ()
+  (cl-delete-if-not #'buffer-live-p (window-parameter nil 'tabs-buffers)))
 
 ;;;###autoload
-(defun +tabbar-buffer-groups ()
+(defun +tabs-buffer-groups ()
   (list
    (cond ((or (string-equal "*" (substring (buffer-name) 0 1))
               (memq major-mode '(magit-process-mode
@@ -32,7 +32,7 @@
          ((awesome-tab-get-group-name (current-buffer))))))
 
 ;;;###autoload
-(defun +tabbar-hide-tab (x)
+(defun +tabs-hide-tab (x)
   (let ((name (format "%s" x)))
     (or
       ;; Current window is not dedicated window.
@@ -67,11 +67,11 @@
 ;;; Commands
 
 ;;;###autoload
-(defun +tabbar/close-tab-or-window ()
+(defun +tabs/close-tab-or-window ()
   "TODO"
   (interactive)
   (call-interactively
-   (cond ((cdr (window-parameter nil 'tabbar-buffers))
+   (cond ((cdr (window-parameter nil 'tabs-buffers))
           #'kill-current-buffer)
          ((fboundp '+workspace/close-window-or-workspace)
           #'+workspace/close-window-or-workspace)
@@ -82,21 +82,21 @@
 ;;; Advice
 
 ;;;###autoload
-(defun +tabbar-kill-current-buffer-a (&rest _)
-  (+tabbar|remove-buffer))
+(defun +tabs-kill-current-buffer-a (&rest _)
+  (+tabs|remove-buffer))
 
 ;;;###autoload
-(defun +tabbar-bury-buffer-a (orig-fn &rest args)
+(defun +tabs-bury-buffer-a (orig-fn &rest args)
   (if awesome-tab-mode
       (let ((b (current-buffer)))
         (apply orig-fn args)
         (unless (eq b (current-buffer))
           (with-current-buffer b
-            (+tabbar|remove-buffer))))
+            (+tabs|remove-buffer))))
     (apply orig-fn args)))
 
 ;;;###autoload
-(defun +tabbar-kill-tab-maybe-a (tab)
+(defun +tabs-kill-tab-maybe-a (tab)
   (let ((buffer (awesome-tab-tab-value tab)))
     (with-current-buffer buffer
       ;; `kill-current-buffer' is advised not to kill buffers visible in another
@@ -109,30 +109,30 @@
 ;;; Hooks
 
 ;;;###autoload
-(defun +tabbar-add-buffer-h ()
+(defun +tabs-add-buffer-h ()
   (when (and awesome-tab-mode
              (doom-real-buffer-p (current-buffer)))
     (let* ((this-buf (current-buffer))
-           (buffers (window-parameter nil 'tabbar-buffers)))
+           (buffers (window-parameter nil 'tabs-buffers)))
       (cl-pushnew this-buf buffers)
-      (add-hook 'kill-buffer-hook #'+tabbar|remove-buffer nil t)
-      (set-window-parameter nil 'tabbar-buffers buffers))))
+      (add-hook 'kill-buffer-hook #'+tabs|remove-buffer nil t)
+      (set-window-parameter nil 'tabs-buffers buffers))))
 
 ;;;###autoload
-(defun +tabbar|remove-buffer ()
+(defun +tabs|remove-buffer ()
   (when awesome-tab-mode
     (set-window-parameter
      nil
-     'tabbar-buffers (delete (current-buffer) (window-parameter nil 'tabbar-buffers)))))
+     'tabs-buffers (delete (current-buffer) (window-parameter nil 'tabs-buffers)))))
 
 ;;;###autoload
-(defun +tabbar-new-window-h ()
+(defun +tabs-new-window-h ()
   (when awesome-tab-mode
-    (unless (window-parameter nil 'tabbar-buffers)
-      (+tabbar-add-buffer-h))))
+    (unless (window-parameter nil 'tabs-buffers)
+      (+tabs-add-buffer-h))))
 
 ;;;###autoload
-(defun +tabbar/select-window ()
+(defun +tabs/select-window ()
   (interactive)
   (let* ((event last-input-event)
          (key (make-vector 1 event))
