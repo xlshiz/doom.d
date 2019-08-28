@@ -18,8 +18,7 @@
 (use-package! avy
   :commands (avy-goto-char-timer)
   :init
-  (setq avy-timeout-seconds 0.5)
-  )
+  (setq avy-timeout-seconds 0.5))
 
 (use-package! edit-indiect
   :defer t
@@ -40,10 +39,9 @@
 (use-package! org
   :init
   (setq org-directory "~/workdir/note/org/"
-	org-default-refile-file (concat org-directory "/refile.org")
-	+org-capture-notes-file "todo.org"
-	org-agenda-files (list (concat org-directory +org-capture-notes-file))
-	))
+        org-default-refile-file (concat org-directory "/refile.org")
+        +org-capture-notes-file "todo.org"
+        org-agenda-files (list (concat org-directory +org-capture-notes-file))))
 
 
 ;;; after
@@ -59,8 +57,7 @@
       ("#+BEGIN_SRC" . ?✎)
       ("#+END_SRC" . ?✐)
       ("#+BEGIN_QUOTE" . ?»)
-      ("#+END_QUOTE" . ?«)
-      ))
+      ("#+END_QUOTE" . ?«)))
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
            "* TODO %?\n")))
@@ -76,28 +73,26 @@
 
 (after! company
   (map! :map company-active-map
-	"RET"		nil
-	[return]	nil
-	[C-return]	#'company-complete-selection)
+        "RET"       nil
+        [return]    nil
+        [C-return]  #'company-complete-selection)
   (setq company-minimum-prefix-length 2
         company-quickhelp-delay nil
         company-idle-delay 0.2
         company-show-numbers t
-        company-global-modes '(not org-mode eshell-mode comint-mode erc-mode message-mode help-mode gud-mode)
-        ))
+        company-global-modes '(not org-mode eshell-mode comint-mode erc-mode message-mode help-mode gud-mode)))
 
 (after! flycheck
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
-  )
+  (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc)))
 
 (after! lsp-mode
   (setq lsp-enable-symbol-highlighting nil))
 
 (after! lsp-ui
   (setq lsp-enable-completion-at-point t
-	lsp-eldoc-enable-hover t
-	lsp-ui-sideline-enable nil
+        lsp-eldoc-enable-hover t
+        lsp-ui-sideline-enable nil
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-doc-enable nil
         lsp-ui-doc-header nil
@@ -112,9 +107,7 @@
         "h" #'lsp-ui-peek--select-prev-file
         "j" #'lsp-ui-peek--select-next
         "k" #'lsp-ui-peek--select-prev
-        "l" #'lsp-ui-peek--select-next-file
-        )
-  )
+        "l" #'lsp-ui-peek--select-next-file))
 
 (after! ace-window
   (custom-set-faces!

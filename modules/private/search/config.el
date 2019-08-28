@@ -14,11 +14,19 @@
     :height 0.4 :quit nil :select nil :ttl 0)
   (evil-set-initial-state 'color-rg-mode 'emacs))
 
-(use-package! snails
-  :commands (snails snails-search-point)
-  :config
-  (map! :map snails-mode-map
-	[escape]	#'snails-quit
-	)
-  (evil-set-initial-state 'snails-mode 'emacs))
+(after! ivy-rich
+  (setq ivy-rich-display-transformers-list
+        (plist-put ivy-rich-display-transformers-list
+                   'snail
+                   '(:columns
+                     ((+snail-rich-buffer-tag (:face success))
+                      (+ivy-rich-buffer-icon)
+                      (ivy-rich-candidate (:width 0.8)))))))
 
+;; (use-package! snails
+;;   :commands (snails snails-search-point)
+;;   :config
+;;   (map! :map snails-mode-map
+;;         [escape]        #'snails-quit
+;;         )
+;;   (evil-set-initial-state 'snails-mode 'emacs))

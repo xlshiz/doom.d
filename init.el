@@ -188,7 +188,6 @@
        search
        shell
        gitlab
-       ivy-snails
        tabbar
        tabnine
 )
