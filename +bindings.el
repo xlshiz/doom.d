@@ -26,10 +26,12 @@
         :ni  "M-n"      #'+term/toggle
         :ni  [f5]       #'+term/toggle)
       (:after awesome-tab
+        :ni "M-j"       #'awesome-tab-ace-jump
         :ni "M-h"       #'awesome-tab-backward
         :ni "M-l"       #'awesome-tab-forward)
       (:after org
         :map evil-org-mode-map
+        :ni "M-j"       #'awesome-tab-ace-jump
         :ni "M-h"       #'awesome-tab-backward
         :ni "M-l"       #'awesome-tab-forward
         :ni "C-j"       #'ace-window
@@ -38,6 +40,9 @@
         "T"             #'org-show-todo-tree
         "A"             #'org-archive-subtree
         "a"             #'org-agenda)
+      (:after info
+        :map Info-mode-map
+        :ni "C-j"       #'ace-window)
       (:when (featurep! :completion company)
         (:prefix "C-x"
           :i "C-@"      #'company-ispell
@@ -57,7 +62,7 @@
       :desc "Run terminal"                 "'"   #'+term/here
       :desc "NULL"                         [tab] nil
       :desc "Alternate buffer"             "TAB" #'+my/alternate-buffer-in-persp
-      :desc "Switch workspace buffer"      "e"   #'awesome-fast-switch/body
+      :desc "Switch workspace buffer"      "e"   nil
       :desc "Find project file"            "a"   #'snail
 
       (:prefix-map ("b" . "buffer")

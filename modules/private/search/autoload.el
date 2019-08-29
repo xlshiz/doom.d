@@ -120,6 +120,11 @@ If prefix ARG is set, prompt for a known project to search from."
     (setq res (ivy--re-filter real-regexp candidates))
   ))
 
+(defvar snail-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-o") #'awesome-fast-switch/body)
+    map))
+
 ;;;###autoload
 (defun snail ()
   "Mix the `buffer' `projectile' and `recentf'"
@@ -128,6 +133,7 @@ If prefix ARG is set, prompt for a known project to search from."
             (snail-make-collection)
             :require-match t
             :action #'snail-action
+            :keymap snail-map
             :caller 'snail))
 
 ;;;###autoload
