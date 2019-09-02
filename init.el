@@ -187,15 +187,15 @@
        cc
        search
        shell
-       gitlab
        tabbar
        tabnine
+       gitlab
 )
 
 ;; * Leaderkey
 (setq doom-localleader-key ",")
-(setq doom-leader-alt-key "S-SPC")
-(setq doom-localleader-alt-key "S-SPC m")
+(setq doom-leader-alt-key "M-SPC")
+(setq doom-localleader-alt-key "M-SPC m")
 ;; * Repo
 (setq package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
