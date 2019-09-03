@@ -24,7 +24,7 @@ current frame."
   "Open a term buffer at projectile project root."
   (interactive)
   (let ((default-directory (projectile-project-root)))
-    (call-interactively '+term/open)))
+    (call-interactively '+term/here)))
 
 ;;;###autoload
 (defun +my|realtime-elisp-doc-function ()
