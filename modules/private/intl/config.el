@@ -4,6 +4,11 @@
   :config (fcitx-evil-turn-on)
 )
 
+(use-package! pinyinlib
+  :init
+  (setq pinyinlib--simplified-char-table 'pinyinlib--simplified-xiaohe)
+)
+
 (use-package! ace-pinyin
   :config
   (progn
