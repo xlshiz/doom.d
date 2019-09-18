@@ -82,8 +82,7 @@ If prefix ARG is set, prompt for a known project to search from."
 (defun snail-make-collection ()
   (let* ((snail-files (snail--project-files))
          (snail-buffers (snail--buffer-list))
-         (snail-recent (snail--recentf-list))
-         file)
+         (snail-recent (snail--recentf-list)))
     (append snail-buffers snail-files snail-recent)))
 
 ;;;###autoload
@@ -98,32 +97,39 @@ If prefix ARG is set, prompt for a known project to search from."
           (t (message "snail type error %s" snail-type)))))
 
 ;;;###autoload
+(defun snail-type-filter (type candidates)
+  (if (equal type nil)
+      candidates
+    (ignore-errors
+      (setq candidates
+            (cl-remove-if-not
+             (lambda (x) (eq (get-text-property 0 'snail-type x) type))
+             candidates))
+      candidates)))
+
+;;;###autoload
 (defun snail-matcher (regexp candidates)
   "snail matcher. # for recentf, > for projectifle, ? for buffer"
   (let (real-regexp
-        snail-type
-        res)
-    (cond ((<= (length regexp) 1)
+        snail-type)
+    (cond ((= (length regexp) 0)
            (setq real-regexp regexp
                  snail-type nil))
-          ((equal (substring regexp 0 2) "# ")
-           (setq real-regexp (substring regexp 2)
-                 snail-type 'recent))
-          ((equal (substring regexp 0 2) "> ")
-           (setq real-regexp (substring regexp 2)
-                 snail-type 'project))
-          ((equal (substring regexp 0 2) "? ")
-           (setq real-regexp (substring regexp 2)
+          ((equal (substring regexp 0 1) "?")
+           (setq real-regexp (substring regexp 1)
                  snail-type 'buffer))
+          ((equal (substring regexp 0 1) ">")
+           (setq real-regexp (substring regexp 1)
+                 snail-type 'project))
+          ((equal (substring regexp 0 1) "#")
+           (setq real-regexp (substring regexp 1)
+                 snail-type 'recent))
+          ((equal (substring regexp 0 1) "\\")
+           (setq real-regexp (substring regexp 1)
+                 snail-type nil))
           (t (setq real-regexp regexp
                    snail-type nil)))
-    (setq res (ivy--re-filter real-regexp candidates))
-  ))
-
-(defvar snail-map
-  (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "C-o") #'awesome-fast-switch/body)
-    map))
+    (ivy--re-filter real-regexp (snail-type-filter snail-type candidates))))
 
 ;;;###autoload
 (defun snail ()
@@ -132,8 +138,8 @@ If prefix ARG is set, prompt for a known project to search from."
   (ivy-read "snail: "
             (snail-make-collection)
             :require-match t
+            :matcher #'snail-matcher
             :action #'snail-action
-            :keymap snail-map
             :caller 'snail))
 
 ;;;###autoload
