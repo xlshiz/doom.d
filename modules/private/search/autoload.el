@@ -58,7 +58,9 @@ If prefix ARG is set, prompt for a known project to search from."
             (put-text-property 0 (length x)
                                'snail-type 'project x)
             x)
-          (mapcar #'substring-no-properties (projectile-current-project-files)))))
+          (mapcar #'substring-no-properties (if (doom-project-root)
+                                                (projectile-current-project-files)
+                                              (counsel--find-return-list counsel-file-jump-args))))))
 
 ;;;###autoload
 (defun snail--buffer-list (&rest _)
