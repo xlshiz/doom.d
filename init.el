@@ -26,7 +26,7 @@
        ;;doom-dashboard    ; a nifty splash screen for Emacs
        ; doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;fill-column       ; a `fill-column' indicator
-       hl-todo           ; highlight TODO/FIXME/NOTE tags
+       hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
        ;;indent-guides     ; highlighted indent columns
        modeline          ; snazzy, Atom-inspired modeline, plus API
@@ -48,6 +48,7 @@
        :editor
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
+       ;;god               ; run Emacs commands without modifier keys
        fold              ; (nigh) universal code folding
        format            ; automated prettiness
        ;;lispy             ; vim for lisp, for people who dont like vim
@@ -132,16 +133,18 @@
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
-        +dragndrop       ; file drag & drop support
-        +ipython         ; ipython support for babel
-        ; +pandoc          ; pandoc integration into org's exporter
-        +present)        ; using Emacs for presentations
+        +dragndrop       ; drag & drop files/images into org buffers
+        ;+hugo           ; use Emacs for hugo blogging
+        +ipython         ; ipython/jupyter support for babel
+        ;+pandoc          ; export-with-pandoc support
+        +present)        ; using org-mode for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
        plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
       (python            ; beautiful is better than ugly
-	+pyenv)
+	+pyenv
+	+lsp)
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;rest              ; Emacs as a REST client
@@ -195,8 +198,8 @@
 
 ;; * Leaderkey
 (setq doom-localleader-key ",")
-(setq doom-leader-alt-key "M-SPC")
-(setq doom-localleader-alt-key "M-SPC m")
+(setq doom-leader-alt-key "S-SPC")
+(setq doom-localleader-alt-key "S-SPC m")
 ;; * Repo
 (setq package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
