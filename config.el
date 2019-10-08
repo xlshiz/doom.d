@@ -48,8 +48,8 @@
 (after! org
   (remove-hook! 'org-tab-first-hook #'+org-cycle-only-current-subtree-h)
   (add-hook 'org-mode-hook #'(lambda () (pangu-spacing-mode -1)))
-  (custom-set-faces
-   '(org-table ((t (:family "Sarasa Mono SC")))))
+  ; (custom-set-faces
+   ; '(org-table ((t (:family "Sarasa Mono SC")))))
   (set-pretty-symbols! 'org-mode
     :alist
     '(("[ ]" . ?☐)
