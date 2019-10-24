@@ -135,7 +135,7 @@ If prefix ARG is set, prompt for a known project to search from."
           ((and (> (length regexp) 8) (equal (substring regexp 0 8) "\\(#\\).*?"))
            (setq real-regexp (substring regexp 8)
                  snail-type 'recent))
-          ((equal (substring regexp 0 1) "\\")
+          ((and (> (length regexp) 2) (string-match "\\\\[#?>]" (substring regexp 0 2)))
            (setq real-regexp (substring regexp 1)
                  snail-type nil))
           (t (setq real-regexp regexp
