@@ -158,8 +158,8 @@ If prefix ARG is set, prompt for a known project to search from."
   "Mix the `recentf' and `file`"
   (let ((snail-type (get-text-property 0 'snail-type candidate)))
     (cond ((eq snail-type 'buffer)
-           "?]")
+           "? ")
           ((eq snail-type 'project)
            "> ")
           ((eq snail-type 'recent)
-           "#}"))))
+           "# "))))

@@ -202,7 +202,3 @@
 (setq doom-localleader-key ",")
 (setq doom-leader-alt-key "S-SPC")
 (setq doom-localleader-alt-key "S-SPC m")
-;; * Repo
-(setq package-archives '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))

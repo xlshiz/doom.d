@@ -41,35 +41,39 @@
   (setq org-directory "~/workdir/note/org/"
         org-default-refile-file (concat org-directory "/refile.org")
         +org-capture-notes-file "todo.org"
-        org-agenda-files (list (concat org-directory +org-capture-notes-file))))
+        org-agenda-files (list (concat org-directory +org-capture-notes-file)))
+  :preface
+  (defun +org-change-appearance-h ()
+    (set-pretty-symbols! 'org-mode
+      :alist
+      '(("[ ]" . ?☐)
+        ("[X]" . ?☑)
+        ("#+BEGIN_SRC" . ?✎)
+        ("#+END_SRC" . ?✐)
+        ("#+BEGIN_QUOTE" . ?»)
+        ("#+END_QUOTE" . ?«)))
+    (setq org-refile-targets '((org-default-notes-file . (:level . 1))
+                               (org-default-refile-file . (:level . 1))))
+    (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
+                              (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
+          org-todo-keyword-faces '(("HANGUP" . warning)
+                                   ("❓" . warning))))
+  (advice-add #'+org-init-appearance-h :after #'+org-change-appearance-h))
 
 
 ;;; after
 (after! org
-  (remove-hook! 'org-tab-first-hook #'+org-cycle-only-current-subtree-h)
   (add-hook 'org-mode-hook #'(lambda () (pangu-spacing-mode -1)))
-  ; (custom-set-faces
-   ; '(org-table ((t (:family "Sarasa Mono SC")))))
-  (set-pretty-symbols! 'org-mode
-    :alist
-    '(("[ ]" . ?☐)
-      ("[X]" . ?☑)
-      ("#+BEGIN_SRC" . ?✎)
-      ("#+END_SRC" . ?✐)
-      ("#+BEGIN_QUOTE" . ?»)
-      ("#+END_QUOTE" . ?«)))
+                                        ; (custom-set-faces
+                                        ; '(org-table ((t (:family "Sarasa Mono SC")))))
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
            "* TODO %?\n")))
-  (setq org-refile-targets '((org-default-notes-file . (:level . 1))
-                             (org-default-refile-file . (:level . 1))))
   (setq org-bookmark-names-plist '(:last-capture "org-capture-last-stored"
-                                                 :last-capture-marker "org-capture-last-stored-marker"))
+                                                 :last-capture-marker "org-capture-last-stored-marker")))
 
-  (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
-                            (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
-        org-todo-keyword-faces '(("HANGUP" . warning)
-                                 ("❓" . warning))))
+(after! evil-org
+  (remove-hook! 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
 
 (after! company
   (map! :map company-active-map
