@@ -70,7 +70,7 @@
 
       (:prefix-map ("b" . "buffer")
         :desc "Switch buffer"              "b"   #'switch-to-buffer
-        :desc "Kill buffer"                "d"   #'kill-this-buffer)
+        :desc "Kill buffer"                "d"   #'kill-current-buffer)
 
       (:prefix-map ("f" . "file")
         :desc "Save files"                 "s"   #'save-buffer)
@@ -99,7 +99,7 @@
         (:when (featurep! :completion helm)
           :desc "Switch project buffer"    "b"   #'helm-projectile-switch-to-buffer))
 
-      (:prefix-map ("s" . "workspace")
+      (:prefix-map ("S" . "workspace")
         :desc "Display tab bar"            "TAB" #'+workspace/display
         :desc "Switch workspace"           "."   #'+workspace/switch-to
         :desc "New workspace"              "n"   #'+workspace/new
