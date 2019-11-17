@@ -129,6 +129,12 @@
 (after! dumb-jump
   (setq dumb-jump-prefer-searcher "rg"))
 
+(after! org-re-reveal
+  (setq org-re-reveal-extra-css (concat "file://" doom-etc-dir "present/local.css"))
+  (setq org-re-reveal-highlight-url (concat "file://" doom-etc-dir "present/highlight/highlight.pack.js"))
+  (setq org-re-reveal-highlight-css (concat "file://" doom-etc-dir "present/highlight/styles/monokai.css"))
+  (setq org-re-reveal-root (concat "file://" doom-etc-dir "present/reveal.js")))
+
 
 ;;; hook
 (add-hook! 'git-commit-setup-hook #'yas-git-commit-mode)
