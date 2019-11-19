@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: present fragment
+# key: frag_
+# --
+
+#+ATTR_REVEAL: :frag t
