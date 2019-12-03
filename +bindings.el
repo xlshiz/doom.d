@@ -17,6 +17,7 @@
       :g  "C-j"         #'ace-window
       :i  "C-f"         #'forward-char
       :i  "C-b"         #'backward-char
+      :n  "C-t"         #'pop-tag-mark
       (:when (featurep! :private intl)
         :g  "M-f"       #'pyim-forward-word
         :g  "M-b"       #'pyim-backward-word

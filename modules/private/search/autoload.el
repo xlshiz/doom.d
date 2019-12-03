@@ -162,4 +162,4 @@ If prefix ARG is set, prompt for a known project to search from."
           ((eq snail-type 'project)
            ">>")
           ((eq snail-type 'recent)
-           "#|"))))
+           "#-"))))
