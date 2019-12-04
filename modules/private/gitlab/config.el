@@ -9,3 +9,6 @@
     '(("gitlab.com" "gitlab.com/api/v4"
      "gitlab.com" forge-gitlab-repository)))
   :after magit)
+
+(after! ghub
+  (setq ghub-insecure-hosts '("gitlab.com/api/v4")))
