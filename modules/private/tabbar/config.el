@@ -7,6 +7,7 @@
   (setq awesome-tab-height 28)
   (setq awesome-tab-cycle-scope 'tabs)
   (setq awesome-tab-display-sticky-function-name nil)
+  (setq awesome-tab-ace-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :config
   (add-hook! 'awesome-tab-mode-hook
     (defun +tabs-init-frames-h ()

@@ -107,6 +107,8 @@
       (:prefix-map ("w" . "window")
         :desc "Alternate window"           "TAB" #'+my/alternate-window
         :desc "Other window"               "w"   #'other-window
+        (:when (featurep! :private tabbar)
+	  :desc "Awesome tab"                "t"   #'awesome-fast-switch/body)
         :desc "Split window right"         "v"   #'split-window-right
         :desc "Split window right"         "|"   #'split-window-right
         :desc "Split window below"         "s"   #'split-window-below
