@@ -42,22 +42,8 @@
         org-default-refile-file (concat org-directory "/refile.org")
         +org-capture-notes-file "todo.org"
         org-agenda-files (list (concat org-directory +org-capture-notes-file)))
+  (advice-add #'+org-init-keybinds-h :after #'+org-change-keybinds-h)
   :preface
-  (defun +org-change-appearance-h ()
-    (set-pretty-symbols! 'org-mode
-      :alist
-      '(("[ ]" . ?☐)
-        ("[X]" . ?☑)
-        ("#+BEGIN_SRC" . ?✎)
-        ("#+END_SRC" . ?✐)
-        ("#+BEGIN_QUOTE" . ?»)
-        ("#+END_QUOTE" . ?«)))
-    (setq org-refile-targets '((org-default-notes-file . (:level . 1))
-                               (org-default-refile-file . (:level . 1))))
-    (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
-                              (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
-          org-todo-keyword-faces '(("HANGUP" . warning)
-                                   ("❓" . warning))))
   (advice-add #'+org-init-appearance-h :after #'+org-change-appearance-h))
 
 

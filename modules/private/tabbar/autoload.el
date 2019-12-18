@@ -3,33 +3,8 @@
 ;;;###autoload
 (defun +tabs-buffer-predicate (buffer)
   "TODO"
-  (or (memq buffer (window-parameter nil 'tabs-buffers))
+  (or (memq buffer (window-parameter nil 'tab-buffers))
       (eq buffer (doom-fallback-buffer))))
-
-;;;###autoload
-(defun +tabs-window-buffer-list ()
-  (cl-delete-if-not #'buffer-live-p (window-parameter nil 'tabs-buffers)))
-
-;;;###autoload
-(defun +tabs-buffer-groups ()
-  (list
-   (cond ((or (string-equal "*" (substring (buffer-name) 0 1))
-              (memq major-mode '(magit-process-mode
-                                 magit-status-mode
-                                 magit-diff-mode
-                                 magit-log-mode
-                                 magit-file-mode
-                                 magit-blob-mode
-                                 magit-blame-mode
-                                 )))
-          "Emacs")
-         ((derived-mode-p 'eshell-mode)
-          "EShell")
-	 ((derived-mode-p 'emacs-lisp-mode)
-	  "Elisp")
-         ((derived-mode-p 'dired-mode)
-          "Dired")
-         ((awesome-tab-get-group-name (current-buffer))))))
 
 ;;;###autoload
 (defun +tabs-hide-tab (x)
@@ -71,7 +46,7 @@
   "TODO"
   (interactive)
   (call-interactively
-   (cond ((cdr (window-parameter nil 'tabs-buffers))
+   (cond ((cdr (window-parameter nil 'tab-buffers))
           #'kill-current-buffer)
          ((fboundp '+workspace/close-window-or-workspace)
           #'+workspace/close-window-or-workspace)
@@ -83,7 +58,7 @@
 
 ;;;###autoload
 (defun +tabs-kill-current-buffer-a (&rest _)
-  (+tabs|remove-buffer))
+  (+tabs-remove-buffer-h))
 
 ;;;###autoload
 (defun +tabs-bury-buffer-a (orig-fn &rest args)
@@ -92,7 +67,7 @@
         (apply orig-fn args)
         (unless (eq b (current-buffer))
           (with-current-buffer b
-            (+tabs|remove-buffer))))
+            (+tabs-remove-buffer-h))))
     (apply orig-fn args)))
 
 ;;;###autoload
@@ -113,22 +88,22 @@
   (when (and awesome-tab-mode
              (doom-real-buffer-p (current-buffer)))
     (let* ((this-buf (current-buffer))
-           (buffers (window-parameter nil 'tabs-buffers)))
+           (buffers (window-parameter nil 'tab-buffers)))
       (cl-pushnew this-buf buffers)
-      (add-hook 'kill-buffer-hook #'+tabs|remove-buffer nil t)
-      (set-window-parameter nil 'tabs-buffers buffers))))
+      (add-hook 'kill-buffer-hook #'+tabs-remove-buffer-h nil t)
+      (set-window-parameter nil 'tab-buffers buffers))))
 
 ;;;###autoload
-(defun +tabs|remove-buffer ()
+(defun +tabs-remove-buffer-h ()
   (when awesome-tab-mode
     (set-window-parameter
      nil
-     'tabs-buffers (delete (current-buffer) (window-parameter nil 'tabs-buffers)))))
+     'tab-buffers (delete (current-buffer) (window-parameter nil 'tab-buffers)))))
 
 ;;;###autoload
 (defun +tabs-new-window-h ()
   (when awesome-tab-mode
-    (unless (window-parameter nil 'tabs-buffers)
+    (unless (window-parameter nil 'tab-buffers)
       (+tabs-add-buffer-h))))
 
 ;;;###autoload

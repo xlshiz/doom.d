@@ -88,3 +88,25 @@ current frame."
     (when (display-graphic-p)
       (+my/better-font))))
 
+;;;###autoload
+(defun +org-change-appearance-h ()
+  (set-pretty-symbols! 'org-mode
+    :alist
+    '(("[ ]" . ?☐)
+      ("[X]" . ?☑)
+      ("#+BEGIN_SRC" . ?✎)
+      ("#+END_SRC" . ?✐)
+      ("#+BEGIN_QUOTE" . ?»)
+      ("#+END_QUOTE" . ?«)))
+  (setq org-refile-targets '((org-default-notes-file . (:level . 1))
+                             (org-default-refile-file . (:level . 1))))
+  (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
+                            (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
+        org-todo-keyword-faces '(("HANGUP" . warning)
+                                 ("❓" . warning))))
+
+;;;###autoload
+(defun +org-change-keybinds-h ()
+  (map! :map org-mode-map
+	:localleader
+        "T"             #'org-show-todo-tree))

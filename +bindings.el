@@ -32,12 +32,6 @@
         :ni "M-j"       #'awesome-tab-ace-jump
         :ni "M-h"       #'awesome-tab-backward
         :ni "M-l"       #'awesome-tab-forward)
-      (:after org
-        :localleader
-        "t"             #'org-todo
-        "T"             #'org-show-todo-tree
-        "A"             #'org-archive-subtree
-        "a"             #'org-agenda)
       (:after evil-org
         :map evil-org-mode-map
         :ni "M-j"       #'awesome-tab-ace-jump
