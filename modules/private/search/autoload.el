@@ -47,7 +47,7 @@ If prefix ARG is set, prompt for a known project to search from."
   (let ((search-text
          (replace-regexp-in-string
           "\n" ""
-          (replace-regexp-in-string "^.*rg ./" "" (thing-at-point 'line)))))
+          (replace-regexp-in-string "^.*rg  \\[.*\\]: " "" (thing-at-point 'line)))))
     (ivy-quit-and-run (color-rg-search-input search-text default-directory))))
 
 ;;;###autoload
