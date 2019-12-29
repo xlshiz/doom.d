@@ -1,12 +1,18 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-;; Copy this file to ~/.doom.d/init.el or ~/.config/doom/init.el ('doom install'
-;; will do this for you). The `doom!' block below controls what modules are
-;; enabled and in what order they will be loaded. Remember to run 'doom refresh'
-;; after modifying it.
+;; This file controls what Doom modules are enabled and what order they load in.
+;; Remember to run 'doom sync' after modifying it!
+
+;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
+;;      documentation. There you'll find information about all of Doom's modules
+;;      and what flags they support.
+
+;; NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
+;;      'C-c g k' for non-vim users) to view its documentation. This works on
+;;      flags as well (those symbols that start with a plus).
 ;;
-;; More information about these modules (and what flags they support) can be
-;; found in modules/README.org.
+;;      Alternatively, press 'gd' (or 'C-c g d') on a module to browse its
+;;      directory (for easy access to its source code).
 
 (doom! :input
        ;;chinese
@@ -29,8 +35,9 @@
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
        ;;indent-guides     ; highlighted indent columns
-       modeline          ; snazzy, Atom-inspired modeline, plus API
-       ;;nav-flash         ; blink the current line after jumping
+       (modeline          ; snazzy, Atom-inspired modeline, plus API
+	 +light)
+       nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
        (popup            ; tame sudden yet inevitable temporary windows
@@ -58,7 +65,7 @@
        ;;parinfer          ; turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
-       ;;word-wrap         ; soft wrapping with language-aware indent
+       word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
        (dired            ; making dired pretty [functional]
@@ -119,7 +126,7 @@
        ;;faust             ; dsp, but you get to keep your soul
        ;;fsharp           ; ML stands for Microsoft's Language
        (go +lsp)           ; the hipster dialect
-       ;;(haskell +intero) ; a language that's lazier than I am
+       ;;(haskell +dante)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
        (java +lsp) ; the poster child for carpal tunnel syndrome
