@@ -137,7 +137,8 @@
        ;;factor
        ;;ledger            ; an accounting system in Emacs
        lua               ; one-based indices? one-based indices
-       markdown          ; writing docs for people to ignore
+       (markdown          ; writing docs for people to ignore
+	 +grip)
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
