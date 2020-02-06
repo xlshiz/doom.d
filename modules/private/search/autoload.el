@@ -249,4 +249,8 @@ If prefix ARG is set, prompt for a known project to search from."
     "N" 'color-rg-jump-next-file
     "P" 'color-rg-jump-prev-file)
 
+  (evil-collection-define-key nil 'color-rg-mode-edit-map
+    [remap evil-write] 'color-rg-apply-changed
+    [remap evil-quit] 'color-rg-quit)
+
   (evil-set-initial-state 'color-rg-mode 'normal))
