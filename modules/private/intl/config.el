@@ -58,7 +58,7 @@
   ;; 手动安装 posframe 包。
   (setq pyim-page-tooltip 'posframe)
   ;; 选词框显示5个候选词
-  (setq pyim-page-length 5)
+  (setq pyim-page-length 3)
   (setq pyim-dicts
 	`((:name "be" :file ,(concat doom-etc-dir "pyim/be.pyim"))))
   (setq pyim-dcache-directory (concat doom-cache-dir "pyim/dcache/"))
@@ -68,7 +68,14 @@
   (map! :map pyim-mode-map
    	[escape] #'pyim-quit-clear
 	"."      #'pyim-page-next-page
-	","      #'pyim-page-previous-page)
+	","      #'pyim-page-previous-page
+	";"     (lambda ()
+	          (interactive)
+	          (pyim-page-select-word-by-number 2))
+	"'"     (lambda ()
+	          (interactive)
+	          (pyim-page-select-word-by-number 3))
+	)
 )
 
 (use-package! liberime-config

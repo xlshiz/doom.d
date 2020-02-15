@@ -121,6 +121,9 @@
   (setq org-re-reveal-highlight-css (concat "file://" doom-etc-dir "present/highlight/styles/monokai.css"))
   (setq org-re-reveal-root (concat "file://" doom-etc-dir "present/reveal.js")))
 
+(after! rustic
+  (setq lsp-rust-server 'rust-analyzer))
+
 
 ;;; hook
 (add-hook! 'git-commit-setup-hook #'yas-git-commit-mode)
