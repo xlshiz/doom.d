@@ -38,6 +38,12 @@
         :ni "M-h"       #'awesome-tab-backward
         :ni "M-l"       #'awesome-tab-forward
         :ni "C-j"       #'ace-window)
+      (:after evil-markdown
+        :map evil-markdown-mode-map
+        :ni "M-j"       #'awesome-tab-ace-jump
+        :ni "M-h"       #'awesome-tab-backward
+        :ni "M-l"       #'awesome-tab-forward
+        :ni "C-j"       #'ace-window)
       (:after info
         :map Info-mode-map
         :ni "C-j"       #'ace-window)
