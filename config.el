@@ -77,19 +77,17 @@
   (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc)))
 
 (after! lsp-mode
-  (setq lsp-enable-symbol-highlighting nil))
+  (setq lsp-enable-symbol-highlighting nil
+        lsp-eldoc-enable-hover t))
 
 (after! lsp-ui
-  (setq lsp-enable-completion-at-point t
-        lsp-eldoc-enable-hover t
-        lsp-ui-sideline-enable nil
+  (setq lsp-ui-sideline-enable nil
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-doc-enable nil
         lsp-ui-doc-header nil
         lsp-ui-doc-include-signature nil
         lsp-ui-doc-background (doom-color 'base4)
         lsp-ui-doc-border (doom-color 'fg)
-        lsp-ui-flycheck-enable t
         lsp-ui-peek-force-fontify nil
         lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
   (map! :after lsp-ui-peek
@@ -121,7 +119,7 @@
   (setq org-reveal-root (concat "file://" doom-etc-dir "present/reveal.js")))
 
 (after! rustic
-  (setq lsp-rust-server 'rust-analyzer))
+  (setq rustic-lsp-server 'rust-analyzer))
 
 
 ;;; hook
