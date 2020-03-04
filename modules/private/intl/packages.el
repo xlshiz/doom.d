@@ -10,4 +10,4 @@
 (package! pangu-spacing)
 (package! pyim :pin "38bf9089dc")
 (when (featurep! +rime)
-  (package! liberime :recipe (:host gitlab :repo "liberime/liberime" :files ("CMakeLists.txt" "Makefile" "src" "liberime-config.el"))))
+  (package! liberime :recipe (:host github :repo "merrickluo/liberime" :files ("CMakeLists.txt" "Makefile" "src" "liberime-config.el"))))
