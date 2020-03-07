@@ -78,12 +78,14 @@
 	)
 )
 
-(use-package! liberime-config
+(use-package! liberime
   :when (featurep! +rime)
   :after pyim
   :init
   (setq liberime-user-data-dir (expand-file-name (concat doom-etc-dir "pyim/rime")))
   :config
+  (unless (liberime-get-module-file)
+    (liberime-build))
   (liberime-select-schema "double_pinyin_flypy")
   (setq pyim-default-scheme 'rime))
 

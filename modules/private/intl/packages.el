@@ -11,5 +11,5 @@
 (package! pyim :pin "38bf9089dc")
 (when (featurep! +rime)
   (package! liberime
-    :pin "6a75709aa5"
-    :recipe (:host github :repo "merrickluo/liberime" :files ("CMakeLists.txt" "Makefile" "src" "liberime-config.el"))))
+    :pin "4c3032fd54"
+    :recipe (:host github :repo "merrickluo/liberime" :files ("CMakeLists.txt" "Makefile" "src" "liberime-config.el" "liberime.el"))))
