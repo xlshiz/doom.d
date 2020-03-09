@@ -8,8 +8,8 @@
 (package! insert-translated-name :recipe (:host github :repo "manateelazycat/insert-translated-name"))
 (package! pinyinlib.el :recipe (:host github :repo "xlshiz/pinyinlib.el"))
 (package! pangu-spacing)
-(package! pyim :pin "e2582b9474")
+(package! pyim :pin "d84b616ba2")
 (when (featurep! +rime)
   (package! liberime
-    :pin "4c3032fd54"
-    :recipe (:host github :repo "merrickluo/liberime" :files ("CMakeLists.txt" "Makefile" "src" "liberime-config.el" "liberime.el"))))
+    :pin "8ce46228b886b97ec15ed461b2961589802defb5"
+    :recipe (:host github :repo "merrickluo/liberime" :files ("CMakeLists.txt" "Makefile" "src" "liberime*.el" "liberime.el"))))
