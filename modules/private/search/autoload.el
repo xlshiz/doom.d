@@ -111,16 +111,16 @@ If prefix ARG is set, prompt for a known project to search from."
 
 ;;;###autoload
 (defun snail-matcher (regexp candidates)
-  "snail matcher. # for recentf, > for projectifle, ? for buffer"
+  "snail matcher. ? for recentf, > for projectifle, # for buffer"
   (let (real-regexp
         snail-type)
     (cond ((= (length regexp) 0)
            (setq real-regexp regexp
                  snail-type nil))
-          ((equal (substring regexp 0 1) "?")
+          ((equal (substring regexp 0 1) "#")
            (setq real-regexp (substring regexp 1)
                  snail-type 'buffer))
-          ((and (> (length regexp) 8) (equal (substring regexp 0 8) "\\(?\\).*?"))
+          ((and (> (length regexp) 8) (equal (substring regexp 0 8) "\\(#\\).*?"))
            (setq real-regexp (substring regexp 8)
                  snail-type 'buffer))
           ((equal (substring regexp 0 1) ">")
@@ -129,10 +129,10 @@ If prefix ARG is set, prompt for a known project to search from."
           ((and (> (length regexp) 8) (equal (substring regexp 0 8) "\\(>\\).*?"))
            (setq real-regexp (substring regexp 8)
                  snail-type 'project))
-          ((equal (substring regexp 0 1) "#")
+          ((equal (substring regexp 0 1) "?")
            (setq real-regexp (substring regexp 1)
                  snail-type 'recent))
-          ((and (> (length regexp) 8) (equal (substring regexp 0 8) "\\(#\\).*?"))
+          ((and (> (length regexp) 8) (equal (substring regexp 0 8) "\\(?\\).*?"))
            (setq real-regexp (substring regexp 8)
                  snail-type 'recent))
           ((and (> (length regexp) 2) (string-match "\\\\[#?>]" (substring regexp 0 2)))
@@ -158,11 +158,11 @@ If prefix ARG is set, prompt for a known project to search from."
   "Mix the `recentf' and `file`"
   (let ((snail-type (get-text-property 0 'snail-type candidate)))
     (cond ((eq snail-type 'buffer)
-           "?|")
+           "#-")
           ((eq snail-type 'project)
            ">>")
           ((eq snail-type 'recent)
-           "#-"))))
+           "?|"))))
 
 ;;;###autoload
 (defun +my/color-rg-jump-next-keyword ()
