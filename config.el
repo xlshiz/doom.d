@@ -63,9 +63,9 @@
 
 (after! company
   (map! :map company-active-map
-        "RET"       nil
-        [return]    nil
-        [C-return]  #'company-complete-selection)
+        "TAB"       #'+my/smarter-yas-expand-next-field-complete
+        [tab]       #'+my/smarter-yas-expand-next-field-complete
+        [C-return]  #'+my/return-cancel-completion)
   (setq company-minimum-prefix-length 2
         company-quickhelp-delay nil
         company-idle-delay 0.2
@@ -99,8 +99,8 @@
 
 (after! ace-window
   (custom-set-faces!
-   '(aw-leading-char-face :inherit font-lock-keyword-face :bold t :height 3.0)
-   '(aw-mode-line-face :inherit mode-line-emphasis :bold t)))
+    '(aw-leading-char-face :inherit font-lock-keyword-face :bold t :height 3.0)
+    '(aw-mode-line-face :inherit mode-line-emphasis :bold t)))
 
 (after! evil-escape
   (setq evil-escape-key-sequence ",."))

@@ -110,3 +110,27 @@ current frame."
   (map! :map org-mode-map
 	:localleader
         "T"             #'org-show-todo-tree))
+
+;;;###autoload
+(defun +my/smarter-yas-expand-next-field-complete ()
+  "Try to `yas-expand' and `yas-next-field' at current cursor position.
+If failed try to complete the common part with `company-complete-common'"
+  (interactive)
+  (if yas-minor-mode
+    (let ((old-point (point))
+           (old-tick (buffer-chars-modified-tick)))
+      (yas-expand)
+      (when (and (eq old-point (point))
+              (eq old-tick (buffer-chars-modified-tick)))
+        (ignore-errors (yas-next-field))
+        (when (and (eq old-point (point))
+                (eq old-tick (buffer-chars-modified-tick)))
+          (company-complete-common))))
+    (company-complete-common)))
+
+;;;###autoload
+(defun +my/return-cancel-completion ()
+  "Cancel completion and return."
+  (interactive)
+  (company-abort)
+  (newline nil t))
