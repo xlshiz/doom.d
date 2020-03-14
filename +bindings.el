@@ -55,6 +55,7 @@
           :i "C-f"      #'company-files
           :i "C-]"      #'company-etags
           :i "s"        #'company-ispell
+          :i "t"        #'company-tabnine
           :i "C-s"      #'company-yasnippet
           :i "C-o"      #'company-capf
           :i "C-n"      #'+company/dabbrev
