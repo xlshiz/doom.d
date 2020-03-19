@@ -8,7 +8,7 @@
 (package! insert-translated-name :recipe (:host github :repo "manateelazycat/insert-translated-name"))
 (package! pinyinlib.el :recipe (:host github :repo "xlshiz/pinyinlib.el"))
 (package! pangu-spacing)
-(package! pyim :pin "1bd2b354d14860dceda54b02c080f42bf1db8c1c")
+(package! pyim :pin "63b7be9c1c3816e610eb7f9b4503da25f70aca58")
 (when (featurep! +rime)
   (package! liberime
     :pin "8c84d5daa2fb1d73f7e71c3ae498bd528c2d280e"
