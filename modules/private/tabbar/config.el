@@ -8,6 +8,8 @@
   (setq awesome-tab-cycle-scope 'tabs)
   (setq awesome-tab-display-sticky-function-name nil)
   (setq awesome-tab-ace-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (setq awesome-tab-dark-active-bar-color "#008b8b"
+	awesome-tab-light-active-bar-color "#55ced1")
   :config
   (defun +tabs-buffer-groups-fn ()
     (list
