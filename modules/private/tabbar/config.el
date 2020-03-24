@@ -4,12 +4,15 @@
   :defer 0.5
   :init
   (setq awesome-tab-display-icon t)
-  (setq awesome-tab-height 100)
+  (setq awesome-tab-height 140)
   (setq awesome-tab-cycle-scope 'tabs)
   (setq awesome-tab-display-sticky-function-name nil)
   (setq awesome-tab-ace-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (setq awesome-tab-dark-active-bar-color "#008b8b"
-	awesome-tab-light-active-bar-color "#55ced1")
+	awesome-tab-dark-unselected-blend 0.8)
+  (setq awesome-tab-light-select-foreground-color "#000000"
+	awesome-tab-light-unselect-foreground-color "#000000"
+	awesome-tab-light-unselected-blend 0.8)
   :config
   (defun +tabs-buffer-groups-fn ()
     (list
