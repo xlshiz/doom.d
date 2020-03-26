@@ -8,11 +8,12 @@
   (setq awesome-tab-cycle-scope 'tabs)
   (setq awesome-tab-display-sticky-function-name nil)
   (setq awesome-tab-ace-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  (setq awesome-tab-dark-active-bar-color "#008b8b"
-	awesome-tab-dark-unselected-blend 0.8)
-  (setq awesome-tab-light-select-foreground-color "#000000"
-	awesome-tab-light-unselect-foreground-color "#000000"
-	awesome-tab-light-unselected-blend 0.8)
+  (setq awesome-tab-dark-unselected-blend 0.9
+	awesome-tab-dark-selected-foreground-color "#55ced1"
+	awesome-tab-dark-unselected-foreground-color "#AAAAAA")
+  (setq awesome-tab-light-unselected-blend 0.9
+	awesome-tab-light-selected-foreground-color "#44AD8E"
+	awesome-tab-light-unselected-foreground-color "#555555")
   :config
   (defun +tabs-buffer-groups-fn ()
     (list
