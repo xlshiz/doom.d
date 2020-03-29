@@ -67,7 +67,7 @@
         [tab]       #'+my/smarter-yas-expand-next-field-complete
         [C-return]  #'+my/return-cancel-completion)
   (setq company-minimum-prefix-length 2
-        company-quickhelp-delay nil
+        company-box-doc-enable nil
         company-idle-delay 0.2
         company-show-numbers t
         company-global-modes '(not org-mode eshell-mode comint-mode erc-mode message-mode help-mode gud-mode)))
