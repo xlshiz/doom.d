@@ -59,6 +59,7 @@
         (string-prefix-p " *transient*" name)
         (string-prefix-p "*helpful " name)
         (string-prefix-p "*Outline " name)
+        (string-prefix-p "*NOX (" name)
 
         (and (string-prefix-p "magit" name)
           (not (file-name-extension name)))
