@@ -38,7 +38,7 @@
 
 (use-package! org
   :init
-  (setq org-directory "~/workdir/note/org/"
+  (setq org-directory "~/workdir/docs/org/"
         org-default-refile-file (concat org-directory "/refile.org")
         +org-capture-notes-file "todo.org"
         org-agenda-files (list (concat org-directory +org-capture-notes-file)))
