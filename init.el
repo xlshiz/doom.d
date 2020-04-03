@@ -142,7 +142,6 @@
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
-	+roam
         +dragndrop       ; drag & drop files/images into org buffers
         +jupyter        ; ipython/jupyter support for babel
         +pandoc          ; export-with-pandoc support
