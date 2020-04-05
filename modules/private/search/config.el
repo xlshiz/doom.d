@@ -5,12 +5,12 @@
 
 (use-package! color-rg
   :commands (color-rg-search-input color-rg-search-symbol
-             color-rg-search-symbol-in-current-file color-rg-search-project)
+              color-rg-search-symbol-in-current-file color-rg-search-project)
   :init
   (define-key! swiper-map "<M-return>" #'+my/swiper-to-color-rg)
   (define-key! counsel-ag-map "<M-return>" #'+my/counsel-to-color-rg)
   (defconst evil-collection-color-rg-maps '(color-rg-mode-map
-					     color-rg-mode-edit-map))
+                                             color-rg-mode-edit-map))
   :config
   (advice-add #'color-rg-update-header-line :override #'ignore)
   (set-popup-rule! "^\\*color-rg\*"
@@ -52,10 +52,12 @@
   (evil-collection-color-rg-setup))
 
 (after! ivy-rich
+  (ivy-rich-mode -1)
   (setq ivy-rich-display-transformers-list
-        (plist-put ivy-rich-display-transformers-list
-                   'snail
-                   '(:columns
-                     ((+snail-rich-buffer-tag (:face success))
-                      (+ivy-rich-buffer-icon)
-                      (ivy-rich-candidate (:width 0.8)))))))
+    (plist-put ivy-rich-display-transformers-list
+      'snail
+      '(:columns
+         ((+snail-rich-buffer-tag (:face success))
+           (+ivy-rich-buffer-icon)
+           (ivy-rich-candidate (:width 0.8))))))
+  (ivy-rich-mode 1))
