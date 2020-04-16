@@ -4,6 +4,7 @@
   :init
   (defalias 'lsp! #'nox-ensure)
   (defalias 'lsp-rename #'nox-rename)
+  (setq nox-optimization-p nil)
   :config
   (delete '((js-mode typescript-mode) . ("javascript-typescript-stdio")) nox-server-programs)
   (add-to-list 'nox-server-programs '((js-mode typescript-mode) . ("typescript-language-server" "--stdio")))
