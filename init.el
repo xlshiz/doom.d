@@ -20,7 +20,7 @@
 
        :completion
        (company           ; the ultimate code completion backend
-	 +childframe)
+         +childframe)
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        (ivy               ; a search engine for love and life
@@ -143,7 +143,7 @@
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
         +dragndrop       ; drag & drop files/images into org buffers
-        +jupyter        ; ipython/jupyter support for babel
+        +ipython        ; ipython/jupyter support for babel
         +pandoc          ; export-with-pandoc support
         +pomodoro        ; be fruitful with the tomato technique
         +present)        ; using org-mode for presentations
@@ -152,8 +152,8 @@
        plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
       (python            ; beautiful is better than ugly
-	+pyenv
-	+lsp)
+        +pyenv
+        +lsp)
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        rest              ; Emacs as a REST client
@@ -188,6 +188,7 @@
        (intl +rime)
        ; lsp
        cc
+       ; vue
        search
        shell
        tabbar

@@ -8,6 +8,7 @@
   :config
   (delete '((js-mode typescript-mode) . ("javascript-typescript-stdio")) nox-server-programs)
   (add-to-list 'nox-server-programs '((js-mode typescript-mode) . ("typescript-language-server" "--stdio")))
+  (add-to-list 'nox-server-programs '((vue-mode) . ("vls")))
   (set-lookup-handlers! 'nox--managed-mode :async t
     :documentation #'nox-show-doc
     :definition #'xref-find-definitions
