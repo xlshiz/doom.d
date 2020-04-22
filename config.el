@@ -78,8 +78,8 @@
 
 (after! lsp-mode
   (setq lsp-enable-symbol-highlighting nil
-	lsp-vetur-validation-template nil
-        lsp-eldoc-enable-hover t))
+    lsp-vetur-validation-template nil
+    lsp-eldoc-enable-hover t))
 
 (after! lsp-ui
   (setq lsp-ui-sideline-enable nil
