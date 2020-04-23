@@ -1,7 +1,8 @@
 ;;; private/tabs/config.el -*- lexical-binding: t; -*-
 
 (use-package! awesome-tab
-  :defer 0.5
+  ; :defer 0.5
+  :after-call after-find-file dired-initial-position-hook
   :init
   (setq awesome-tab-display-icon t)
   (setq awesome-tab-height 140)
@@ -55,6 +56,7 @@
         (string-prefix-p "*edit-indirect" name)
         (string-prefix-p "*shell-pop" name)
         (string-prefix-p "*MULTI-TERM-DEDICATED*" name)
+        (string-prefix-p "*doom:vterm-popup:" name)
         (string-prefix-p "*Ilist*" name)
         (string-prefix-p " *transient*" name)
         (string-prefix-p "*helpful " name)

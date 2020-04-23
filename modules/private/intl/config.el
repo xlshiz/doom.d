@@ -1,15 +1,18 @@
 ;;; private/intl/config.el -*- lexical-binding: t; -*-
 
 (use-package! fcitx
-  :config (fcitx-evil-turn-on)
+  :config
+  (fcitx-default-setup)
 )
 
 (use-package! pinyinlib
+  :commands (pinyinlib-build-regexp-string pinyinlib-build-regexp-char)
   :init
   (setq pinyinlib--simplified-char-table 'pinyinlib--simplified-xiaohe)
 )
 
 (use-package! ace-pinyin
+  :defer 1
   :config
   (progn
     (setq ace-pinyin-use-avy t)
@@ -17,6 +20,7 @@
 )
 
 (use-package! evil-find-char-pinyin
+  :defer 1
   :config
   (evil-find-char-pinyin-mode +1)
   (evil-find-char-pinyin-toggle-snipe-integration t)
@@ -30,14 +34,16 @@
                                            insert-translated-name-insert-with-line insert-translated-name-insert-with-camel))
 
 (use-package! pangu-spacing
+  :defer t
   :config (progn (global-pangu-spacing-mode 1))
 )
 
 (use-package! pyim
   :defer t
   :commands (pyim-forward-word pyim-backward-word)
-  :config
+  :init
   (setq default-input-method "pyim")
+  :config
   ;; 使用小鹤双拼
   (setq pyim-default-scheme 'xiaohe-shuangpin)
   ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)

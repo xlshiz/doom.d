@@ -1,6 +1,7 @@
 ;;; private/lsp/config.el -*- lexical-binding: t; -*-
 
 (use-package! nox
+  :defer t
   :init
   (defalias 'lsp! #'nox-ensure)
   (defalias 'lsp-rename #'nox-rename)

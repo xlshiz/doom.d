@@ -29,6 +29,7 @@
   :commands (paradox-list-packages))
 
 (use-package! imenu-list
+  :defer t
   :config
   (setq imenu-list-focus-after-activation t
         imenu-list-idle-update-delay 0.5
@@ -37,6 +38,7 @@
     :side 'right :size 35 :quit nil :select nil :ttl 0))
 
 (use-package! org
+  :defer t
   :init
   (setq org-directory "~/workdir/docs/org/"
         org-default-refile-file (concat org-directory "/refile.org")
