@@ -5,10 +5,10 @@
 ;;; set
 (setq doom-theme 'doom-nord-light)
 
-(setq doom-font (font-spec :family "Iosevka Fixed ss04" :size 18))
-(setq doom-unicode-font (font-spec :family "Sarasa Mono SC"))
-; (setq doom-unicode-font (font-spec :family "文泉驿等宽正黑"))
-; (setq doom-unicode-font (font-spec :family "思源黑体"))
+;; (setq doom-font (font-spec :family "Iosevka Fixed ss04" :size 18))
+;; (setq doom-unicode-font (font-spec :family "Sarasa Fixed SC"))
+(setq doom-font (font-spec :family "M+ 1m" :size 18))
+(setq doom-unicode-font (font-spec :family "思源黑体"))
 
 (setq display-line-numbers-type nil)
 

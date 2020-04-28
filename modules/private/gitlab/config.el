@@ -1,6 +1,9 @@
 ;;; private/gitlab/config.el -*- lexical-binding: t; -*-
 
 (use-package! forge
+  :when (featurep! +forge)
+  :after-call magit-status
+  :commands forge-create-pullreq forge-create-issue
   :init
   (push (expand-file-name "forge/authinfo" doom-etc-dir) auth-sources)
   :config
