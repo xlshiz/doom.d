@@ -189,7 +189,7 @@
        (intl +rime)
        ; lsp
        cc
-       vue
+       (vue +lsp)
        search
        shell
        tabbar
