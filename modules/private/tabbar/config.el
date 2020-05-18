@@ -1,8 +1,7 @@
 ;;; private/tabs/config.el -*- lexical-binding: t; -*-
 
 (use-package! awesome-tab
-  ; :defer 0.5
-  :after-call after-find-file dired-initial-position-hook
+  :hook (doom-first-file . awesome-tab-mode)
   :init
   (setq awesome-tab-display-icon t)
   (setq awesome-tab-height 140)
@@ -93,5 +92,4 @@
     ("g" awesome-tab-counsel-switch-group)
     ("C-k" kill-current-buffer)
     ("C-S-k" awesome-tab-kill-other-buffers-in-current-group)
-    ("q" nil "quit"))
-  (awesome-tab-mode))
+    ("q" nil "quit")))
