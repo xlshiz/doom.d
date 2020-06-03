@@ -75,8 +75,7 @@
         company-global-modes '(not org-mode eshell-mode comint-mode erc-mode message-mode help-mode gud-mode)))
 
 (after! flycheck
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc)))
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
 
 (after! lsp-mode
   (setq lsp-enable-symbol-highlighting nil
