@@ -76,7 +76,8 @@
         :desc "Kill buffer"                "d"   #'kill-current-buffer)
 
       (:prefix-map ("f" . "file")
-        :desc "Recursive find file"        "."   #'+default/find-file-under-here
+        :desc "Find file"                  "."   #'find-file
+        :desc "Recursive find file"        "f"   #'+default/find-file-under-here
         :desc "Save files"                 "s"   #'save-buffer)
 
       (:prefix-map ("j" . "jump")
