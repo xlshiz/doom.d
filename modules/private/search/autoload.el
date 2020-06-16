@@ -56,19 +56,22 @@ If prefix ARG is set, prompt for a known project to search from."
   (unless (file-equal-p default-directory "~")
     (mapc (lambda (x)
             (put-text-property 0 (length x)
-                               'snail-type 'project x)
-            x)
+                               'snail-type 'project x))
           (mapcar #'substring-no-properties (if (doom-project-root)
                                                 (projectile-current-project-files)
                                               (counsel--find-return-list counsel-file-jump-args))))))
 
 ;;;###autoload
 (defun snail--buffer-list (&rest _)
-  (mapc (lambda (x)
-          (put-text-property 0 (length x)
-                             'snail-type 'buffer x)
-          x)
-        (mapcar #'substring-no-properties (ivy--buffer-list ""))))
+  (let ((filter-func
+         (if (featurep! :ui workspaces)
+             #'+workspace-contains-buffer-p
+           (lambda (x) (not (string= (substring x 0 1) "*"))))))
+    (mapc (lambda (x)
+            (put-text-property 0 (length x)
+                               'snail-type 'buffer x))
+          (mapcar #'substring-no-properties
+                  (cl-remove-if-not filter-func (ivy--buffer-list ""))))))
 
 ;;;###autoload
 (defun snail--recentf-list (&rest _)
@@ -76,8 +79,7 @@ If prefix ARG is set, prompt for a known project to search from."
   (recentf-mode 1)
   (mapc (lambda (x)
           (put-text-property 0 (length x)
-                             'snail-type 'recent x)
-          x)
+                             'snail-type 'recent x))
         (mapcar #'substring-no-properties recentf-list)))
 
 ;;;###autoload
