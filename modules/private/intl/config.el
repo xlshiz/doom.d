@@ -19,12 +19,13 @@
     (ace-pinyin-global-mode t))
 )
 
-(use-package! evil-find-char-pinyin
+(use-package! evil-pinyin
   :defer 1
+  :init
+  (setq evil-pinyin-scheme 'simplified-xiaohe-all)
   :config
-  (evil-find-char-pinyin-mode +1)
-  (evil-find-char-pinyin-toggle-snipe-integration t)
-)
+  (setq evil-pinyin-with-search-rule 'exclam)
+  (global-evil-pinyin-mode))
 
 (use-package! company-english-helper
   :commands (toggle-company-english-helper company-english-helper-search))
