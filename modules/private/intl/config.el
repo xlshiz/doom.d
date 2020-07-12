@@ -23,8 +23,9 @@
   :defer 1
   :init
   (setq evil-pinyin-scheme 'simplified-xiaohe-all)
+  (setq evil-pinyin-with-search-rule 'custom)
+  (setq evil-pinyin-start-pattern "!")
   :config
-  (setq evil-pinyin-with-search-rule 'exclam)
   (global-evil-pinyin-mode))
 
 (use-package! company-english-helper
