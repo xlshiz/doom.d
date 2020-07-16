@@ -6,20 +6,45 @@
           (not (and (listp company-backend) (memq 'company-tabnine company-backend))))
       candidates
     (let ((candidates-table (make-hash-table :test #'equal))
-          candidates-1
-          candidates-2)
+          (candidates-3-count 0)
+          candidates-other
+          candidates-tabnine
+          candidates-3
+          candidates-3-merge
+          candidates-tabnine-uni)
       (dolist (candidate candidates)
         (if (eq (get-text-property 0 'company-backend candidate)
                 'company-tabnine)
-            (unless (gethash candidate candidates-table)
-              (push candidate candidates-2))
-          (push candidate candidates-1)
+            (if (> candidates-3-count 2)
+                (push candidate candidates-tabnine)
+              (push candidate candidates-3)
+              (setq candidates-3-count (1+ candidates-3-count)))
+          (push candidate candidates-other)
           (puthash candidate t candidates-table)))
-      (setq candidates-1 (nreverse candidates-1))
-      (setq candidates-2 (nreverse candidates-2))
-      (nconc (seq-take candidates-2 3)
-             candidates-1
-             (seq-drop candidates-2 3)))))
+      ;; (message "tabnine %s" candidates-tabnine)
+      ;; (message "other %s" candidates-other)
+      ;; (message "3 %s" candidates-3)
+      (dolist (candidate candidates-3)
+        (if (gethash candidate candidates-table)
+            (let ((find-flag nil)
+                  new-other)
+              (dolist (elt (nreverse candidates-other))
+                (if (not (and (eq find-flag nil) (string= candidate elt)))
+                    (push elt new-other)
+                  (push elt candidates-3-merge)
+                  (setq find-flag t)))
+              (setq candidates-other new-other))
+          (push candidate candidates-3-merge)))
+      (dolist (candidate candidates-tabnine)
+        (unless (gethash candidate candidates-table)
+          (push candidate candidates-tabnine-uni)))
+      (setq candidates-other (nreverse candidates-other))
+      ;; (message "3-merge %s" candidates-3-merge)
+      ;; (message "other %s" candidates-other)
+      ;; (message "tabnine-uni %s" candidates-tabnine-uni)
+      (nconc candidates-3-merge
+             candidates-other
+             candidates-tabnine-uni))))
 
 ;;;###autoload
 (defun +my|add-tabnine-backend ()
