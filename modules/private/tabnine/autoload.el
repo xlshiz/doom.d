@@ -6,43 +6,43 @@
           (not (and (listp company-backend) (memq 'company-tabnine company-backend))))
       candidates
     (let ((candidates-table (make-hash-table :test #'equal))
-          (candidates-3-count 0)
+          (candidates-N-count 0)
           candidates-other
           candidates-tabnine
-          candidates-3
-          candidates-3-merge
+          candidates-N
+          candidates-N-merge
           candidates-tabnine-uni)
       (dolist (candidate candidates)
         (if (eq (get-text-property 0 'company-backend candidate)
                 'company-tabnine)
-            (if (> candidates-3-count 2)
+            (if (> candidates-N-count 2)
                 (push candidate candidates-tabnine)
-              (push candidate candidates-3)
-              (setq candidates-3-count (1+ candidates-3-count)))
+              (push candidate candidates-N)
+              (setq candidates-N-count (1+ candidates-N-count)))
           (push candidate candidates-other)
           (puthash candidate t candidates-table)))
       ;; (message "tabnine %s" candidates-tabnine)
       ;; (message "other %s" candidates-other)
-      ;; (message "3 %s" candidates-3)
-      (dolist (candidate candidates-3)
+      ;; (message "3 %s" candidates-N)
+      (dolist (candidate candidates-N)
         (if (gethash candidate candidates-table)
             (let ((find-flag nil)
                   new-other)
               (dolist (elt (nreverse candidates-other))
                 (if (not (and (eq find-flag nil) (string= candidate elt)))
                     (push elt new-other)
-                  (push elt candidates-3-merge)
+                  (push elt candidates-N-merge)
                   (setq find-flag t)))
               (setq candidates-other new-other))
-          (push candidate candidates-3-merge)))
+          (push candidate candidates-N-merge)))
       (dolist (candidate candidates-tabnine)
         (unless (gethash candidate candidates-table)
           (push candidate candidates-tabnine-uni)))
       (setq candidates-other (nreverse candidates-other))
-      ;; (message "3-merge %s" candidates-3-merge)
+      ;; (message "3-merge %s" candidates-N-merge)
       ;; (message "other %s" candidates-other)
       ;; (message "tabnine-uni %s" candidates-tabnine-uni)
-      (nconc candidates-3-merge
+      (nconc candidates-N-merge
              candidates-other
              candidates-tabnine-uni))))
 
