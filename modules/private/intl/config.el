@@ -93,7 +93,7 @@
   (setq liberime-user-data-dir (expand-file-name (concat doom-etc-dir "pyim/rime")))
   (setq liberime-auto-build t)
   :config
-  (liberime-select-schema "double_pinyin_flypy")
+  (liberime-select-schema "pinyin_cau_flypy")
   (setq pyim-default-scheme 'rime))
 
 (after! ivy
