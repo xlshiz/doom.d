@@ -202,7 +202,7 @@ If prefix ARG is set, prompt for a known project to search from."
 
 ;;;###autoload
 (defun evil-collection-color-rg-setup ()
-  "Set up `evil' bindings for `ivy-mode'."
+  "Set up `evil' bindings for `color-rg'."
   (evil-collection-define-key 'normal 'color-rg-mode-map
     (kbd "M-o") 'color-rg-hydra/body
     (kbd "RET") 'color-rg-open-file

@@ -51,6 +51,29 @@
     ("q" nil "quit"))
   (evil-collection-color-rg-setup))
 
+(use-package! snails
+  :when (featurep! +snails)
+  :commands (snails)
+  :config
+  (setq snails-default-backends '(snails-backend-buffer snails-backend-projectile  snails-backend-recentf))
+  (setq snails-backend-buffer-blacklist (append '( " *snails tips*"  "*" " *") snails-backend-buffer-blacklist))
+  (setq snails-prefix-backends
+    '(("#" '(snails-backend-buffer))
+      (">" '(snails-backend-projectile snails-backend-fd snails-backend-mdfind snails-backend-everything))
+      ("?" '(snails-backend-recentf))
+      ("@" '(snails-backend-imenu))
+      ("$" '(snails-backend-current-buffer))
+      ("!" '(snails-backend-rg))
+  ))
+  (map! :map snails-mode-map
+	"C-j"	#'snails-select-next-item
+	"C-k"	#'snails-select-prev-item
+	"M-n"	#'snails-select-next-backend
+	"M-p"	#'snails-select-prev-backend
+	"<escape>"	#'snails-quit)
+  (evil-set-initial-state 'snails-mode 'emacs))
+
+
 (after! ivy-rich
   (ivy-rich-mode -1)
   (setq ivy-rich-display-transformers-list

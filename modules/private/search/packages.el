@@ -3,4 +3,5 @@
 
 (package! symbol-overlay)
 (package! color-rg :recipe (:host github :repo "manateelazycat/color-rg" :no-byte-compile t))
-;; (package! snails :recipe (:host github :repo "manateelazycat/snails"))
+(when (featurep! +snails)
+  (package! snails :recipe (:host github :repo "manateelazycat/snails" :files ("*.el" "*.sh") :no-byte-compile t)))

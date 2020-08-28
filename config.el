@@ -48,6 +48,11 @@
   :preface
   (advice-add #'+org-init-appearance-h :after #'+org-change-appearance-h))
 
+(use-package! ox-re-reveal
+  :after ox
+  :config
+  (setq org-re-reveal-external-plugins `((chalkboard . ,(concat "{src: '" doom-etc-dir "present/reveal.js-plugins/chalkboard/plugin.js'}"))))
+  (setq org-re-reveal-extra-css (concat "file://" doom-etc-dir "present/local.css")))
 
 ;;; after
 (after! org
@@ -115,10 +120,6 @@
 (after! dumb-jump
   (setq dumb-jump-prefer-searcher "rg"))
 
-(after! (ox-re-reveal ox)
-  (setq org-re-reveal-external-plugins '((chalkboard . "{src: '%s../reveal.js-plugins/chalkboard/chalkboard.js'}")))
-  (setq org-re-reveal-extra-css (concat "file://" doom-etc-dir "present/local.css"))
-  (setq org-re-reveal-root (concat "file://" doom-etc-dir "present/reveal.js")))
 
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
