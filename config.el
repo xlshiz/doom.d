@@ -120,9 +120,11 @@
 (after! dumb-jump
   (setq dumb-jump-prefer-searcher "rg"))
 
-
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
+
+(after! dash-docs
+  (setq dash-docs-docsets-path "~/.local/share/Zeal/Zeal/docsets"))
 
 
 ;;; hook
