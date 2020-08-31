@@ -67,8 +67,8 @@
       :desc "Run terminal"                 "'"   #'+vterm/here
       :desc "NULL"                         [tab] nil
       :desc "Alternate buffer"             "TAB" #'+my/alternate-buffer-in-persp
-      :desc "Find buffer and files"        "e"   #'snail
-      :desc "Find everything"               "a"   #'snails
+      :desc "Find buffer and files"        "a"   #'snail
+      :desc "Find everything"              "e"   #'snails
 
       (:prefix-map ("b" . "buffer")
         :desc "Alternate buffer"           "TAB" #'+my/alternate-buffer-in-persp

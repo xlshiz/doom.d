@@ -51,7 +51,6 @@
 (use-package! ox-re-reveal
   :after ox
   :config
-  (setq org-re-reveal-external-plugins `((chalkboard . ,(concat "{src: '" doom-etc-dir "present/reveal.js-plugins/chalkboard/plugin.js'}"))))
   (setq org-re-reveal-extra-css (concat "file://" doom-etc-dir "present/local.css")))
 
 ;;; after

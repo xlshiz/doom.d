@@ -66,12 +66,13 @@
       ("!" '(snails-backend-rg))
   ))
   (map! :map snails-mode-map
-	"C-j"	#'snails-select-next-item
-	"C-k"	#'snails-select-prev-item
-	"M-n"	#'snails-select-next-backend
-	"M-p"	#'snails-select-prev-backend
-	"<escape>"	#'snails-quit)
-  (evil-set-initial-state 'snails-mode 'emacs))
+	:i "C-j"	#'snails-select-next-item
+	:i "C-k"	#'snails-select-prev-item
+	:i "M-n"	#'snails-select-next-backend
+	:i "M-p"	#'snails-select-prev-backend
+	:i "C-g"	#'snails-quit
+	:i "<escape>"	#'snails-quit)
+  (evil-set-initial-state 'snails-mode 'insert))
 
 
 (after! ivy-rich
