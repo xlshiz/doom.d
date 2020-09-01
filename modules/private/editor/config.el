@@ -1,0 +1,22 @@
+;; -*- lexical-binding: t; no-byte-compile: t; -*-
+;;; private/editer/config.el
+
+(use-package! edit-indiect
+  :defer t
+  :init
+  (set-popup-rules! '(("^\\*edit-indirect " :size 0.3 :quit nil :select t :ttl nil))))
+
+(use-package! imenu-list
+  :defer t
+  :config
+  (setq imenu-list-focus-after-activation t
+        imenu-list-idle-update-delay 0.5
+        imenu-list-auto-resize t)
+  (set-popup-rule! "^\\*Ilist"
+    :side 'right :size 35 :quit nil :select nil :ttl 0))
+
+(use-package! avy-thing-edit
+  :defer t
+  :config
+  (setq avy-thing-edit-jump-command #'evil-avy-goto-char-timer))
+

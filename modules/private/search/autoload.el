@@ -156,6 +156,17 @@ If prefix ARG is set, prompt for a known project to search from."
             :caller 'snail))
 
 ;;;###autoload
+(defun +snail-colorfull-candidate (var)
+  "Propertize VAR if it's a buffer visiting a file."
+  (let ((snail-type (get-text-property 0 'snail-type var)))
+    (cond ((eq snail-type 'buffer)
+           (ivy-append-face var '+snail-buffer-face))
+          ((eq snail-type 'project)
+           (ivy-append-face var '+snail-project-face))
+          ((eq snail-type 'recent)
+           (ivy-append-face var '+snail-recent-face)))))
+
+;;;###autoload
 (defun +snail-rich-buffer-tag (candidate)
   "Mix the `recentf' and `file`"
   (let ((snail-type (get-text-property 0 'snail-type candidate)))

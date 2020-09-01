@@ -58,30 +58,34 @@
   (setq snails-default-backends '(snails-backend-buffer snails-backend-projectile  snails-backend-recentf))
   (setq snails-backend-buffer-blacklist (append '( " *snails tips*"  "*" " *") snails-backend-buffer-blacklist))
   (setq snails-prefix-backends
-    '(("#" '(snails-backend-buffer))
-      (">" '(snails-backend-projectile snails-backend-fd snails-backend-mdfind snails-backend-everything))
-      ("?" '(snails-backend-recentf))
-      ("@" '(snails-backend-imenu))
-      ("$" '(snails-backend-current-buffer))
-      ("!" '(snails-backend-rg))
-  ))
+        '(("#" '(snails-backend-buffer))
+          (">" '(snails-backend-projectile snails-backend-fd snails-backend-mdfind snails-backend-everything))
+          ("?" '(snails-backend-recentf))
+          ("@" '(snails-backend-imenu))
+          ("$" '(snails-backend-current-buffer))
+          ("!" '(snails-backend-rg))
+          ))
   (map! :map snails-mode-map
-	:i "C-j"	#'snails-select-next-item
-	:i "C-k"	#'snails-select-prev-item
-	:i "M-n"	#'snails-select-next-backend
-	:i "M-p"	#'snails-select-prev-backend
-	:i "C-g"	#'snails-quit
-	:i "<escape>"	#'snails-quit)
+        :i "C-j"        #'snails-select-next-item
+        :i "C-k"        #'snails-select-prev-item
+        :i "M-n"        #'snails-select-next-backend
+        :i "M-p"        #'snails-select-prev-backend
+        :i "C-g"        #'snails-quit
+        :i "<escape>"   #'snails-quit)
   (evil-set-initial-state 'snails-mode 'insert))
 
+(after! ivy
+  (defface +snail-buffer-face '((t :inherit all-the-icons-green)) "snail buffer")
+  (defface +snail-project-face '((t :inherit all-the-icons-ivy-dir-face)) "snail project")
+  (defface +snail-recent-face '((t :inherit ivy-separator)) "snail recent"))
 
 (after! ivy-rich
   (ivy-rich-mode -1)
   (setq ivy-rich-display-transformers-list
-    (plist-put ivy-rich-display-transformers-list
-      'snail
-      '(:columns
-         ((+snail-rich-buffer-tag (:face success))
-           (+ivy-rich-buffer-icon)
-           (ivy-rich-candidate (:width 0.8))))))
+        (plist-put ivy-rich-display-transformers-list
+                   'snail
+                   '(:columns
+                     ((+snail-rich-buffer-tag (:face success))
+                      (+ivy-rich-buffer-icon)
+                      (+snail-colorfull-candidate (:width 0.8))))))
   (ivy-rich-mode 1))

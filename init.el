@@ -195,10 +195,11 @@
 
        :private
        (intl +rime)
+       (search +snails)
+       editor
        ; lsp
        cc
        (vue +lsp)
-       (search +snails)
        shell
        tabbar
        tabnine

@@ -28,6 +28,13 @@
       (:when (featurep! :private shell)
         :ni  "M-n"      #'+vterm/toggle
         :ni  [f5]       #'+vterm/toggle)
+      (:when (featurep! :private editor)
+       (:prefix-map ("C-c j" . "avy-thing-edit")
+        :ni "l"      #'avy-thing-copy-line
+        :ni "s"      #'avy-thing-copy-symbol
+        :ni "x"      #'avy-thing-copy-sexp
+        :ni "("      #'avy-thing-copy-parentheses
+        :ni "w"      #'avy-thing-copy-word))
       (:after awesome-tab
         :ni "M-j"       #'awesome-tab-ace-jump
         :ni "M-h"       #'awesome-tab-backward
@@ -67,8 +74,10 @@
       :desc "Run terminal"                 "'"   #'+vterm/here
       :desc "NULL"                         [tab] nil
       :desc "Alternate buffer"             "TAB" #'+my/alternate-buffer-in-persp
-      :desc "Find buffer and files"        "a"   #'snail
-      :desc "Find everything"              "e"   #'snails
+      (:when (featurep! :private search)
+       :desc "Find buffer and files"        "a"   #'snail)
+      (:when (featurep! :private search +snails)
+       :desc "Find everything"              "e"   #'snails)
 
       (:prefix-map ("b" . "buffer")
         :desc "Alternate buffer"           "TAB" #'+my/alternate-buffer-in-persp
