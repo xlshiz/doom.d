@@ -30,11 +30,10 @@
         :ni  [f5]       #'+vterm/toggle)
       (:when (featurep! :private editor)
        (:prefix-map ("C-c j" . "avy-thing-edit")
-        :ni "l"      #'avy-thing-copy-line
-        :ni "s"      #'avy-thing-copy-symbol
-        :ni "x"      #'avy-thing-copy-sexp
-        :ni "("      #'avy-thing-copy-parentheses
-        :ni "w"      #'avy-thing-copy-word))
+        :ni "c"      #'+avy-copy-thing-at-point
+        :ni "x"      #'+avy-cut-thing-at-point
+        :ni "r"      #'+avy-replace-thing-at-point
+        :ni "y"      #'+avy-yank-thing-at-point))
       (:after awesome-tab
         :ni "M-j"       #'awesome-tab-ace-jump
         :ni "M-h"       #'awesome-tab-backward

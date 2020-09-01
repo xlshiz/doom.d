@@ -15,8 +15,6 @@
   (set-popup-rule! "^\\*Ilist"
     :side 'right :size 35 :quit nil :select nil :ttl 0))
 
-(use-package! avy-thing-edit
-  :defer t
-  :config
-  (setq avy-thing-edit-jump-command #'evil-avy-goto-char-timer))
-
+(use-package! thing-edit
+  :commands (thing-cut-parentheses thing-copy-parentheses thing-replace-parentheses thing-copy-region-or-line thing-cut-region-or-line thing-replace-region-or-line)
+  :defer t)
