@@ -29,11 +29,59 @@
         :ni  "M-n"      #'+vterm/toggle
         :ni  [f5]       #'+vterm/toggle)
       (:when (featurep! :private editor)
-       (:prefix-map ("C-c j" . "avy-thing-edit")
-        :ni "c"      #'+avy-copy-thing-at-point
-        :ni "x"      #'+avy-cut-thing-at-point
-        :ni "r"      #'+avy-replace-thing-at-point
-        :ni "y"      #'+avy-yank-thing-at-point))
+        (:prefix-map ("C-c j" . "avy-thing-edit")
+          (:prefix-map ("c" . "copy")
+            :ni "w"      #'avy-thing-copy-word
+            :ni "s"      #'avy-thing-copy-symbol
+            :ni "x"      #'avy-thing-copy-sexp
+            :ni "l"      #'avy-thing-copy-line
+            :ni "("      #'avy-thing-copy-parentheses
+            :ni "{"      #'avy-thing-copy-paragraph
+            :ni "n"      #'avy-thing-copy-number
+            :ni "d"      #'avy-thing-copy-defun
+            :ni "e"      #'avy-thing-copy-email
+            :ni "f"      #'avy-thing-copy-filename
+            :ni "t"      #'avy-thing-copy-list
+            :ni "u"      #'avy-thing-copy-url)
+          (:prefix-map ("k" . "copy and yank")
+            :ni "w"      #'avy-thing-copy-and-yank-word
+            :ni "s"      #'avy-thing-copy-and-yank-symbol
+            :ni "x"      #'avy-thing-copy-and-yank-sexp
+            :ni "l"      #'avy-thing-copy-and-yank-line
+            :ni "("      #'avy-thing-copy-and-yank-parentheses
+            :ni "{"      #'avy-thing-copy-and-yank-paragraph
+            :ni "n"      #'avy-thing-copy-and-yank-number
+            :ni "d"      #'avy-thing-copy-and-yank-defun
+            :ni "e"      #'avy-thing-copy-and-yank-email
+            :ni "f"      #'avy-thing-copy-and-yank-filename
+            :ni "t"      #'avy-thing-copy-and-yank-list
+            :ni "u"      #'avy-thing-copy-and-yank-url)
+          (:prefix-map ("x" . "cut")
+            :ni "w"      #'avy-thing-cut-word
+            :ni "s"      #'avy-thing-cut-symbol
+            :ni "x"      #'avy-thing-cut-sexp
+            :ni "l"      #'avy-thing-cut-line
+            :ni "("      #'avy-thing-cut-parentheses
+            :ni "{"      #'avy-thing-cut-paragraph
+            :ni "n"      #'avy-thing-cut-number
+            :ni "d"      #'avy-thing-cut-defun
+            :ni "e"      #'avy-thing-cut-email
+            :ni "f"      #'avy-thing-cut-filename
+            :ni "t"      #'avy-thing-cut-list
+            :ni "u"      #'avy-thing-cut-url)
+          (:prefix-map ("r" . "replace")
+            :ni "w"      #'avy-thing-replace-word
+            :ni "s"      #'avy-thing-replace-symbol
+            :ni "x"      #'avy-thing-replace-sexp
+            :ni "l"      #'avy-thing-replace-line
+            :ni "("      #'avy-thing-replace-parentheses
+            :ni "{"      #'avy-thing-replace-paragraph
+            :ni "n"      #'avy-thing-replace-number
+            :ni "d"      #'avy-thing-replace-defun
+            :ni "e"      #'avy-thing-replace-email
+            :ni "f"      #'avy-thing-replace-filename
+            :ni "t"      #'avy-thing-replace-list
+            :ni "u"      #'avy-thing-replace-url)))
       (:after awesome-tab
         :ni "M-j"       #'awesome-tab-ace-jump
         :ni "M-h"       #'awesome-tab-backward
