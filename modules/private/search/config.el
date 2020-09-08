@@ -55,11 +55,11 @@
   :when (featurep! +snails)
   :commands (snails)
   :config
-  (setq snails-default-backends '(snails-backend-buffer snails-backend-projectile  snails-backend-recentf))
+  (setq snails-default-backends '(snails-backend-buffer snails-backend-fd  snails-backend-recentf))
   (setq snails-backend-buffer-blacklist (append '( " *snails tips*"  "*" " *") snails-backend-buffer-blacklist))
   (setq snails-prefix-backends
         '(("#" '(snails-backend-buffer))
-          (">" '(snails-backend-projectile snails-backend-fd snails-backend-mdfind snails-backend-everything))
+          (">" '(snails-backend-fd snails-backend-mdfind snails-backend-everything))
           ("?" '(snails-backend-recentf))
           ("@" '(snails-backend-imenu))
           ("$" '(snails-backend-current-buffer))
@@ -75,7 +75,7 @@
   (evil-set-initial-state 'snails-mode 'insert))
 
 (after! ivy
-  (defface +snail-buffer-face '((t :inherit all-the-icons-green)) "snail buffer")
+  (defface +snail-buffer-face '((t :inherit all-the-icons-yellow)) "snail buffer")
   (defface +snail-project-face '((t :inherit all-the-icons-ivy-dir-face)) "snail project")
   (defface +snail-recent-face '((t :inherit ivy-separator)) "snail recent"))
 
@@ -85,7 +85,7 @@
         (plist-put ivy-rich-display-transformers-list
                    'snail
                    '(:columns
-                     ((+snail-rich-buffer-tag (:face success))
+                     ((+snail-rich-buffer-tag (:width 3 :face all-the-icons-cyan))
                       (+ivy-rich-buffer-icon)
                       (+snail-colorfull-candidate (:width 0.8))))))
   (ivy-rich-mode 1))
