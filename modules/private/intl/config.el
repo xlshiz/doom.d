@@ -1,9 +1,23 @@
 ;;; private/intl/config.el -*- lexical-binding: t; -*-
 
-(use-package! fcitx
+(use-package! sis
+  :after evil
+  :init
+  (setq sis-prefix-override-keys (list doom-leader-alt-key "C-c" "C-x" "C-h"))
   :config
-  (fcitx-default-setup)
-)
+  ;; For Linux
+  ;; (sis-ism-lazyman-config "1" "2" 'fcitx)
+  (sis-ism-lazyman-config nil "pyim" 'native)
+  ;; enable the /cursor color/ mode
+  (setq sis-other-cursor-color "red"
+	sis-default-cursor-color "#5d86b6")
+  (sis-global-cursor-color-mode t)
+  ;; enable the /respect/ mode
+  (sis-global-respect-mode t)
+  ;; enable the /follow context/ mode for all buffers
+  (sis-global-follow-context-mode t)
+  ;; enable the /inline english/ mode for all buffers
+  (sis-global-inline-mode t))
 
 (use-package! pinyinlib
   :commands (pinyinlib-build-regexp-string pinyinlib-build-regexp-char)
@@ -52,12 +66,11 @@
   ;; 中英文动态切换规则是：
   ;; 1. 光标只有在注释里面时，才可以输入中文。
   ;; 2. 光标前是汉字字符时，才能输入中文。
-  ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
-  (setq-default pyim-english-input-switch-functions
-                '(pyim-probe-dynamic-english
-                  pyim-probe-evil-normal-mode
-                  pyim-probe-program-mode
-                  pyim-probe-org-structure-template))
+  ;; (setq-default pyim-english-input-switch-functions
+  ;;               '(pyim-probe-dynamic-english
+  ;;                 pyim-probe-evil-normal-mode
+  ;;                 pyim-probe-program-mode
+  ;;                 pyim-probe-org-structure-template))
   (setq-default pyim-punctuation-half-width-functions
                 '(pyim-probe-punctuation-line-beginning
                   pyim-probe-punctuation-after-punctuation))

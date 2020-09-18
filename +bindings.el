@@ -21,9 +21,7 @@
       (:when (featurep! :private intl)
         :g  "M-f"       #'pyim-forward-word
         :g  "M-b"       #'pyim-backward-word
-        :ni "C-;"       #'pyim-convert-string-at-point
-	:map ivy-minibuffer-map
-        "C-;"       #'pyim-convert-string-at-point)
+        :ni "C-;"       #'sis-switch)
       ;; shell-pop
       (:when (featurep! :private shell)
         :ni  "M-n"      #'+vterm/toggle

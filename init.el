@@ -208,5 +208,5 @@
 
 ;; * Leaderkey
 (setq doom-localleader-key ",")
-(setq doom-leader-alt-key "S-SPC")
-(setq doom-localleader-alt-key "S-SPC m")
+(setq doom-leader-alt-key "M-S-SPC")
+(setq doom-localleader-alt-key "M-S-SPC m")
