@@ -81,13 +81,7 @@
         lsp-ui-doc-background (doom-color 'base4)
         lsp-ui-doc-border (doom-color 'fg)
         lsp-ui-peek-force-fontify nil
-        lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
-  (map! :after lsp-ui-peek
-        :map lsp-ui-peek-mode-map
-        "h" #'lsp-ui-peek--select-prev-file
-        "j" #'lsp-ui-peek--select-next
-        "k" #'lsp-ui-peek--select-prev
-        "l" #'lsp-ui-peek--select-next-file))
+        lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs))))
 
 (after! ace-window
   (custom-set-faces!
