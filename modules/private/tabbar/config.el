@@ -61,6 +61,7 @@
         (string-prefix-p " *transient*" name)
         (string-prefix-p "*helpful " name)
         (string-prefix-p "*Outline " name)
+        (string-prefix-p "*nox doc*" name)
         (string-prefix-p "*NOX (" name)
         (string-prefix-p "*color-rg*" name)
         (string-prefix-p "*lsp-help*" name)
