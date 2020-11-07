@@ -129,6 +129,9 @@
         :desc "Switch buffer"              "b"   #'switch-to-buffer
         :desc "Kill buffer"                "d"   #'kill-current-buffer)
 
+      (:when (featurep! :private lsp)
+        :desc "Show Nox doc"               "d"   #'nox-show-doc)
+
       (:prefix-map ("f" . "file")
         :desc "Find file"                  "."   #'find-file
         :desc "Recursive find file"        "f"   #'+default/find-file-under-here
