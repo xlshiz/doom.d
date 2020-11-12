@@ -96,7 +96,7 @@
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
        (lookup  +docsets)  ; navigate your code and its documentation
-       lsp
+       ; lsp
        (magit +forge)    ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
@@ -198,7 +198,7 @@
        (intl +rime)
        (search +snails)
        editor
-       ; lsp
+       lsp
        cc
        (vue +lsp)
        shell
