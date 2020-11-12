@@ -84,6 +84,12 @@
         :ni "M-j"       #'awesome-tab-ace-jump
         :ni "M-h"       #'awesome-tab-backward
         :ni "M-l"       #'awesome-tab-forward)
+      (:after org
+        :map org-mode-map
+        :ni "M-j"       #'awesome-tab-ace-jump
+        :ni "M-h"       #'awesome-tab-backward
+        :ni "M-l"       #'awesome-tab-forward
+        :ni "C-j"       #'ace-window)
       (:after evil-org
         :map evil-org-mode-map
         :ni "M-j"       #'awesome-tab-ace-jump
@@ -115,7 +121,6 @@
 
 (map! :leader
       :desc "M-x"                          "SPC" #'execute-extended-command
-      :desc "Org Capture"                  "x"   #'org-capture
       :desc "Run terminal"                 "'"   #'+vterm/here
       :desc "NULL"                         [tab] nil
       :desc "Alternate buffer"             "TAB" #'+my/alternate-buffer-in-persp
@@ -130,7 +135,8 @@
         :desc "Kill buffer"                "d"   #'kill-current-buffer)
 
       (:when (featurep! :private lsp)
-        :desc "Show Nox doc"               "d"   #'nox-show-doc)
+        (:prefix-map ("c" . "code")
+          :desc "Nox rename"               "r"   #'nox-rename))
 
       (:prefix-map ("f" . "file")
         :desc "Find file"                  "."   #'find-file

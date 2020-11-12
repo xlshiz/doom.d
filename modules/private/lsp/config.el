@@ -35,5 +35,6 @@
   ;; doom handler
   (set-lookup-handlers! 'nox--managed-mode :async t
     :documentation #'nox-show-doc
+    :implementations #'nox-find-implementation
     :definition #'xref-find-definitions
     :references #'xref-find-references))
