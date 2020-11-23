@@ -34,6 +34,7 @@
 
   ;; python-mode
   (setq nox-python-server-dir (concat doom-etc-dir "lsp/mspyls/"))
+  (setq nox-python-server "pyright")
 
   ;; doom handler
   (set-lookup-handlers! 'nox--managed-mode :async t
