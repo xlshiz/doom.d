@@ -19,16 +19,29 @@
   (cl-defmethod nox-initialization-options ((server nox-vls))
     "Passes through required vetur initialization options to VLS."
     '(:vetur
-       (:completion
-        (:autoImport t :useScaffoldSnippets t :tagCasing "kebab")
-        :grammar
-        (:customBlocks
-         (:docs "md" :i18n "json"))
-        :validation
-        (:template :json-false :style t :script t)
-        :trace
-        (:server "verbose")
-      )))
+      (:completion
+       (:autoImport t :useScaffoldSnippets t :tagCasing "kebab")
+       :grammar
+       (:customBlocks
+        (:docs "md" :i18n "json"))
+       :validation
+       (:template :json-false :style :json-false :script :json-false)
+       :format
+       (:options
+        (:tabSize 2 :useTabs :json-false)
+        :defaultFormatter
+        (:html "prettyhtml" :css "prettier" :postcss "prettier" :scss "prettier" :less "prettier" :stylus "stylus-supremacy" :js "prettier" :ts "prettier")
+        :defaultFormatterOptions
+        (:js-beautify-html
+         (:wrap_attributes "force-expand-multiline")
+         :prettyhtml
+         (:printWidth 100 :singleQuote :json-false :wrapAttributes :json-false :sortAttributes :json-false))
+         :styleInitialIndent :json-false :scriptInitialIndent :json-false)
+       :trace
+       (:server "verbose"))
+      :emmet
+      (:showExpandedAbbreviation "never" :showAbbreviationSuggestions t :triggerExpansionOnTab :json-false)))
+
   (add-to-list 'nox-server-programs
     '(vue-mode . (nox-vls . ("vls" "--stdio"))))
 
