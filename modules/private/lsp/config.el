@@ -25,7 +25,7 @@
        (:customBlocks
         (:docs "md" :i18n "json"))
        :validation
-       (:template :json-false :style :json-false :script :json-false)
+       (:template :json-false :style :json-false :script :json-false :interpolation :json-false)
        :format
        (:options
         (:tabSize 2 :useTabs :json-false)
@@ -38,7 +38,7 @@
          (:printWidth 100 :singleQuote :json-false :wrapAttributes :json-false :sortAttributes :json-false))
          :styleInitialIndent :json-false :scriptInitialIndent :json-false)
        :trace
-       (:server "verbose"))
+       (:server "off"))
       :emmet
       (:showExpandedAbbreviation "never" :showAbbreviationSuggestions t :triggerExpansionOnTab :json-false)))
 
