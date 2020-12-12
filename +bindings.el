@@ -118,13 +118,17 @@
         :ni "M-j"       #'awesome-tab-ace-jump
         :ni "M-h"       #'awesome-tab-backward
         :ni "M-l"       #'awesome-tab-forward
-        :ni "C-j"       #'ace-window)
+        :ni "C-j"       #'ace-window
+	:n  "gj"        #'evil-next-visual-line
+	:n  "gk"        #'evil-previous-visual-line)
       (:after evil-markdown
         :map evil-markdown-mode-map
         :ni "M-j"       #'awesome-tab-ace-jump
         :ni "M-h"       #'awesome-tab-backward
         :ni "M-l"       #'awesome-tab-forward
-        :ni "C-j"       #'ace-window)
+        :ni "C-j"       #'ace-window
+	:n  "gj"        #'evil-next-visual-line
+	:n  "gk"        #'evil-previous-visual-line)
       (:after info
         :map Info-mode-map
         :ni "C-j"       #'ace-window)
