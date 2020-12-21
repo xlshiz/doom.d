@@ -41,9 +41,11 @@
 
 ;;; after
 (after! org
-  (add-hook 'org-mode-hook #'(lambda () (pangu-spacing-mode -1)))
-                                        ; (custom-set-faces
-                                        ; '(org-table ((t (:family "Sarasa Mono SC")))))
+  (add-hook 'org-mode-hook #'(lambda () (pangu-spacing-mode -1)
+                               (setq company-idle-delay nil)
+                               ;; (custom-set-faces
+                               ;;  '(org-table ((t (:family "Sarasa Mono SC")))))
+                               ))
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
            "* TODO %?\n")))
@@ -62,7 +64,7 @@
         company-box-doc-enable nil
         company-idle-delay 0.2
         company-show-numbers t
-        company-global-modes '(not org-mode eshell-mode comint-mode erc-mode message-mode help-mode gud-mode)))
+        company-global-modes '(not eshell-mode comint-mode erc-mode message-mode help-mode gud-mode)))
 
 (after! flycheck
   (setq flycheck-check-syntax-automatically '(save mode-enabled)))
