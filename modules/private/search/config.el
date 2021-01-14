@@ -55,6 +55,7 @@
   :when (featurep! +snails)
   :commands (snails)
   :config
+  (setq snails-show-with-frame nil)
   (setq snails-default-backends '(snails-backend-buffer snails-backend-fd  snails-backend-recentf))
   (setq snails-backend-buffer-blacklist (append '( " *snails tips*"  "*" " *") snails-backend-buffer-blacklist))
   (setq snails-prefix-backends
