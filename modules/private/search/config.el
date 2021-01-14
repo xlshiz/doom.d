@@ -68,6 +68,8 @@
   (map! :map snails-mode-map
         :i "C-j"        #'snails-select-next-item
         :i "C-k"        #'snails-select-prev-item
+        :i "<down>"     #'snails-select-next-item
+        :i "<up>"       #'snails-select-prev-item
         :i "M-n"        #'snails-select-next-backend
         :i "M-p"        #'snails-select-prev-backend
         :i "C-g"        #'snails-quit
