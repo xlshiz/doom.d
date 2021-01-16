@@ -56,15 +56,15 @@
   :commands (snails)
   :config
   (setq snails-show-with-frame nil)
-  (setq snails-default-backends '(snails-backend-buffer snails-backend-fd  snails-backend-recentf))
+  (setq snails-input-buffer-text-scale 1)
+  (setq snails-default-backends '(snails-backend-buffer snails-backend-projectile  snails-backend-recentf))
   (setq snails-backend-buffer-blacklist (append '( " *snails tips*"  "*" " *") snails-backend-buffer-blacklist))
   (setq snails-prefix-backends
         '(("#" '(snails-backend-buffer))
-          (">" '(snails-backend-fd snails-backend-mdfind snails-backend-everything))
+          (">" '(snails-backend-projectile))
+          ("!" '(snails-backend-fd snails-backend-mdfind snails-backend-everything))
           ("?" '(snails-backend-recentf))
           ("@" '(snails-backend-imenu))
-          ("$" '(snails-backend-current-buffer))
-          ("!" '(snails-backend-rg))
           ))
   (map! :map snails-mode-map
         :i "C-j"        #'snails-select-next-item
