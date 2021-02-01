@@ -56,6 +56,7 @@
   :commands (snails)
   :config
   (setq snails-show-with-frame nil)
+  (setq snails-need-render-candidate-icon nil)
   (setq snails-input-buffer-text-scale 1)
   (setq snails-default-backends '(snails-backend-buffer snails-backend-projectile  snails-backend-recentf))
   (setq snails-backend-buffer-blacklist (append '( " *snails tips*"  "*" " *") snails-backend-buffer-blacklist))
@@ -63,8 +64,9 @@
         '(("#" '(snails-backend-buffer))
           (">" '(snails-backend-projectile))
           ("!" '(snails-backend-fd snails-backend-mdfind snails-backend-everything))
-          ("?" '(snails-backend-recentf))
+          ("?" '(snails-backend-rg))
           ("@" '(snails-backend-imenu))
+          ("%" '(snails-backend-directory-files))
           ))
   (map! :map snails-mode-map
         :i "C-j"        #'snails-select-next-item

@@ -124,3 +124,10 @@
 (load! "+bindings")
 
 (toggle-frame-maximized)
+
+;; Fix project.el
+(defun +my|projectile-project-find-function (dir)
+  (let ((root (projectile-project-root dir)))
+    (and root (cons 'transient root))))
+(after! project
+  (add-to-list 'project-find-functions '+my|projectile-project-find-function))
