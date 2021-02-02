@@ -154,7 +154,7 @@
       (:when (featurep! :private search)
        :desc "Find buffer and files"        "a"   #'snail)
       (:when (featurep! :private search +snails)
-       :desc "Find everything"              "e"   #'snails)
+       :desc "Find everything"              "a"   #'snails)
 
       (:prefix-map ("b" . "buffer")
         :desc "Alternate buffer"           "TAB" #'+my/alternate-buffer-in-persp
