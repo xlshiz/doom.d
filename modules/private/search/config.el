@@ -63,7 +63,7 @@
   (setq snails-prefix-backends
         '(("#" '(snails-backend-buffer))
           (">" '(snails-backend-projectile))
-          ("!" '(snails-backend-fd snails-backend-mdfind snails-backend-everything))
+          ("!" '(snails-backend-fd))
           ("?" '(snails-backend-rg))
           ("@" '(snails-backend-imenu))
           ("%" '(snails-backend-directory-files))
