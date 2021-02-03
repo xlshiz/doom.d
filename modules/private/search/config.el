@@ -56,10 +56,9 @@
   :commands (snails)
   :config
   (setq snails-show-with-frame nil)
-  (setq snails-need-render-candidate-icon nil)
-  (setq snails-input-buffer-text-scale 1)
+  (setq snails-need-render-candidate-icon t)
   (setq snails-default-backends '(snails-backend-buffer snails-backend-projectile  snails-backend-recentf))
-  (setq snails-backend-buffer-blacklist (append '( " *snails tips*"  "*" " *") snails-backend-buffer-blacklist))
+  (setq snails-backend-buffer-blacklist (append '(" tq-temp-epdfinfo" " *") snails-backend-buffer-blacklist))
   (setq snails-prefix-backends
         '(("#" '(snails-backend-buffer))
           (">" '(snails-backend-projectile))
@@ -75,6 +74,7 @@
         :i "<up>"       #'snails-select-prev-item
         :i "M-n"        #'snails-select-next-backend
         :i "M-p"        #'snails-select-prev-backend
+	:i [tab]        #'snails-candidate-tab
         :i "C-g"        #'snails-quit
         :i "<escape>"   #'snails-quit)
   (evil-set-initial-state 'snails-mode 'insert))
