@@ -56,7 +56,7 @@
   :commands (snails)
   :config
   (setq snails-show-with-frame nil)
-  (setq snails-need-render-candidate-icon t)
+  (setq snails-need-render-candidate-icon nil)
   (setq snails-default-backends '(snails-backend-buffer snails-backend-projectile  snails-backend-recentf))
   (setq snails-backend-buffer-blacklist (append '(" tq-temp-epdfinfo" " *") snails-backend-buffer-blacklist))
   (setq snails-prefix-backends
