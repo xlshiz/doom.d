@@ -58,12 +58,13 @@
   (setq snails-show-with-frame nil)
   (setq snails-need-render-candidate-icon nil)
   (setq snails-default-backends '(snails-backend-buffer snails-backend-projectile  snails-backend-recentf))
-  (setq snails-backend-buffer-blacklist (append '(" tq-temp-epdfinfo" " *") snails-backend-buffer-blacklist))
+  (setq snails-backend-buffer-blacklist (append '(" tq-temp-epdfinfo" " *" " markdown-code-fontification") snails-backend-buffer-blacklist))
   (setq snails-prefix-backends
         '(("#" '(snails-backend-buffer))
           (">" '(snails-backend-projectile))
-          ("!" '(snails-backend-fd))
-          ("?" '(snails-backend-rg))
+          ("?" '(snails-backend-recentf))
+          ("&" '(snails-backend-fd))
+          ("!" '(snails-backend-rg))
           ("@" '(snails-backend-imenu))
           ("%" '(snails-backend-directory-files))
           ))
@@ -74,7 +75,7 @@
         :i "<up>"       #'snails-select-prev-item
         :i "M-n"        #'snails-select-next-backend
         :i "M-p"        #'snails-select-prev-backend
-	:i [tab]        #'snails-candidate-tab
+        :i [tab]        #'snails-candidate-tab
         :i "C-g"        #'snails-quit
         :i "<escape>"   #'snails-quit)
   (evil-set-initial-state 'snails-mode 'insert))
