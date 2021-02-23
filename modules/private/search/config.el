@@ -56,9 +56,11 @@
   :commands (snails)
   :config
   (setq snails-show-with-frame nil)
+  (setq snails-fuz-library-load-status "unload")
   (setq snails-need-render-candidate-icon nil)
+  (setq snails-content-show-margin nil)
   (setq snails-default-backends '(snails-backend-buffer snails-backend-projectile  snails-backend-recentf))
-  (setq snails-backend-buffer-blacklist (append '(" tq-temp-epdfinfo" " *" " markdown-code-fontification") snails-backend-buffer-blacklist))
+  (setq snails-backend-buffer-blacklist (append '(" tq-temp-epdfinfo" " markdown-code-fontification") snails-backend-buffer-blacklist))
   (setq snails-prefix-backends
         '(("#" '(snails-backend-buffer))
           (">" '(snails-backend-projectile))
