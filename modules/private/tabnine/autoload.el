@@ -61,7 +61,7 @@
   "Enable tabnine."
   (interactive)
   (if (bound-and-true-p lsp-mode)
-      (defadvice +lsp-init-company-h (after tabnine-init-company activate)
+      (defadvice +lsp-init-company-backends-h (after tabnine-init-company activate)
         (+my|add-tabnine-backend))
     (add-hook! company-mode :append #'+my|add-tabnine-backend))
   (+my|add-tabnine-backend))
