@@ -42,7 +42,7 @@
 ;;; after
 (after! org
   (add-hook 'org-mode-hook #'(lambda () (pangu-spacing-mode -1)
-                               (setq company-idle-delay nil)
+                               (setq-local company-idle-delay nil)
                                ;; (custom-set-faces
                                ;;  '(org-table ((t (:family "Sarasa Mono SC")))))
                                ))

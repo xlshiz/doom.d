@@ -50,7 +50,7 @@
 (defun +my|add-tabnine-backend ()
   (require 'company-tabnine)
   (add-to-list 'company-transformers '+my|company-sort-by-tabnine t)
-  (setq company-idle-delay 0.2)
+  (setq-local company-idle-delay 0.2)
   (if (listp (car company-backends))
       (let ((company-car (car company-backends)))
         (setq-local company-backends `(,(append company-car '(:with company-tabnine :separate)) ,@(cdr company-backends))))
