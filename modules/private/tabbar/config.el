@@ -76,6 +76,7 @@
        (string-prefix-p "*PLANTUML" name)
        (string-prefix-p "*Buttercup*" name)
        (string-prefix-p "*taskrunner" name)
+       (string-prefix-p "*Ediff " name)
 
        (or (string-prefix-p "magit:" name)
            (string-prefix-p "magit-diff:" name))
