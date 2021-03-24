@@ -10,7 +10,7 @@
   (sis-ism-lazyman-config nil "pyim" 'native)
   ;; enable the /cursor color/ mode
   (setq sis-other-cursor-color "red"
-	sis-default-cursor-color "#5d86b6")
+        sis-default-cursor-color "#5d86b6")
   (sis-global-cursor-color-mode t)
   ;; enable the /respect/ mode
   (sis-global-respect-mode t)
@@ -23,7 +23,7 @@
   :commands (pinyinlib-build-regexp-string pinyinlib-build-regexp-char)
   :init
   (setq pinyinlib--simplified-char-table 'pinyinlib--simplified-xiaohe)
-)
+  )
 
 (use-package! ace-pinyin
   :defer 1
@@ -31,7 +31,7 @@
   (progn
     (setq ace-pinyin-use-avy t)
     (ace-pinyin-global-mode t))
-)
+  )
 
 (use-package! evil-pinyin
   :defer 1
@@ -52,7 +52,7 @@
 (use-package! pangu-spacing
   :defer t
   :config (progn (global-pangu-spacing-mode 1))
-)
+  )
 
 (use-package! pyim
   :defer t
@@ -81,23 +81,23 @@
   ;; 选词框显示5个候选词
   (setq pyim-page-length 3)
   (setq pyim-dicts
-	`((:name "be" :file ,(concat doom-etc-dir "pyim/be.pyim"))))
+        `((:name "be" :file ,(concat doom-etc-dir "pyim/be.pyim"))))
   (setq pyim-dcache-directory (concat doom-cache-dir "pyim/dcache/"))
   ;; 设置以词定字的函数，使用 [  ]
   (setq pyim-magic-converter #'+my|pyim-converter)
   ;; 绑定 pyim 输入时的快捷键，esc删除输入，.下一页，,上一页
   (map! :map pyim-mode-map
-   	[escape] #'pyim-quit-clear
-	"."      #'pyim-page-next-page
-	","      #'pyim-page-previous-page
-	";"     (lambda ()
-	          (interactive)
-	          (pyim-page-select-word-by-number 2))
-	"'"     (lambda ()
-	          (interactive)
-	          (pyim-page-select-word-by-number 3))
-	)
-)
+        [escape] #'pyim-quit-clear
+        "."      #'pyim-page-next-page
+        ","      #'pyim-page-previous-page
+        ";"     (lambda ()
+                  (interactive)
+                  (pyim-page-select-word-by-number 2))
+        "'"     (lambda ()
+                  (interactive)
+                  (pyim-page-select-word-by-number 3))
+        )
+  )
 
 (use-package! liberime
   :when (featurep! +rime)
@@ -114,5 +114,24 @@
         '(
           (t . +intel/re-builder-pinyin)
           ))
-)
+  )
 
+(after! org
+  (defadvice org-html-paragraph (before org-html-paragraph-advice
+                                        (paragraph contents info) activate)
+    "Join consecutive Chinese lines into a single long line without
+unwanted space when exporting org-mode to html."
+    (let* ((origin-contents (ad-get-arg 1))
+           (fix-regexp "[[:multibyte:]]")
+           (fixed-contents
+            (replace-regexp-in-string
+             (concat
+              "\\(" fix-regexp "\\) *\n *\\(" fix-regexp "\\)") "\\1\\2" origin-contents)))
+      (ad-set-arg 1 fixed-contents)))
+  ;; 让中文也可以不加空格就使用行内格式
+  (setcar (nthcdr 0 org-emphasis-regexp-components) " \t('\"{[:nonascii:]")
+  (setcar (nthcdr 1 org-emphasis-regexp-components) "- \t.,:!?;'\")}\\[[:nonascii:]")
+  (org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
+  (org-element-update-syntax)
+  ;; 规定上下标必须加 {}，否则中文使用下划线时它会以为是两个连着的下标
+  (setq org-use-sub-superscripts "{}"))

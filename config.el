@@ -46,24 +46,6 @@
                                ;; (custom-set-faces
                                ;;  '(org-table ((t (:family "Sarasa Mono SC")))))
                                ))
-  (defadvice org-html-paragraph (before org-html-paragraph-advice
-                                  (paragraph contents info) activate)
-    "Join consecutive Chinese lines into a single long line without
-unwanted space when exporting org-mode to html."
-    (let* ((origin-contents (ad-get-arg 1))
-            (fix-regexp "[[:multibyte:]]")
-            (fixed-contents
-              (replace-regexp-in-string
-                (concat
-                  "\\(" fix-regexp "\\) *\n *\\(" fix-regexp "\\)") "\\1\\2" origin-contents)))
-      (ad-set-arg 1 fixed-contents)))
-  ;; 让中文也可以不加空格就使用行内格式
-  (setcar (nthcdr 0 org-emphasis-regexp-components) " \t('\"{[:nonascii:]")
-  (setcar (nthcdr 1 org-emphasis-regexp-components) "- \t.,:!?;'\")}\\[[:nonascii:]")
-  (org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
-  (org-element-update-syntax)
-  ;; 规定上下标必须加 {}，否则中文使用下划线时它会以为是两个连着的下标
-  (setq org-use-sub-superscripts "{}")
   (setq org-capture-templates
     '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
         "* TODO %?\n")))
