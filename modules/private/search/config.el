@@ -57,7 +57,7 @@
   :config
   (setq snails-show-with-frame nil)
   (setq snails-fuz-library-load-status "unload")
-  (setq snails-need-render-candidate-icon nil)
+  (setq snails-need-render-candidate-icon t)
   (setq snails-content-show-margin nil)
   (setq snails-default-backends '(snails-backend-buffer snails-backend-projectile  snails-backend-recentf))
   (setq snails-backend-buffer-blacklist (append '(" tq-temp-epdfinfo" " markdown-code-fontification") snails-backend-buffer-blacklist))
@@ -65,10 +65,10 @@
         '(("#" '(snails-backend-buffer))
           (">" '(snails-backend-projectile))
           ("?" '(snails-backend-recentf))
-          ("&" '(snails-backend-fd))
+          ("%" '(snails-backend-fd))
           ("!" '(snails-backend-rg))
           ("@" '(snails-backend-imenu))
-          ("%" '(snails-backend-directory-files))
+          ("$" '(snails-backend-directory-files))
           ))
   (map! :map snails-mode-map
         :i "C-j"        #'snails-select-next-item
