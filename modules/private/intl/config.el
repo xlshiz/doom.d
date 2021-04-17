@@ -62,15 +62,6 @@
   :config
   ;; 使用小鹤双拼
   (setq pyim-default-scheme 'xiaohe-shuangpin)
-  ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
-  ;; 中英文动态切换规则是：
-  ;; 1. 光标只有在注释里面时，才可以输入中文。
-  ;; 2. 光标前是汉字字符时，才能输入中文。
-  ;; (setq-default pyim-english-input-switch-functions
-  ;;               '(pyim-probe-dynamic-english
-  ;;                 pyim-probe-evil-normal-mode
-  ;;                 pyim-probe-program-mode
-  ;;                 pyim-probe-org-structure-template))
   (setq-default pyim-punctuation-half-width-functions
                 '(pyim-probe-punctuation-line-beginning
                   pyim-probe-punctuation-after-punctuation))
