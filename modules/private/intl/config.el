@@ -61,7 +61,9 @@
   (setq default-input-method "pyim")
   :config
   ;; 使用小鹤双拼
-  (setq pyim-default-scheme 'xiaohe-shuangpin)
+  ;; (setq pyim-default-scheme 'xiaohe-shuangpin)
+  ;; 使用rime
+  (setq pyim-default-scheme 'rime)
   (setq-default pyim-punctuation-half-width-functions
                 '(pyim-probe-punctuation-line-beginning
                   pyim-probe-punctuation-after-punctuation))
@@ -97,8 +99,9 @@
   (setq liberime-user-data-dir (expand-file-name (concat doom-etc-dir "pyim/rime")))
   (setq liberime-auto-build t)
   :config
-  (liberime-select-schema "pinyin_cau_flypy")
-  (setq pyim-default-scheme 'rime))
+  (liberime-try-select-schema "pinyin_cau_flypy")
+  (setq pyim-default-scheme 'rime)
+  (require 'pyim-liberime))
 
 (after! ivy
   (setq ivy-re-builders-alist
