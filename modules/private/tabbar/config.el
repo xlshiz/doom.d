@@ -17,24 +17,25 @@
   :config
   (defun +tabs-buffer-groups-fn ()
     (list
-     (cond ((string-equal "*" (substring (buffer-name) 0 1))
-            "Emacs")
-           ((memq major-mode '(magit-process-mode
-                                   magit-status-mode
-                                   magit-diff-mode
-                                   magit-log-mode
-                                   magit-file-mode
-                                   magit-blob-mode
-                                   magit-blame-mode
-                                   ))
-            "Magit")
-           ((derived-mode-p 'eshell-mode)
-            "EShell")
-           ((derived-mode-p 'emacs-lisp-mode)
-            "Elisp")
-           ((derived-mode-p 'dired-mode)
-            "Dired")
-           ((awesome-tab-get-group-name (current-buffer))))))
+     (cond 
+      ((or(memq major-mode '(magit-process-mode
+                          magit-status-mode
+                          magit-diff-mode
+                          magit-log-mode
+                          magit-file-mode
+                          magit-blob-mode
+                          magit-blame-mode
+			  magit-revision-mode
+                          ))
+          (string-prefix-p "*forge:" (buffer-name)))
+       (awesome-tab-get-group-name (current-buffer)))
+      ((derived-mode-p 'eshell-mode)
+       "EShell")
+      ((derived-mode-p 'dired-mode)
+       "Dired")
+      ((string-equal "*" (substring (buffer-name) 0 1))
+       "Emacs")
+      (t (awesome-tab-get-group-name (current-buffer))))))
 
   (defun +tabs-hide-tab (x)
     (let ((name (format "%s" x)))
@@ -77,9 +78,6 @@
        (string-prefix-p "*Buttercup*" name)
        (string-prefix-p "*taskrunner" name)
        (string-prefix-p "*Ediff " name)
-
-       (or (string-prefix-p "magit:" name)
-           (string-prefix-p "magit-diff:" name))
        )))
 
   (setq awesome-tab-buffer-groups-function #'+tabs-buffer-groups-fn
