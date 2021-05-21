@@ -8,7 +8,7 @@
 (use-package! vterm
   :defer t
   :init
-  (setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=yes")
+  (setq vterm-module-cmake-args " -DUSE_SYSTEM_LIBVTERM=yes")
   :config
   (add-to-list 'vterm-keymap-exceptions "C-j"))
 
