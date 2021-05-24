@@ -136,13 +136,11 @@
        ;;(rss +org)       ; emacs as an RSS reader
        ;;twitter          ; twitter client https://twitter.com/vnought
 
-       :input
-       (chinese +rime)
-
        :config
        (default +bindings +smartparens)
 
        :private
+       (chinese +rime)
        (search +snails)
        editor
        ; lsp
