@@ -13,6 +13,12 @@
 (setq display-line-numbers-type nil)
 (push (expand-file-name "forge/authinfo" doom-etc-dir) auth-sources)
 (set-popup-rules! '(("^\\*edit-indirect " :size 0.3 :quit nil :select t :ttl nil)))
+(setq lsp-clients-clangd-args '("-j=3"
+                                "--background-index"
+                                "--clang-tidy"
+                                "--completion-style=detailed"
+                                "--header-insertion=never"
+                                "--header-insertion-decorators=0"))
 
 ;;; before
 (setq org-directory "~/workdir/docs/org/"
@@ -22,6 +28,7 @@
 (setq org-re-reveal-extra-css (concat "file://" doom-etc-dir "present/local.css"))
 
 ;;; after
+(after! lsp-clangd (set-lsp-priority! 'clangd 1))
 (after! org
   (add-hook 'org-mode-hook #'(lambda () (pangu-spacing-mode -1)
                                (setq-local company-idle-delay nil)
@@ -97,6 +104,7 @@
 (add-hook! 'git-commit-setup-hook #'yas-git-commit-mode)
 (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'c-mode-hook #'(lambda () (setq indent-tabs-mode t c-basic-offset 8)))
 (add-hook 'after-make-frame-functions #'+my|init-font)
 (add-hook 'window-setup-hook #'+my|init-font)
 
