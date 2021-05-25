@@ -11,33 +11,15 @@
 ;; (setq doom-unicode-font (font-spec :family "Sarasa Fixed SC"))
 
 (setq display-line-numbers-type nil)
+(push (expand-file-name "forge/authinfo" doom-etc-dir) auth-sources)
+(set-popup-rules! '(("^\\*edit-indirect " :size 0.3 :quit nil :select t :ttl nil)))
 
-(set-lookup-handlers! 'emacs-lisp-mode :documentation #'helpful-at-point)
-
-;;; def-package
-(use-package! avy
-  :commands (avy-goto-char-timer)
-  :init
-  (setq avy-timeout-seconds 0.5))
-
-(use-package! paradox
-  :commands (paradox-list-packages))
-
-(use-package! org
-  :defer t
-  :init
-  (setq org-directory "~/workdir/docs/org/"
-        org-default-refile-file (concat org-directory "/refile.org")
-        +org-capture-notes-file "todo.org"
-        org-agenda-files (list (concat org-directory +org-capture-notes-file)))
-  (advice-add #'+org-init-keybinds-h :after #'+org-change-keybinds-h)
-  :preface
-  (advice-add #'+org-init-appearance-h :after #'+org-change-appearance-h))
-
-(use-package! ox-re-reveal
-  :after ox
-  :config
-  (setq org-re-reveal-extra-css (concat "file://" doom-etc-dir "present/local.css")))
+;;; before
+(setq org-directory "~/workdir/docs/org/"
+      org-default-refile-file (concat org-directory "/refile.org")
+      +org-capture-notes-file "todo.org"
+      org-agenda-files (list (concat org-directory +org-capture-notes-file)))
+(setq org-re-reveal-extra-css (concat "file://" doom-etc-dir "present/local.css"))
 
 ;;; after
 (after! org
@@ -47,10 +29,16 @@
                                ;;  '(org-table ((t (:family "Sarasa Mono SC")))))
                                ))
   (setq org-capture-templates
-    '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
-        "* TODO %?\n")))
+        '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
+           "* TODO %?\n")))
   (setq org-bookmark-names-plist '(:last-capture "org-capture-last-stored"
-                                    :last-capture-marker "org-capture-last-stored-marker")))
+                                   :last-capture-marker "org-capture-last-stored-marker"))
+  (setq org-refile-targets '((org-default-notes-file . (:level . 1))
+                             (org-default-refile-file . (:level . 1))))
+  (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
+                            (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
+        org-todo-keyword-faces '(("HANGUP" . warning)
+                                 ("❓" . warning))))
 
 (after! evil-org
   (remove-hook! 'org-tab-first-hook #'+org-cycle-only-current-subtree-h))
@@ -71,18 +59,12 @@
 
 (after! lsp-mode
   (setq lsp-enable-symbol-highlighting nil
-    lsp-vetur-validation-template nil
-    lsp-eldoc-enable-hover t))
+        lsp-vetur-validation-template nil
+        lsp-eldoc-enable-hover t))
 
 (after! lsp-ui
   (setq lsp-ui-sideline-enable nil
-        lsp-ui-sideline-ignore-duplicate t
         lsp-ui-doc-enable nil
-        lsp-ui-doc-header nil
-        lsp-ui-doc-include-signature nil
-        lsp-ui-doc-background (doom-color 'base4)
-        lsp-ui-doc-border (doom-color 'fg)
-        lsp-ui-peek-force-fontify nil
         lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs))))
 
 (after! ace-window
@@ -96,29 +78,40 @@
 (after! evil
   (advice-remove #'evil-join #'+evil-join-a))
 
-(after! pdf-tools
-  (map! :map pdf-annot-list-mode-map
-        :n  "q"         #'tablist-quit
-        :n  [return]    #'pdf-annot-list-display-annotation-from-id))
-
-(after! dumb-jump
-  (setq dumb-jump-prefer-searcher "rg"))
-
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
 
-(after! dash-docs
-  (setq dash-docs-docsets-path "~/.local/share/Zeal/Zeal/docsets"))
+(after! vterm
+  (add-to-list 'vterm-keymap-exceptions "C-j"))
+
+(after! forge
+  (setq forge-alist
+        '(("gitlab.com" "gitlab.com/api/v4"
+           "gitlab.com" forge-gitlab-repository))))
+
+(after! ghub
+  (setq ghub-insecure-hosts '("gitlab.com/api/v4")))
 
 
 ;;; hook
 (add-hook! 'git-commit-setup-hook #'yas-git-commit-mode)
 (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-(add-hook 'c-mode-hook #'(lambda () (setq indent-tabs-mode t c-basic-offset 8)))
 (add-hook 'after-make-frame-functions #'+my|init-font)
 (add-hook 'window-setup-hook #'+my|init-font)
 
+
+;;; advice
+(defadvice evil-collection-vterm-setup (after +evil-collection-vterm-setup-h activate)
+  (evil-collection-define-key 'insert 'vterm-mode-map
+    (kbd "C-j") 'ace-window)
+  (evil-collection-define-key 'normal 'vterm-mode-map
+    (kbd "C-j") 'ace-window))
+
+(defadvice +org-init-keybinds-h (after +org-change-keybinds-h activate)
+  (map! :map org-mode-map
+        :localleader
+        "T"             #'org-show-todo-tree))
 
 ;;; load
 (load! "+bindings")

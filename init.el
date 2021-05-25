@@ -21,26 +21,28 @@
         +icons)
 
        :editor
+       (evil +everywhere) ; come to the dark side, we have cookies
+       (search +snails)
        theme              ; what makes DOOM look the way it does
+       (modeline +light)  ; snazzy, Atom-inspired modeline, plus API
+       (popup +defaults)  ; tame sudden yet inevitable temporary windows
+       window-select      ; visually switch windows
+       treemacs           ; a project drawer, like neotree but cooler
+       workspaces         ; tab emulation, persistence & separate workspaces
+       undo               ; persistent, smarter undo for your inevitable mistakes
+       snippets           ; my elves. They type so I don't have to
+       tabs               ; a tab bar for Emacs
        hl-todo            ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ligatures          ; ligatures and symbols to make your code pretty again
-       (modeline +light)  ; snazzy, Atom-inspired modeline, plus API
        ophints            ; highlight the region an operation acts on
-       (popup +defaults)  ; tame sudden yet inevitable temporary windows
-       treemacs           ; a project drawer, like neotree but cooler
        vc-gutter          ; vcs diff in the fringe
        vi-tilde-fringe    ; fringe tildes to mark beyond EOB
-       window-select      ; visually switch windows
-       workspaces         ; tab emulation, persistence & separate workspaces
-       (evil +everywhere) ; come to the dark side, we have cookies
        file-templates     ; auto-snippets for empty files
        fold               ; (nigh) universal code folding
        multiple-cursors   ; editing in many places at once
        rotate-text        ; cycle region at point between text candidates
-       snippets           ; my elves. They type so I don't have to
        word-wrap          ; soft wrapping with language-aware indent
        electric           ; smarter, keyword-based electric-indent
-       undo               ; persistent, smarter undo for your inevitable mistakes
        vc                 ; version-control and Emacs, sitting in a tree
 
        :term
@@ -89,6 +91,7 @@
        json               ; At least it ain't XML
        (java +lsp)        ; the poster child for carpal tunnel syndrome
        (javascript +lsp)  ; all(hope(abandon(ye(who(enter(here))))))
+       (vue +lsp)         ; vue
        ;;julia            ; a better, faster MATLAB
        ;;kotlin           ; a better, slicker Java(Script)
        ;;latex            ; writing papers in Emacs has never been so fun
@@ -141,15 +144,7 @@
 
        :private
        (chinese +rime)
-       (search +snails)
-       editor
-       ; lsp
-       cc
-       (vue +lsp)
-       shell
-       tabbar
        tabnine
-       gitlab
 )
 
 ;; * Leaderkey

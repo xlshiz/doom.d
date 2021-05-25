@@ -2,5 +2,3 @@
 ;;; packages.el
 
 (package! paradox)
-
-(disable-packages! doom-snippets)

@@ -5,9 +5,9 @@
   (interactive)
   ;; english font
   (setq url-proxy-services
-   '(("no_proxy" . "^\\(localhost\\|10\\..*\\|192\\.168\\..*\\)")
-     ("http" . "127.0.0.1:8118")
-     ("https" . "127.0.0.1:8118"))))
+        '(("no_proxy" . "^\\(localhost\\|10\\..*\\|192\\.168\\..*\\)")
+          ("http" . "127.0.0.1:8118")
+          ("https" . "127.0.0.1:8118"))))
 
 ;;;###autoload
 (defun +my/alternate-buffer-in-persp ()
@@ -15,7 +15,7 @@
 current perspective."
   (interactive)
   (with-persp-buffer-list ()
-    (switch-to-buffer (other-buffer (current-buffer) t))))
+                          (switch-to-buffer (other-buffer (current-buffer) t))))
 
 ;;;###autoload
 (defun +my/alternate-window ()
@@ -29,41 +29,8 @@ current frame."
     (select-window prev-window)))
 
 ;;;###autoload
-(defun +my/projectile-shell-pop ()
-  "Open a term buffer at projectile project root."
-  (interactive)
-  (let ((default-directory (projectile-project-root)))
-    (call-interactively '+term/here)))
-
-;;;###autoload
-(defun +my|realtime-elisp-doc-function ()
-  (-when-let* ((w (selected-window))
-               (s (intern-soft (current-word))))
-    (describe-symbol s)
-    (select-window w)))
-
-;;;###autoload
-(defun +my/realtime-elisp-doc ()
-  (interactive)
-  (when (eq major-mode 'emacs-lisp-mode)
-    (if (advice-function-member-p #'+my|realtime-elisp-doc-function eldoc-documentation-function)
-        (remove-function (local 'eldoc-documentation-function) #'+my|realtime-elisp-doc-function)
-      (add-function :after-while (local 'eldoc-documentation-function) #'+my|realtime-elisp-doc-function))))
-
-
-;;;###autoload
 (defun yas-git-commit-mode ()
   (yas-activate-extra-mode 'git-commit-mode))
-
-;;;###autoload
-(defun +my/find-definitions ()
-  (interactive)
-  (if lsp-mode (lsp-ui-peek-find-definitions) (call-interactively #'+lookup/definition)))
-
-;;;###autoload
-(defun +my/find-references (&optional extra)
-  (interactive)
-  (if lsp-mode (lsp-ui-peek-find-references nil extra) (call-interactively #'+lookup/references)))
 
 ;;;###autoload
 (defun +my/better-font()
@@ -89,43 +56,20 @@ current frame."
       (+my/better-font))))
 
 ;;;###autoload
-(defun +org-change-appearance-h ()
-  (set-pretty-symbols! 'org-mode
-    :alist
-    '(("[ ]" . ?☐)
-      ("[X]" . ?☑)
-      ("#+BEGIN_SRC" . ?✎)
-      ("#+END_SRC" . ?✐)
-      ("#+BEGIN_QUOTE" . ?»)
-      ("#+END_QUOTE" . ?«)))
-  (setq org-refile-targets '((org-default-notes-file . (:level . 1))
-                             (org-default-refile-file . (:level . 1))))
-  (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
-                            (sequence "⚑(T)" "🏴(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
-        org-todo-keyword-faces '(("HANGUP" . warning)
-                                 ("❓" . warning))))
-
-;;;###autoload
-(defun +org-change-keybinds-h ()
-  (map! :map org-mode-map
-	:localleader
-        "T"             #'org-show-todo-tree))
-
-;;;###autoload
 (defun +my/smarter-yas-expand-next-field-complete ()
   "Try to `yas-expand' and `yas-next-field' at current cursor position.
 If failed try to complete the common part with `company-complete-common'"
   (interactive)
   (if yas-minor-mode
-    (let ((old-point (point))
-           (old-tick (buffer-chars-modified-tick)))
-      (yas-expand)
-      (when (and (eq old-point (point))
-              (eq old-tick (buffer-chars-modified-tick)))
-        (ignore-errors (yas-next-field))
+      (let ((old-point (point))
+            (old-tick (buffer-chars-modified-tick)))
+        (yas-expand)
         (when (and (eq old-point (point))
-                (eq old-tick (buffer-chars-modified-tick)))
-          (company-complete-common))))
+                   (eq old-tick (buffer-chars-modified-tick)))
+          (ignore-errors (yas-next-field))
+          (when (and (eq old-point (point))
+                     (eq old-tick (buffer-chars-modified-tick)))
+            (company-complete-common))))
     (company-complete-common)))
 
 ;;;###autoload
