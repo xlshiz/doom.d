@@ -22,7 +22,6 @@
 
        :editor
        (evil +everywhere) ; come to the dark side, we have cookies
-       (search +snails)
        theme              ; what makes DOOM look the way it does
        (modeline +light)  ; snazzy, Atom-inspired modeline, plus API
        (popup +defaults)  ; tame sudden yet inevitable temporary windows
@@ -113,7 +112,7 @@
        ;;purescript       ; javascript, but functional
       (python             ; beautiful is better than ugly
         +pyenv
-	+pyright
+        +pyright
         +lsp)
        ;;qt               ; the 'cutest' gui framework ever
        ;;racket           ; a DSL for DSLs
@@ -140,11 +139,12 @@
        ;;twitter          ; twitter client https://twitter.com/vnought
 
        :config
-       (default +bindings +smartparens)
+       (default +bindings +smartparens +snails)
 
        :private
        (chinese +rime)
        tabnine
+       gitlab
 )
 
 ;; * Leaderkey
