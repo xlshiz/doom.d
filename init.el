@@ -43,6 +43,7 @@
        word-wrap          ; soft wrapping with language-aware indent
        electric           ; smarter, keyword-based electric-indent
        vc                 ; version-control and Emacs, sitting in a tree
+       (chinese +rime)
 
        :term
        eshell             ; the elisp shell that works everywhere
@@ -142,7 +143,6 @@
        (default +bindings +smartparens +snails)
 
        :private
-       (chinese +rime)
        tabnine
        gitlab
 )
