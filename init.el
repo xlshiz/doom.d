@@ -43,7 +43,6 @@
        word-wrap          ; soft wrapping with language-aware indent
        electric           ; smarter, keyword-based electric-indent
        vc                 ; version-control and Emacs, sitting in a tree
-       (chinese +rime)
 
        :term
        eshell             ; the elisp shell that works everywhere
@@ -62,6 +61,7 @@
        make               ; run make tasks from Emacs
        pdf                ; pdf enhancements
        taskrunner         ; taskrunner for all your projects
+       (chinese +rime)
 
        :lang
        ;;agda             ; types of types of types of types...
