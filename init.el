@@ -33,7 +33,7 @@
        tabs               ; a tab bar for Emacs
        hl-todo            ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ligatures          ; ligatures and symbols to make your code pretty again
-       ophints            ; highlight the region an operation acts on
+       ; ophints            ; highlight the region an operation acts on
        vc-gutter          ; vcs diff in the fringe
        vi-tilde-fringe    ; fringe tildes to mark beyond EOB
        file-templates     ; auto-snippets for empty files
