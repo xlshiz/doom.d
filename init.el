@@ -43,6 +43,7 @@
        word-wrap          ; soft wrapping with language-aware indent
        electric           ; smarter, keyword-based electric-indent
        vc                 ; version-control and Emacs, sitting in a tree
+       (search +snails)
 
        :term
        eshell             ; the elisp shell that works everywhere
@@ -140,7 +141,7 @@
        ;;twitter          ; twitter client https://twitter.com/vnought
 
        :config
-       (default +bindings +smartparens +snails)
+       (default +bindings +smartparens)
 
        :private
        tabnine
