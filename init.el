@@ -43,6 +43,7 @@
        word-wrap          ; soft wrapping with language-aware indent
        electric           ; smarter, keyword-based electric-indent
        vc                 ; version-control and Emacs, sitting in a tree
+       dired              ; making dired pretty [functional]
        (search +snails)
 
        :term
