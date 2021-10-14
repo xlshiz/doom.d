@@ -11,7 +11,6 @@
 (setq doom-unicode-font (font-spec :family "Sarasa Fixed SC"))
 
 (setq display-line-numbers-type nil)
-(push (expand-file-name "forge/authinfo" doom-etc-dir) auth-sources)
 
 ;;; before
 (setq org-directory "~/workdir/docs/org/"

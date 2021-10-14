@@ -1,6 +1,8 @@
 ;;; private/gitlab/config.el -*- lexical-binding: t; -*-
 ;;;
-(push (expand-file-name "forge/authinfo" doom-etc-dir) auth-sources)
+
+(after! auth-source
+	(push (expand-file-name "forge/authinfo" doom-etc-dir) auth-sources))
 
 (after! forge
   (setq forge-alist
