@@ -64,6 +64,7 @@
        pdf                ; pdf enhancements
        taskrunner         ; taskrunner for all your projects
        (chinese +rime)
+       tags
 
        :lang
        ;;agda             ; types of types of types of types...
