@@ -30,9 +30,9 @@
        workspaces         ; tab emulation, persistence & separate workspaces
        undo               ; persistent, smarter undo for your inevitable mistakes
        snippets           ; my elves. They type so I don't have to
-       tabs               ; a tab bar for Emacs
+       (tabs +sort)       ; a tab bar for Emacs
        hl-todo            ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       ligatures          ; ligatures and symbols to make your code pretty again
+       ; ligatures          ; ligatures and symbols to make your code pretty again
        ; ophints            ; highlight the region an operation acts on
        vc-gutter          ; vcs diff in the fringe
        vi-tilde-fringe    ; fringe tildes to mark beyond EOB
@@ -40,7 +40,7 @@
        fold               ; (nigh) universal code folding
        multiple-cursors   ; editing in many places at once
        rotate-text        ; cycle region at point between text candidates
-       word-wrap          ; soft wrapping with language-aware indent
+       ; word-wrap          ; soft wrapping with language-aware indent
        electric           ; smarter, keyword-based electric-indent
        vc                 ; version-control and Emacs, sitting in a tree
        dired              ; making dired pretty [functional]
