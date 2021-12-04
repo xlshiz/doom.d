@@ -23,14 +23,14 @@
        :editor
        (evil +everywhere) ; come to the dark side, we have cookies
        theme              ; what makes DOOM look the way it does
-       (modeline +light)  ; snazzy, Atom-inspired modeline, plus API
+       (modeline +mini)   ; snazzy, Atom-inspired modeline, plus API
        (popup +defaults)  ; tame sudden yet inevitable temporary windows
        window-select      ; visually switch windows
        treemacs           ; a project drawer, like neotree but cooler
        workspaces         ; tab emulation, persistence & separate workspaces
        undo               ; persistent, smarter undo for your inevitable mistakes
        snippets           ; my elves. They type so I don't have to
-       (tabs +sort)       ; a tab bar for Emacs
+       (tabs)             ; a tab bar for Emacs
        hl-todo            ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ; ligatures          ; ligatures and symbols to make your code pretty again
        ; ophints            ; highlight the region an operation acts on
