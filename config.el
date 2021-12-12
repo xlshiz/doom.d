@@ -43,6 +43,9 @@
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
 
+(after! recentf
+  (remove-hook 'dired-mode-hook #'doom--recentf-add-dired-directory-h))
+
 
 ;;; hook
 (add-hook! 'git-commit-setup-hook #'yas-git-commit-mode)
