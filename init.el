@@ -55,6 +55,7 @@
         +childframe)      ; use childframes for error popups (Emacs 26+ only)
        format             ; automated prettiness
        (debugger +lsp)    ; FIXME stepping through code, to help you add bugs
+       ;;direnv
        editorconfig       ; let someone else argue about tabs vs spaces
        (eval +overlay)    ; run code, run (also, repls)
        (lookup  +docsets) ; navigate your code and its documentation

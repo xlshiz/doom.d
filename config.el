@@ -15,23 +15,24 @@
 ;;; before
 (setq org-directory "~/workdir/docs/org/"
       org-default-refile-file (concat org-directory "/refile.org")
-      +org-capture-notes-file "todo.org"
-      org-agenda-files (list (concat org-directory +org-capture-notes-file)))
+      +org-capture-todo-file "todo.org"
+      +org-capture-notes-file "maybe.org"
+      org-agenda-files (list (concat org-directory +org-capture-todo-file)))
 (setq org-re-reveal-extra-css (concat "file://" doom-etc-dir "present/local.css"))
 
 ;;; after
 (after! org
-  (add-hook 'org-mode-hook #'(lambda () (pangu-spacing-mode -1)
-                               (setq-local company-idle-delay nil)
+  (add-hook 'org-mode-hook #'(lambda () (setq-local company-idle-delay nil)
                                ;; (custom-set-faces
                                ;;  '(org-table ((t (:family "Sarasa Mono SC")))))
                                ))
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline org-default-refile-file "Inbox")
-           "* TODO %?\n")))
+           "* %?\n")))
   (setq org-bookmark-names-plist '(:last-capture "org-capture-last-stored"
                                    :last-capture-marker "org-capture-last-stored-marker"))
-  (setq org-refile-targets '((org-default-notes-file . (:level . 1))
+  (setq org-refile-targets '((+org-capture-todo-file . (:level . 1))
+                             (+org-capture-notes-file . (:level . 1))
                              (org-default-refile-file . (:level . 1))))
   (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
                             (sequence "⚐(T)" "⚑(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
