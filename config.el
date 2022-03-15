@@ -37,8 +37,8 @@
   (setq org-todo-keywords '((sequence "TODO(t)" "DOING(i)" "HANGUP(h)" "|" "DONE(d)" "CANCEL(c)")
                             (sequence "⚐(T)" "⚑(I)" "❓(H)" "|" "✔(D)" "✘(C)"))
         org-todo-keyword-faces '(("DOING" . +org-todo-onhold)
-				 ("⚑" . +org-todo-onhold)
-				 ("HANGUP" . +org-todo-cancel)
+                                 ("⚑" . +org-todo-onhold)
+                                 ("HANGUP" . +org-todo-cancel)
                                  ("❓" . +org-todo-cancel))))
 
 (after! rustic
