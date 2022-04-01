@@ -109,6 +109,7 @@
        (org               ; organize your plain life in plain text
         +dragndrop        ; drag & drop files/images into org buffers
         +pandoc           ; export-with-pandoc support
+	+noter
         +pomodoro         ; be fruitful with the tomato technique
         +present)         ; using org-mode for presentations
        ;;perl             ; write code no one else can comprehend
