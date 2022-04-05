@@ -17,7 +17,9 @@
 (doom! :completion
        (company           ; the ultimate code completion backend
          +childframe)
-       (ivy               ; a search engine for love and life
+       ; (ivy               ; a search engine for love and life
+       ;  +icons)
+       (vertico           ; a search engine for love and life
         +icons)
 
        :editor
