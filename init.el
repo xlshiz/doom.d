@@ -95,7 +95,6 @@
        yaml               ; JSON, but readable
 
        :private
-       gitlab
        ;; tabnine
 )
 
