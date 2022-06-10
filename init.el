@@ -17,8 +17,6 @@
 (doom! :completion
        (company           ; the ultimate code completion backend
          +childframe)
-       ; (ivy               ; a search engine for love and life
-       ;  +icons)
        (vertico           ; a search engine for love and life
         +icons)
 
@@ -33,20 +31,17 @@
        undo               ; persistent, smarter undo for your inevitable mistakes
        snippets           ; my elves. They type so I don't have to
        (tabs +sort)             ; a tab bar for Emacs
-       hl-todo            ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       ; ligatures          ; ligatures and symbols to make your code pretty again
-       ; ophints            ; highlight the region an operation acts on
-       vc-gutter          ; vcs diff in the fringe
-       vi-tilde-fringe    ; fringe tildes to mark beyond EOB
-       file-templates     ; auto-snippets for empty files
        fold               ; (nigh) universal code folding
        multiple-cursors   ; editing in many places at once
-       rotate-text        ; cycle region at point between text candidates
-       ; word-wrap          ; soft wrapping with language-aware indent
-       electric           ; smarter, keyword-based electric-indent
        vc                 ; version-control and Emacs, sitting in a tree
        (dired +ranger)    ; making dired pretty [functional]
        (search +snails)
+       editorconfig       ; let someone else argue about tabs vs spaces
+       make               ; run make tasks from Emacs
+       pdf                ; pdf enhancements
+       taskrunner         ; taskrunner for all your projects
+       (chinese +rime)
+       misc
 
        :term
        eshell             ; the elisp shell that works everywhere
@@ -57,21 +52,14 @@
        ;; (spell +flyspell)  ; tasing you for misspelling mispelling
 
        :tools
-       (checker           ; tasing you for every semicolon you forget
-        +childframe)      ; use childframes for error popups (Emacs 26+ only)
        format             ; automated prettiness
        (debugger +lsp)    ; FIXME stepping through code, to help you add bugs
-       ;;direnv
-       editorconfig       ; let someone else argue about tabs vs spaces
        (eval +overlay)    ; run code, run (also, repls)
        (lookup  +docsets) ; navigate your code and its documentation
        (lsp +peek)
        (magit +forge)     ; a git porcelain for Emacs
-       make               ; run make tasks from Emacs
-       pdf                ; pdf enhancements
-       taskrunner         ; taskrunner for all your projects
-       (chinese +rime)
        tags
+       ;;direnv
 
        :lang
        (cc +lsp)          ; C/C++/Obj-C madness
@@ -106,18 +94,9 @@
        (web +lsp)         ; the tubes
        yaml               ; JSON, but readable
 
-       :app
-       ;;calendar
-       ;;everywhere       ; *leave* Emacs!? You must be joking
-       ;;(rss +org)       ; emacs as an RSS reader
-       ;;twitter          ; twitter client https://twitter.com/vnought
-
-       :config
-       (default +bindings +smartparens)
-
        :private
-       tabnine
        gitlab
+       ;; tabnine
 )
 
 ;; * Leaderkey
