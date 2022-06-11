@@ -94,6 +94,10 @@
        (web +lsp)         ; the tubes
        yaml               ; JSON, but readable
 
+       ;keymap must be last
+       :keymap
+       global
+
        :private
        ;; tabnine
 )
