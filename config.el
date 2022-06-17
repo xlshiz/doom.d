@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; no-byte-compile: t; -*-
 ;;; private/my/config.el
 
-
 ;;; set
 (setq doom-theme 'doom-nord-light)
 (setq display-line-numbers-type nil)
@@ -28,12 +27,14 @@
   (push (expand-file-name "forge/authinfo" doom-etc-dir) auth-sources))
 (after! forge
   (setq forge-alist
-        '(("gitlab.com" "gitlab.com/api/v4"
-           "gitlab.com" forge-gitlab-repository))))
+        '(("gitlab.wa.cn" "gitlab.wa.cn/api/v4"
+           "gitlab.wa.cn" forge-gitlab-repository))))
 (after! ghub
-  (setq ghub-insecure-hosts '("gitlab.com/api/v4")))
+  (setq ghub-insecure-hosts '("gitlab.wa.cn/api/v4")))
 
 ;;; hook
 (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
+;;; test
 
 (toggle-frame-maximized)
