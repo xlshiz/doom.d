@@ -25,12 +25,6 @@
                                    :last-capture-marker "org-capture-last-stored-marker")))
 (after! auth-source
   (push (expand-file-name "forge/authinfo" doom-etc-dir) auth-sources))
-(after! forge
-  (setq forge-alist
-        '(("gitlab.wa.cn" "gitlab.wa.cn/api/v4"
-           "gitlab.wa.cn" forge-gitlab-repository))))
-(after! ghub
-  (setq ghub-insecure-hosts '("gitlab.wa.cn/api/v4")))
 
 ;;; hook
 (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))

@@ -60,9 +60,11 @@
        (magit +forge)     ; a git porcelain for Emacs
        tags
        ;;direnv
+       tree-sitter
 
        :lang
-       (cc +lsp)          ; C/C++/Obj-C madness
+       (cc +lsp
+           +tree-sitter)  ; C/C++/Obj-C madness
        data               ; config/data formats
        ;;(dart +flutter)  ; paint ui and not much else
        emacs-lisp         ; drown in parentheses
@@ -76,7 +78,7 @@
        (org               ; organize your plain life in plain text
         +dragndrop        ; drag & drop files/images into org buffers
         +pandoc           ; export-with-pandoc support
-	+noter
+        +noter
         +pomodoro         ; be fruitful with the tomato technique
         +present)         ; using org-mode for presentations
        ;;php              ; perl's insecure younger brother
