@@ -34,7 +34,7 @@
        fold                    ; (nigh) universal code folding
        multiple-cursors        ; editing in many places at once
        vc                      ; version-control and Emacs, sitting in a tree
-       (dired +dirvish)        ; making dired pretty [functional]
+       (dired +dirvish +icons) ; making dired pretty [functional]
        (search +snails)
        editorconfig            ; let someone else argue about tabs vs spaces
        make                    ; run make tasks from Emacs

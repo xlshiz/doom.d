@@ -3,7 +3,7 @@
 (use-package! company-tabnine
   :defer t
   :init
-  (setq company-tabnine-binaries-folder (concat doom-etc-dir "TabNine"))
+  (setq company-tabnine-binaries-folder (concat doom-data-dir "TabNine"))
 ; (setq company-tabnine-log-file-path "/tmp/tabnine.log")
   :config
   (defadvice company-echo-show (around disable-tabnine-upgrade-message activate)

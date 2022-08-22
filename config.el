@@ -17,14 +17,20 @@
       +org-capture-todo-file "todo.org"
       +org-capture-notes-file "maybe.org"
       org-agenda-files (list (concat org-directory +org-capture-todo-file)))
-(setq org-re-reveal-extra-css (concat "file://" doom-etc-dir "present/local.css"))
+(setq org-re-reveal-extra-css (concat "file://" doom-data-dir "present/local.css"))
 
 ;;; after
 (after! org
   (setq org-bookmark-names-plist '(:last-capture "org-capture-last-stored"
                                    :last-capture-marker "org-capture-last-stored-marker")))
 (after! auth-source
-  (push (expand-file-name "forge/authinfo" doom-etc-dir) auth-sources))
+  (push (expand-file-name "forge/authinfo" doom-data-dir) auth-sources))
+;; (after! forge
+;;   (setq forge-alist
+;;         '(("gitlab.com" "gitlab.com/api/v4"
+;;            "gitlab.com" forge-gitlab-repository))))
+;; (after! ghub
+;;   (setq ghub-insecure-hosts '("gitlab.com/api/v4")))
 
 ;;; hook
 (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
