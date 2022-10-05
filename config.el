@@ -5,9 +5,9 @@
 (setq doom-theme 'doom-nord-light)
 (setq display-line-numbers-type nil)
 
-;; (setq doom-font (font-spec :family "Iosevka Fixed ss04" :size 20))
-(setq doom-font (font-spec :family "M+ 1m" :weight 'regular' :size 20))
-;; (setq doom-unicode-font (font-spec :family "思源黑体"))
+(setq doom-font (font-spec :family "Sarasa Fixed SC" :weight 'regular' :size 20))
+;; (setq doom-font (font-spec :family "input" :weight 'regular' :size 20))
+;; (setq doom-font (font-spec :family "M PLUS Code Latin 50" :weight 'regular' :size 20))
 (setq doom-unicode-font (font-spec :family "Sarasa Fixed SC"))
 
 ;;; before
