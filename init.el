@@ -118,6 +118,7 @@
        global
 
        :private
+       eaf
        ;; tabnine
        )
 
