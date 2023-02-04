@@ -114,8 +114,8 @@
        yaml                    ; JSON, but readable
 
                                         ;keymap must be last
-       :keymap
-       global
+       :config
+       keymap
 
        :private
        eaf
