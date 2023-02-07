@@ -41,6 +41,7 @@
        pdf                     ; pdf enhancements
        taskrunner              ; taskrunner for all your projects
        (chinese +rime)
+       (hl +pretty +diff-hl)
        misc
 
        :term
@@ -113,7 +114,7 @@
         +lsp)                  ; the tubes
        yaml                    ; JSON, but readable
 
-                                        ;keymap must be last
+       ;keymap must be last
        :config
        keymap
 
