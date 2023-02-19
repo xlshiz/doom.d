@@ -30,7 +30,7 @@
        workspaces              ; tab emulation, persistence & separate workspaces
        undo                    ; persistent, smarter undo for your inevitable mistakes
        snippets                ; my elves. They type so I don't have to
-       (tabs)                  ; a tab bar for Emacs
+       (tabs +sort)                  ; a tab bar for Emacs
        fold                    ; (nigh) universal code folding
        multiple-cursors        ; editing in many places at once
        vc                      ; version-control and Emacs, sitting in a tree
