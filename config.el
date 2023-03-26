@@ -14,9 +14,8 @@
 (setq org-directory "~/workdir/docs/org/"
       org-noter-notes-search-path org-directory
       org-default-refile-file (concat org-directory "/refile.org")
-      +org-capture-todo-file "todo.org"
-      +org-capture-notes-file "maybe.org"
-      org-agenda-files (list (concat org-directory +org-capture-todo-file)))
+      org-agenda-files (list (concat org-directory +org-capture-todo-file)
+                             (concat org-directory +org-capture-projects-file)))
 (setq org-re-reveal-extra-css (concat "file://" doom-data-dir "present/local.css"))
 
 ;;; after
