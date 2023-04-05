@@ -31,6 +31,8 @@
   :after eaf)
 (use-package! eaf-image-viewer
   :after eaf)
+(use-package! eaf-markmap
+  :after eaf)
 (use-package! eaf-evil
   :after eaf
   :config
