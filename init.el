@@ -113,6 +113,8 @@
         +tree-sitter
         +lsp)                  ; the tubes
        yaml                    ; JSON, but readable
+       (zig
+        +tree-sitter)
 
        ;keymap must be last
        :config
