@@ -9,6 +9,7 @@
 ;; (setq doom-font (font-spec :family "input" :weight 'regular' :size 20))
 ;; (setq doom-font (font-spec :family "M PLUS Code Latin 50" :weight 'regular' :size 20))
 (setq doom-unicode-font (font-spec :family "Sarasa Fixed SC"))
+(setq treesit-extra-load-path `(,(concat doom-private-dir "/treesitter")))
 
 ;;; before
 (setq org-directory "~/workdir/docs/org/"
