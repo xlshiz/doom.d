@@ -37,6 +37,7 @@
        (dired +dirvish +icons) ; making dired pretty [functional]
        (search +snails)
        editorconfig            ; let someone else argue about tabs vs spaces
+       format                  ; automated prettiness
        make                    ; run make tasks from Emacs
        pdf                     ; pdf enhancements
        taskrunner              ; taskrunner for all your projects
@@ -53,7 +54,6 @@
        ;; (spell +flyspell)    ; tasing you for misspelling mispelling
 
        :tools
-       format                  ; automated prettiness
        (debugger +lsp)         ; FIXME stepping through code, to help you add bugs
        (eval +overlay)         ; run code, run (also, repls)
        (lookup
